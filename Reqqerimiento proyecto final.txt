@@ -1,0 +1,20 @@
+-Imprimir personalidad o factor diferenciador al juego nuestro en especifico(hacerlo diferente).
+--minimo 3 modelos de sistemas fisicos con independencia.
+---opcion de guardar partidas y recuperar los datos del nivel que hiba, las vidas que hiba.(guardar y cargar partidas).
+----niveles de dificultad.
+
+*definicion del proyecto.
+**aproximacion de las clases a utilizar.
+***Descripcion detallada de cada una de las clases a utilizar
+
+
+
+//Estudiar sobre Focus.(Juego Final).
+//Pagina online para recortar los sprites sin fondo.
+
+https://es.y8.com/games/monster_truck_html
+
+M. inercial
+m. circular
+m.armonico simple
+M. parabolico
