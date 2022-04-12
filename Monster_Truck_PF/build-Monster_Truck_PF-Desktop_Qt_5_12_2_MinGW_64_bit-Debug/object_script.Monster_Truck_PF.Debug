@@ -1,0 +1,11 @@
+debug/archivos.o
+debug/containers.o
+debug/main.o
+debug/mainwindow.o
+debug/nivel.o
+debug/personaje.o
+debug/qrc_MEDIA.o
+debug/moc_containers.o
+debug/moc_mainwindow.o
+debug/moc_nivel.o
+debug/moc_personaje.o

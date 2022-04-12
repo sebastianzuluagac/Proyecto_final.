@@ -1,6 +1,7 @@
 #ifndef NIVEL_H
 #define NIVEL_H
 #include <QMainWindow>
+#include <QGraphicsScene>
 #include <QObject>
 #include <QGraphicsPixmapItem>
 #include <QString>
@@ -19,6 +20,7 @@ public:
     void CARGAR_MUNDO();
 
 private:
+    QGraphicsScene *scene;
     QPixmap fondo;
     containers *container;
     QVector <containers*> contenedores;

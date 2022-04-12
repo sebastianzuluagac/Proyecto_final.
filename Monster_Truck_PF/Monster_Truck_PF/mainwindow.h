@@ -17,9 +17,7 @@ using namespace std;
 #include "nivel.h"
 #include "personaje.h"
 #include "archivos.h"
-
-#define tamnivelX 1380//6061
-#define tamnivelY 800
+#include "Macros.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

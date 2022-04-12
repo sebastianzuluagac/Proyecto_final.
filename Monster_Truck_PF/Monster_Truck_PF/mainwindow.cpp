@@ -28,12 +28,10 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     n1=new nivel;
-    carro=new personaje;
+    carro=new personaje(scene, 0, 500);
     carro->set_sprite(0,0);
     scene->addItem(carro);
     ui->escena->setScene(scene);
-    carro->setPos(0,397);
-
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(animacion_ruedo()));
     //timer->start(500);
@@ -51,18 +49,13 @@ void MainWindow::keyPressEvent(QKeyEvent *tecla)
 
     //--------------------------------------
     case Qt::Key_A: {
-        carro->MOVER_ATRAS();
-        //carro->x()>0? carro->setX(carro->x()-10): carro->setX(carro->x());
-        carro->x()>400? scene->setSceneRect(carro->x()-400,0,tamnivelX, tamnivelY):scene->setSceneRect(0,0,tamnivelX, tamnivelY);
-
+        if(carro->Carro_apoyado() == true) carro->Mover((carro->Fuerza_actual(0))-2.0, carro->Fuerza_actual(1));
       }break;
    //---------------------------------------
-   case Qt::Key_D: {
-   carro->MOVER_ADELANTE();
-   carro->x()>400? scene->setSceneRect(carro->x()-400,0,tamnivelX, tamnivelY):scene->setSceneRect(0,0,tamnivelX, tamnivelY);
-
-  }break;
-
+    case Qt::Key_D: {
+        if(carro->Carro_apoyado() == true) carro->Mover((carro->Fuerza_actual(0))+2.0, carro->Fuerza_actual(1));
+    }break;
+    //-----------------------------
     //-----------------------------
     case Qt::Key_L: {
        ui->escena->setEnabled(true);
@@ -78,7 +71,10 @@ void MainWindow::keyPressEvent(QKeyEvent *tecla)
 
       }break;
     //---------------------------------------
-
+    case Qt::Key_W: {
+        if(carro->Carro_apoyado() == true) carro->Mover(carro->Fuerza_actual(0), Fuerza_salto);
+    }
+    //-------------------------------------
     }
 }
 
@@ -99,7 +95,6 @@ void MainWindow::on_ingresar_clicked()
         ui->widget->hide();
     }
     else ui->respuesta->setText("Ingreso Fallido");
-
 }
 
 
