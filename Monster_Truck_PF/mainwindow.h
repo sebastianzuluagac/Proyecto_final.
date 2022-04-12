@@ -41,6 +41,9 @@ private slots:
 
     void on_ingresar_clicked();
 
+
+    void on_crearU_clicked();
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene,*inicio;

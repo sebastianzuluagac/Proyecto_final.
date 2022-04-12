@@ -58,7 +58,7 @@ void personaje::velocidad()
     GRAVEDAD();
 static int xx=0,vf=0,a=0;
     v=x()-xx;
-   qDebug() <<"la velocidad es: "<<v<<endl;
+   //qDebug() <<"la velocidad es: "<<v<<endl;
    if (v!=vf){
    a=vf-v;
    }
@@ -66,7 +66,7 @@ static int xx=0,vf=0,a=0;
     vf=v;
     //v=v+a;
     //setX(v);
-    qDebug() <<"la aceleracion es: "<<a<<endl;
+    //qDebug() <<"la aceleracion es: "<<a<<endl;
 }
 
 
