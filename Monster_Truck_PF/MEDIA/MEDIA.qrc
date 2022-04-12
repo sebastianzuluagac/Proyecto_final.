@@ -1,0 +1,115 @@
+<RCC>
+    <qresource prefix="/">
+        <file>SPRITES_GAME/basura/llantasjpg.jpg</file>
+        <file>SPRITES_GAME/basura/minajpg.png</file>
+        <file>SPRITES_GAME/basura/moneda.jpg</file>
+        <file>SPRITES_GAME/basura/pinchosjpg.png</file>
+        <file>SPRITES_GAME/basura/resortesjpg.webp</file>
+        <file>SPRITES_GAME/monedas/20220329_092624.png</file>
+        <file>SPRITES_GAME/monedas/20220329_093526.png</file>
+        <file>SPRITES_GAME/monedas/20220329_093738.png</file>
+        <file>SPRITES_GAME/monedas/20220329_094557.png</file>
+        <file>SPRITES_GAME/monedas/20220329_094633.png</file>
+        <file>SPRITES_GAME/monedas/20220329_095257.png</file>
+        <file>SPRITES_GAME/monedas/monedas.png</file>
+        <file>SPRITES_GAME/monedas/sprites_moneda.png</file>
+        <file>SPRITES_GAME/niveles/ejemplo mundo.webp</file>
+        <file>SPRITES_GAME/niveles/f.png</file>
+        <file>SPRITES_GAME/niveles/nivel1.png</file>
+        <file>SPRITES_GAME/objetos/containers/container_amarillo.png</file>
+        <file>SPRITES_GAME/objetos/1649126370504.png</file>
+        <file>SPRITES_GAME/objetos/1649126508310.png</file>
+        <file>SPRITES_GAME/objetos/llantas.png</file>
+        <file>SPRITES_GAME/objetos/mina.png</file>
+        <file>SPRITES_GAME/objetos/pinchos.png</file>
+        <file>SPRITES_GAME/objetos/resortes.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_133147.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_135833.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_175117.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_175155.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_175219.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_175248.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_175324.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_175401.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_175438.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_175513.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_181021.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_181059.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_181454.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_181521.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_181542.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_181607.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_181625.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_181642.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_181711.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_181802.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_181828.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_181846.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_181904.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_181924.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_181944.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_182046.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_182104.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_182132.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_183106.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_183126.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_183159.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_183214.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_183236.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_183256.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_183320.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_183355.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_183420.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_183454.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_183526.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_183545.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_183616.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_183636.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_183701.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_183724.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_183742.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/20220402_183802.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/C1_AzulG.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/C1_AzulO.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/C1_Morado.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/C1_Negro.png</file>
+        <file>SPRITES_GAME/personaje/carro1/colores individuales/C1_Verde.png</file>
+        <file>SPRITES_GAME/personaje/carro1/carro_mounstro.png</file>
+        <file>SPRITES_GAME/personaje/carro1/carro_mounstro1.png</file>
+        <file>SPRITES_GAME/personaje/carro2/Nueva carpeta/20220403_182243.png</file>
+        <file>SPRITES_GAME/personaje/carro2/Nueva carpeta/20220403_182306.png</file>
+        <file>SPRITES_GAME/personaje/carro2/Nueva carpeta/20220403_182322.png</file>
+        <file>SPRITES_GAME/personaje/carro2/Nueva carpeta/20220403_182337.png</file>
+        <file>SPRITES_GAME/personaje/carro2/Nueva carpeta/20220403_182400.png</file>
+        <file>SPRITES_GAME/personaje/carro2/Nueva carpeta/20220403_182423.png</file>
+        <file>SPRITES_GAME/personaje/carro2/Nueva carpeta/20220403_182457.png</file>
+        <file>SPRITES_GAME/personaje/carro2/Nueva carpeta/20220403_182514.png</file>
+        <file>SPRITES_GAME/personaje/carro2/Nueva carpeta/20220403_182531.png</file>
+        <file>SPRITES_GAME/personaje/carro2/Nueva carpeta/20220403_182552.png</file>
+        <file>SPRITES_GAME/personaje/carro2/Nueva carpeta/20220403_182608.png</file>
+        <file>SPRITES_GAME/personaje/carro2/Nueva carpeta/20220403_182626.png</file>
+        <file>SPRITES_GAME/personaje/carro2/Nueva carpeta/20220403_182644.png</file>
+        <file>SPRITES_GAME/personaje/carro2/Nueva carpeta/20220403_182706.png</file>
+        <file>SPRITES_GAME/personaje/carro2/Nueva carpeta/20220403_182725.png</file>
+        <file>SPRITES_GAME/personaje/ruedas/carro1jpg.PNG</file>
+        <file>SPRITES_GAME/personaje/ruedas/carro1png.png</file>
+        <file>SPRITES_GAME/personaje/ruedas/carro2jpg.PNG</file>
+        <file>SPRITES_GAME/personaje/ruedas/carro2png.png</file>
+        <file>SPRITES_GAME/personaje/ruedas/carro3jpg.PNG</file>
+        <file>SPRITES_GAME/personaje/ruedas/carro3png.png</file>
+        <file>SPRITES_GAME/personaje/ruedas/ruedapos1.png</file>
+        <file>SPRITES_GAME/personaje/ruedas/ruedapos10.png</file>
+        <file>SPRITES_GAME/personaje/ruedas/ruedapos2.png</file>
+        <file>SPRITES_GAME/personaje/ruedas/ruedapos3.png</file>
+        <file>SPRITES_GAME/personaje/ruedas/ruedapos4.png</file>
+        <file>SPRITES_GAME/personaje/ruedas/ruedapos5.png</file>
+        <file>SPRITES_GAME/personaje/ruedas/ruedapos6.png</file>
+        <file>SPRITES_GAME/personaje/ruedas/ruedapos7.png</file>
+        <file>SPRITES_GAME/personaje/ruedas/ruedapos8.png</file>
+        <file>SPRITES_GAME/personaje/ruedas/ruedapos9.png</file>
+        <file>SPRITES_GAME/personaje/cajas1.PNG</file>
+        <file>SPRITES_GAME/personaje/carromounstro1.png</file>
+        <file>SPRITES_GAME/personaje/cnpc.PNG</file>
+        <file>MEDIA.qrc</file>
+    </qresource>
+</RCC>
