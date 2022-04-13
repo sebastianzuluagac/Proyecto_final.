@@ -11,6 +11,7 @@
 #include <time.h>
 #include <QTimer>
 #include <QDebug>
+#include <QMatrix>
 #define bloqueX 240
 #define bloqueY 153
 
@@ -18,9 +19,9 @@ class containers: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    containers(QString name);
+    containers(int fila, int col);
     containers();
-    void CHOOSE_IMAGE();
+    void INCLINACION (float grado);
 private:
 
     QPixmap imagen;

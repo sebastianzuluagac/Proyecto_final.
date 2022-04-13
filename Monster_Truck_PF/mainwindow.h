@@ -17,9 +17,7 @@ using namespace std;
 #include "nivel.h"
 #include "personaje.h"
 #include "archivos.h"
-
-#define tamnivelX 1380//6061
-#define tamnivelY 800
+#include "Macros.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -44,9 +42,13 @@ private slots:
 
     void on_crearU_clicked();
 
+    void on_jugar_clicked();
+
+    void on_nivel1_clicked();
+
 private:
     Ui::MainWindow *ui;
-    QGraphicsScene *scene,*inicio;
+    QGraphicsScene *scene;
     nivel *n1;
     personaje *carro;
     QKeyEvent *tecla;

@@ -111,5 +111,7 @@
         <file>SPRITES_GAME/personaje/carromounstro1.png</file>
         <file>SPRITES_GAME/personaje/cnpc.PNG</file>
         <file>MEDIA.qrc</file>
+        <file>SPRITES_GAME/botones/compras1.webp</file>
+        <file>SPRITES_GAME/botones/compras2.jpg</file>
     </qresource>
 </RCC>

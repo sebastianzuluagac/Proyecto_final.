@@ -6,91 +6,215 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>529</width>
-    <height>300</height>
+    <width>753</width>
+    <height>383</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="0">
-     <widget class="QWidget" name="widget_2" native="true">
-      <layout class="QGridLayout" name="gridLayout_3">
-       <item row="0" column="0">
-        <widget class="QGraphicsView" name="escena"/>
+   <widget class="QWidget" name="widget_2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>9</y>
+      <width>274</width>
+      <height>210</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_3">
+     <item row="0" column="0">
+      <widget class="QGraphicsView" name="escena"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="inicio" native="true">
+    <property name="geometry">
+     <rect>
+      <x>289</x>
+      <y>9</y>
+      <width>188</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="1" column="0">
+      <widget class="QLabel" name="respuesta">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <layout class="QVBoxLayout" name="caja_ingreso_creacion">
+       <item>
+        <layout class="QFormLayout" name="name_password">
+         <item row="0" column="0">
+          <widget class="QLabel" name="user_name">
+           <property name="text">
+            <string>User name</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="username"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="password">
+           <property name="text">
+            <string>Password</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="pw"/>
+         </item>
+        </layout>
        </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QWidget" name="widget" native="true">
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="1" column="0">
-        <widget class="QLabel" name="respuesta">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <layout class="QVBoxLayout" name="caja_ingreso_creacion">
+       <item>
+        <layout class="QHBoxLayout" name="botones_ingresar_crear">
          <item>
-          <layout class="QFormLayout" name="name_password">
-           <item row="0" column="0">
-            <widget class="QLabel" name="user_name">
-             <property name="text">
-              <string>User name</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="username"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="password">
-             <property name="text">
-              <string>Password</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="pw"/>
-           </item>
-          </layout>
+          <widget class="QPushButton" name="ingresar">
+           <property name="text">
+            <string>Ingresar</string>
+           </property>
+          </widget>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="botones_ingresar_crear">
-           <item>
-            <widget class="QPushButton" name="ingresar">
-             <property name="text">
-              <string>Ingresar</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="crearU">
-             <property name="text">
-              <string>crear</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
+          <widget class="QPushButton" name="crearU">
+           <property name="text">
+            <string>crear</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
       </layout>
-     </widget>
-    </item>
-   </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="niveles" native="true">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>240</y>
+      <width>441</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <widget class="QPushButton" name="nivel4">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>10</y>
+       <width>91</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>4</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="nivel1">
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>10</y>
+       <width>101</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>1</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="nivel2">
+     <property name="geometry">
+      <rect>
+       <x>131</x>
+       <y>10</y>
+       <width>91</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>2</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="nivel3">
+     <property name="geometry">
+      <rect>
+       <x>231</x>
+       <y>10</y>
+       <width>91</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>3</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="tienda">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>290</y>
+      <width>51</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>OpenHandCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/SPRITES_GAME/botones/compras1.webp</normalon>
+     </iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>51</width>
+      <height>100</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="jugar">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>120</y>
+      <width>80</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>jugar</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>529</width>
+     <width>753</width>
      <height>20</height>
     </rect>
    </property>
