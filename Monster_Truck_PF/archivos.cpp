@@ -28,16 +28,16 @@ bool CREAR_USUARIO(string nameU, string pass)
 {
     string linea;
         fstream file;
-        file.open("datos_guardados.txt",fstream::in|fstream::app);
+        file.open("../Monster_Truck_PF/datos.txt",fstream::in|fstream::app);
         if(file.is_open()){
 
             linea.append(nameU);
             linea.append("\t");
             linea.append(pass);
-
+            linea.append("\n");
             file<<linea;
-            linea="";
-            //file.close();
+            //linea="";
+            file.close();
 
             return true;
         }
@@ -46,32 +46,30 @@ bool CREAR_USUARIO(string nameU, string pass)
 
 bool LOGIN(string nameU, string pass)
 {
-    string linea;
-    char* linealeida;
 
+    char* linealeida;
     fstream file;
     long long tam=0;
-
     file.open("../Monster_Truck_PF/datos.txt",fstream::ate | fstream::in );
     if (file.is_open()){
         tam=file.tellg();
         file.seekg(0);
         linealeida=new char [tam];
         while(file.eof()==false){
-        //for (unsigned long long i=0; i<tam;i++){
             file.getline(linealeida,tam);
-            //linea=linealeida;
-            qDebug()<<"tell: "<<file.tellg()<<linealeida<<endl;
-            //linea.find(usuario,0,nameU.size());
             if(in(linealeida,nameU)){
-                qDebug()<<"se encuentra la palabra"<<endl;
+                if(in(linealeida,pass)){
+                    qDebug() <<"TODO ES CORRECTO" <<endl;
+                    return true;
+                    break;
+                }
+                else qDebug()<<"contraseña invalida"<<endl;return false; break;
             }
-            else qDebug()<<"NOOOO se encuentra la palabra"<<endl;
+            else qDebug()<<"Usuario invalido"<<endl;
 
         }
         file.close();
         delete[] linealeida;
-        return true;
      }
      else qDebug()<<"no se pudo abrir "<<endl; return false;
 }

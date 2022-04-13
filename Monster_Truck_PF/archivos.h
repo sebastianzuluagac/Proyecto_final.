@@ -13,7 +13,7 @@ bool CARGAR_ESTADO();
 
 bool LOGIN(string nameU, string pass);
 
-bool CREAR_USUARIO(QString nameU, QString pass);
+bool CREAR_USUARIO(string nameU, string pass);
 
 bool in(string cadena,string palabra);
 

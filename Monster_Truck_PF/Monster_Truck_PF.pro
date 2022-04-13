@@ -17,6 +17,7 @@ SOURCES += \
     personaje.cpp
 
 HEADERS += \
+    Macros.h \
     archivos.h \
     containers.h \
     mainwindow.h \

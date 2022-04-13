@@ -8,38 +8,28 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
 
-    //ui->widget->setGeometry(0,0,width()-3,800);
     ui->widget_2->setGeometry(0,0,1380,tamnivelY);
-
-    //ui->login->setGeometry(0,0,1345,tamnivelY);
-    inicio = new QGraphicsScene;
-    inicio->setSceneRect(0,0,width(),height());
-    //ui->login->setScene(inicio);
-
-    //ui->escena->setGeometry(0,0,tamnivelX,tamnivelY);
-    scene = new QGraphicsScene;
-    scene->setSceneRect(0,0,tamnivelX, tamnivelY);
+    n1=new nivel;
+    //n1->CARGAR_MUNDO();
+    scene=n1->getlevel();
     ui->escena->setScene(scene);
 
+    //camara de juego
     ui->escena->setEnabled(false);
     ui->escena->setHidden(true);
+    //jugar y tienda
+    ui->jugar->setEnabled(false);
+    ui->jugar->setHidden(true);
+    ui->tienda->setEnabled(false);
+    ui->tienda->setHidden(true);
+    //niveles
+    ui->niveles->setEnabled(false);
+    ui->niveles->setHidden(true);
 
-
-    QPixmap fondo(":/SPRITES_GAME/niveles/nivel1.png");
-    QBrush fon2(Qt::black);
-    ui->escena->setBackgroundBrush(fondo);
-    //ui->login->setBackgroundBrush(fon2);
-
-    n1=new nivel;
-    carro=new personaje;
+    carro=new personaje(scene, 0, 500);
     carro->set_sprite(0,0);
     scene->addItem(carro);
     ui->escena->setScene(scene);
-    carro->setPos(0,397);
-
-    timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(animacion_ruedo()));
-    //timer->start(500);
 
 }
 
@@ -50,77 +40,36 @@ MainWindow::~MainWindow()
 
 void MainWindow::keyPressEvent(QKeyEvent *tecla)
 {
-    static char dire= ' ';
     switch (tecla->key()){
 
     //--------------------------------------
-     case Qt::Key_M: {
-        ui->escena->scale(1.5,1.5);
-
-
-       }break;
-    //---------------------------------------
-    case Qt::Key_N: {
-    ui->escena->scale(0.5,0.5);
-
-   }break;
-//---------------------------------------
     case Qt::Key_A: {
-        carro->MOVER_ATRAS();
-        //carro->x()>0? carro->setX(carro->x()-10): carro->setX(carro->x());
-        carro->x()>400? scene->setSceneRect(carro->x()-400,0,tamnivelX, tamnivelY):scene->setSceneRect(0,0,tamnivelX, tamnivelY);
-        dire='A';
-
+        if(carro->Carro_apoyado() == true) carro->Mover((carro->Fuerza_actual(0))-2.0, carro->Fuerza_actual(1));
       }break;
    //---------------------------------------
-   case Qt::Key_D: {
-   carro->MOVER_ADELANTE();
-   carro->x()>400? scene->setSceneRect(carro->x()-400,0,tamnivelX, tamnivelY):scene->setSceneRect(0,0,tamnivelX, tamnivelY);
-   dire='D';
-  }break;
-
+    case Qt::Key_D: {
+        if(carro->Carro_apoyado() == true) carro->Mover((carro->Fuerza_actual(0))+2.0, carro->Fuerza_actual(1));
+    }break;
+    //-----------------------------
     //-----------------------------
     case Qt::Key_L: {
        ui->escena->setEnabled(true);
        ui->escena->setHidden(true);
-
-      // ui->login->setEnabled(false);
-      // ui->login->setHidden(false);
-
+       //ui->widget->show();
 
       }break;
    //---------------------------------------
     case Qt::Key_K: {
         ui->escena->setEnabled(false);
         ui->escena->setHidden(false);
-
-       // ui->login->setEnabled(true);
-       // ui->login->setHidden(true);
-
-    //LOGIN("nada","nada2");
+        //ui->widget->hide();
 
       }break;
     //---------------------------------------
-
-         case Qt::Key_P: {
-
-        qDebug() <<"Press P" <<endl;
-         LOGIN("nada","nada2");
-         LOGIN("linea3","nada2");
-
-           }break;
-     //---------------------------------------
-
+    case Qt::Key_W: {
+        if(carro->Carro_apoyado() == true) carro->Mover(carro->Fuerza_actual(0), Fuerza_salto);
     }
-    if (dire=='D'){
-        //carro->INERCIA_ADELANTE();
-        qDebug() <<"inerfcia adelante" <<endl;
-        dire=' ';
-    }
-    else if (dire=='A'){
-        //carro->INERCIA_ATRAS();
-         qDebug() <<"inerfcia atras" <<endl;
-        dire=' ';
+    //-------------------------------------
     }
 }
 
@@ -133,6 +82,58 @@ void MainWindow::animacion_ruedo()
 
 void MainWindow::on_ingresar_clicked()
 {
+    qDebug() <<"click" <<endl;
+    if(LOGIN(ui->username->text().toStdString(),ui->pw->text().toStdString())){
+        ui->respuesta->setText("Ingreso Exitoso");
+        //interfaz de login
+        ui->inicio->hide();
+        //jugar y tienda
+        ui->jugar->setEnabled(true);
+        ui->jugar->setHidden(false);
+        ui->tienda->setEnabled(true);
+        ui->tienda->setHidden(false);
+
+    }
+    else ui->respuesta->setText("Ingreso Fallido");
+}
+
+
+
+
+void MainWindow::on_crearU_clicked()
+{
+    if(CREAR_USUARIO(ui->username->text().toStdString(),ui->pw->text().toStdString())){
+        ui->respuesta->setText("Registro Exitoso");
+
+    }
+    else ui->respuesta->setText("Registro Fallido");
+}
+
+
+void MainWindow::on_jugar_clicked()
+{
+    //jugar
+    ui->jugar->setEnabled(false);
+    ui->jugar->setHidden(true);
+    //niveles
+    ui->niveles->setEnabled(true);
+    ui->niveles->setHidden(false);
+}
+
+
+void MainWindow::on_nivel1_clicked()
+{
+    n1->CARGAR_MUNDO(1);
+    ui->escena->setEnabled(false);
+    ui->escena->setHidden(false);
+    //jugar y tienda
+    ui->jugar->setEnabled(false);
+    ui->jugar->setHidden(true);
+    ui->tienda->setEnabled(false);
+    ui->tienda->setHidden(true);
+    //niveles
+    ui->niveles->setEnabled(false);
+    ui->niveles->setHidden(true);
 
 }
 
