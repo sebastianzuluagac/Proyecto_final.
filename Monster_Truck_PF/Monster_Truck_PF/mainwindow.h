@@ -42,9 +42,19 @@ private slots:
 
     void on_crearU_clicked();
 
+    void on_jugar_clicked();
+
+    void on_nivel1_clicked();
+
+    void on_nivel2_clicked();
+
+    void on_nivel3_clicked();
+
+    void on_nivel4_clicked();
+
 private:
     Ui::MainWindow *ui;
-    QGraphicsScene *scene,*inicio;
+    QGraphicsScene *scene;
     nivel *n1;
     personaje *carro;
     QKeyEvent *tecla;

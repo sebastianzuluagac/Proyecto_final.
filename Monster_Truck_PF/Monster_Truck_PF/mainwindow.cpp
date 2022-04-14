@@ -8,33 +8,28 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
 
-    //ui->widget->setGeometry(0,0,width()-3,800);
     ui->widget_2->setGeometry(0,0,1380,tamnivelY);
-
-    inicio = new QGraphicsScene;
-    inicio->setSceneRect(0,0,width(),height());
-
-    //ui->escena->setGeometry(0,0,tamnivelX,tamnivelY);
-    scene = new QGraphicsScene;
-    scene->setSceneRect(0,0,tamnivelX, tamnivelY);
+    n1=new nivel;
+    //n1->CARGAR_MUNDO();
+    scene=n1->getlevel();
     ui->escena->setScene(scene);
 
+    //camara de juego
     ui->escena->setEnabled(false);
     ui->escena->setHidden(true);
+    //jugar y tienda
+    ui->jugar->setEnabled(false);
+    ui->jugar->setHidden(true);
+    ui->tienda->setEnabled(false);
+    ui->tienda->setHidden(true);
+    //niveles
+    ui->niveles->setEnabled(false);
+    ui->niveles->setHidden(true);
 
-
-    QPixmap fondo(":/SPRITES_GAME/niveles/nivel1.png");
-    ui->escena->setBackgroundBrush(fondo);
-
-
-    n1=new nivel;
     carro=new personaje(scene, 0, 500);
     carro->set_sprite(0,0);
     scene->addItem(carro);
     ui->escena->setScene(scene);
-    timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(animacion_ruedo()));
-    //timer->start(500);
 
 }
 
@@ -60,14 +55,14 @@ void MainWindow::keyPressEvent(QKeyEvent *tecla)
     case Qt::Key_L: {
        ui->escena->setEnabled(true);
        ui->escena->setHidden(true);
-       ui->widget->show();
+       //ui->widget->show();
 
       }break;
    //---------------------------------------
     case Qt::Key_K: {
         ui->escena->setEnabled(false);
         ui->escena->setHidden(false);
-        ui->widget->hide();
+        //ui->widget->hide();
 
       }break;
     //---------------------------------------
@@ -90,9 +85,14 @@ void MainWindow::on_ingresar_clicked()
     qDebug() <<"click" <<endl;
     if(LOGIN(ui->username->text().toStdString(),ui->pw->text().toStdString())){
         ui->respuesta->setText("Ingreso Exitoso");
-        ui->escena->setEnabled(false);
-        ui->escena->setHidden(false);
-        ui->widget->hide();
+        //interfaz de login
+        ui->inicio->hide();
+        //jugar y tienda
+        ui->jugar->setEnabled(true);
+        ui->jugar->setHidden(false);
+        ui->tienda->setEnabled(true);
+        ui->tienda->setHidden(false);
+
     }
     else ui->respuesta->setText("Ingreso Fallido");
 }
@@ -107,5 +107,81 @@ void MainWindow::on_crearU_clicked()
 
     }
     else ui->respuesta->setText("Registro Fallido");
+}
+
+
+void MainWindow::on_jugar_clicked()
+{
+    //jugar
+    ui->jugar->setEnabled(false);
+    ui->jugar->setHidden(true);
+    //niveles
+    ui->niveles->setEnabled(true);
+    ui->niveles->setHidden(false);
+}
+
+
+void MainWindow::on_nivel1_clicked()
+{
+    n1->CARGAR_MUNDO('1');
+    ui->escena->setEnabled(false);
+    ui->escena->setHidden(false);
+    //jugar y tienda
+    ui->jugar->setEnabled(false);
+    ui->jugar->setHidden(true);
+    ui->tienda->setEnabled(false);
+    ui->tienda->setHidden(true);
+    //niveles
+    ui->niveles->setEnabled(false);
+    ui->niveles->setHidden(true);
+
+}
+
+
+void MainWindow::on_nivel2_clicked()
+{
+    n1->CARGAR_MUNDO('2');
+    ui->escena->setEnabled(false);
+    ui->escena->setHidden(false);
+    //jugar y tienda
+    ui->jugar->setEnabled(false);
+    ui->jugar->setHidden(true);
+    ui->tienda->setEnabled(false);
+    ui->tienda->setHidden(true);
+    //niveles
+    ui->niveles->setEnabled(false);
+    ui->niveles->setHidden(true);
+}
+
+
+void MainWindow::on_nivel3_clicked()
+{
+    n1->CARGAR_MUNDO('3');
+    ui->escena->setEnabled(false);
+    ui->escena->setHidden(false);
+    //jugar y tienda
+    ui->jugar->setEnabled(false);
+    ui->jugar->setHidden(true);
+    ui->tienda->setEnabled(false);
+    ui->tienda->setHidden(true);
+    //niveles
+    ui->niveles->setEnabled(false);
+    ui->niveles->setHidden(true);
+}
+
+
+void MainWindow::on_nivel4_clicked()
+{
+    n1->CARGAR_MUNDO('4');
+    ui->escena->setEnabled(false);
+    ui->escena->setHidden(false);
+    //jugar y tienda
+    ui->jugar->setEnabled(false);
+    ui->jugar->setHidden(true);
+    ui->tienda->setEnabled(false);
+    ui->tienda->setHidden(true);
+    //niveles
+    ui->niveles->setEnabled(false);
+    ui->niveles->setHidden(true);
 }
 

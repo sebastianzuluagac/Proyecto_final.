@@ -10,6 +10,7 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QGraphicsView>
@@ -30,11 +31,10 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QGridLayout *gridLayout_2;
     QWidget *widget_2;
     QGridLayout *gridLayout_3;
     QGraphicsView *escena;
-    QWidget *widget;
+    QWidget *inicio;
     QGridLayout *gridLayout;
     QLabel *respuesta;
     QVBoxLayout *caja_ingreso_creacion;
@@ -46,6 +46,13 @@ public:
     QHBoxLayout *botones_ingresar_crear;
     QPushButton *ingresar;
     QPushButton *crearU;
+    QWidget *niveles;
+    QPushButton *nivel4;
+    QPushButton *nivel1;
+    QPushButton *nivel2;
+    QPushButton *nivel3;
+    QPushButton *tienda;
+    QPushButton *jugar;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -53,13 +60,14 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(529, 300);
+        MainWindow->resize(753, 383);
+        MainWindow->setAutoFillBackground(false);
+        MainWindow->setDockOptions(QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        gridLayout_2 = new QGridLayout(centralwidget);
-        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         widget_2 = new QWidget(centralwidget);
         widget_2->setObjectName(QString::fromUtf8("widget_2"));
+        widget_2->setGeometry(QRect(9, 9, 274, 210));
         gridLayout_3 = new QGridLayout(widget_2);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         escena = new QGraphicsView(widget_2);
@@ -67,14 +75,12 @@ public:
 
         gridLayout_3->addWidget(escena, 0, 0, 1, 1);
 
-
-        gridLayout_2->addWidget(widget_2, 0, 0, 1, 1);
-
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        gridLayout = new QGridLayout(widget);
+        inicio = new QWidget(centralwidget);
+        inicio->setObjectName(QString::fromUtf8("inicio"));
+        inicio->setGeometry(QRect(289, 9, 188, 120));
+        gridLayout = new QGridLayout(inicio);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        respuesta = new QLabel(widget);
+        respuesta = new QLabel(inicio);
         respuesta->setObjectName(QString::fromUtf8("respuesta"));
 
         gridLayout->addWidget(respuesta, 1, 0, 1, 1);
@@ -83,22 +89,22 @@ public:
         caja_ingreso_creacion->setObjectName(QString::fromUtf8("caja_ingreso_creacion"));
         name_password = new QFormLayout();
         name_password->setObjectName(QString::fromUtf8("name_password"));
-        user_name = new QLabel(widget);
+        user_name = new QLabel(inicio);
         user_name->setObjectName(QString::fromUtf8("user_name"));
 
         name_password->setWidget(0, QFormLayout::LabelRole, user_name);
 
-        username = new QLineEdit(widget);
+        username = new QLineEdit(inicio);
         username->setObjectName(QString::fromUtf8("username"));
 
         name_password->setWidget(0, QFormLayout::FieldRole, username);
 
-        password = new QLabel(widget);
+        password = new QLabel(inicio);
         password->setObjectName(QString::fromUtf8("password"));
 
         name_password->setWidget(1, QFormLayout::LabelRole, password);
 
-        pw = new QLineEdit(widget);
+        pw = new QLineEdit(inicio);
         pw->setObjectName(QString::fromUtf8("pw"));
 
         name_password->setWidget(1, QFormLayout::FieldRole, pw);
@@ -108,12 +114,12 @@ public:
 
         botones_ingresar_crear = new QHBoxLayout();
         botones_ingresar_crear->setObjectName(QString::fromUtf8("botones_ingresar_crear"));
-        ingresar = new QPushButton(widget);
+        ingresar = new QPushButton(inicio);
         ingresar->setObjectName(QString::fromUtf8("ingresar"));
 
         botones_ingresar_crear->addWidget(ingresar);
 
-        crearU = new QPushButton(widget);
+        crearU = new QPushButton(inicio);
         crearU->setObjectName(QString::fromUtf8("crearU"));
 
         botones_ingresar_crear->addWidget(crearU);
@@ -124,13 +130,38 @@ public:
 
         gridLayout->addLayout(caja_ingreso_creacion, 0, 0, 1, 1);
 
-
-        gridLayout_2->addWidget(widget, 0, 1, 1, 1);
-
+        niveles = new QWidget(centralwidget);
+        niveles->setObjectName(QString::fromUtf8("niveles"));
+        niveles->setGeometry(QRect(120, 240, 441, 80));
+        nivel4 = new QPushButton(niveles);
+        nivel4->setObjectName(QString::fromUtf8("nivel4"));
+        nivel4->setGeometry(QRect(330, 10, 91, 61));
+        nivel1 = new QPushButton(niveles);
+        nivel1->setObjectName(QString::fromUtf8("nivel1"));
+        nivel1->setGeometry(QRect(21, 10, 101, 61));
+        nivel2 = new QPushButton(niveles);
+        nivel2->setObjectName(QString::fromUtf8("nivel2"));
+        nivel2->setGeometry(QRect(131, 10, 91, 61));
+        nivel3 = new QPushButton(niveles);
+        nivel3->setObjectName(QString::fromUtf8("nivel3"));
+        nivel3->setGeometry(QRect(231, 10, 91, 61));
+        tienda = new QPushButton(centralwidget);
+        tienda->setObjectName(QString::fromUtf8("tienda"));
+        tienda->setGeometry(QRect(690, 290, 51, 41));
+        tienda->setCursor(QCursor(Qt::OpenHandCursor));
+        tienda->setMouseTracking(false);
+        tienda->setAutoFillBackground(false);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/SPRITES_GAME/botones/compras1.webp"), QSize(), QIcon::Normal, QIcon::On);
+        tienda->setIcon(icon);
+        tienda->setIconSize(QSize(51, 100));
+        jugar = new QPushButton(centralwidget);
+        jugar->setObjectName(QString::fromUtf8("jugar"));
+        jugar->setGeometry(QRect(540, 120, 80, 61));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 529, 20));
+        menubar->setGeometry(QRect(0, 0, 753, 20));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -149,6 +180,12 @@ public:
         password->setText(QApplication::translate("MainWindow", "Password", nullptr));
         ingresar->setText(QApplication::translate("MainWindow", "Ingresar", nullptr));
         crearU->setText(QApplication::translate("MainWindow", "crear", nullptr));
+        nivel4->setText(QApplication::translate("MainWindow", "4", nullptr));
+        nivel1->setText(QApplication::translate("MainWindow", "1", nullptr));
+        nivel2->setText(QApplication::translate("MainWindow", "2", nullptr));
+        nivel3->setText(QApplication::translate("MainWindow", "3", nullptr));
+        tienda->setText(QString());
+        jugar->setText(QApplication::translate("MainWindow", "jugar", nullptr));
     } // retranslateUi
 
 };

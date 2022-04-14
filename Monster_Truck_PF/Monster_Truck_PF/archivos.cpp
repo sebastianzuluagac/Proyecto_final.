@@ -112,3 +112,17 @@ bool in(string cadena, string palabra)
 
     return esta;
 }
+
+string Datos_nivel(string Ruta)
+{
+    string Texto_String;
+    fstream Archivo;
+    Archivo.open (Ruta, fstream::in | fstream::binary);
+    if(Archivo.is_open()){
+        while (!Archivo.eof()) {
+            Texto_String.push_back(Archivo.get())  ;
+        }
+    }
+    Archivo.close();
+    return Texto_String;
+}

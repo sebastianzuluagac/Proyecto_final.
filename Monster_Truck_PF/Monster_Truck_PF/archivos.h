@@ -17,4 +17,6 @@ bool CREAR_USUARIO(string nameU, string pass);
 
 bool in(string cadena,string palabra);
 
+string Datos_nivel(string Ruta);
+
 #endif // ARCHIVOS_H
