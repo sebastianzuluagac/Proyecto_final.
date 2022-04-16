@@ -21,9 +21,12 @@ class containers: public QObject, public QGraphicsPixmapItem
 public:
     containers(int fila, int col);
     containers();
-    void INCLINACION (float grado);
-private:
+    void Inclinacion(float grado);
+    int Datos(int Indx);
 
+
+private:
+    int Pos_x, Pos_y, Grados;
     QPixmap imagen;
     QPixmap copia;
 };

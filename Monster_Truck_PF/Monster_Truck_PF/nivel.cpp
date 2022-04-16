@@ -37,17 +37,17 @@ void nivel::CARGAR_MUNDO(char Nivel)
     Archivo.close();
 }
 
-void nivel::Crear_objeto(int Tipo, int Pos_x, int Pos_y, int Inclinacion, int Tipo_especial)
+void nivel::Crear_objeto(int Tipo, int Pos_x, int Pos_y, int Grados, int Tipo_especial)
 {
     switch (Tipo){
 
     case 48:{
     //Numero 0 correspondiente a tipo Container.
         static int Contador_containers = 0;
-        Contenedores.push_back(new containers(Pos_x, Pos_y));
-        Contenedores[Contador_containers]->INCLINACION(Inclinacion);
-        Contenedores[Contador_containers]->setPos(Pos_x, Pos_y);
-        level1->addItem(Contenedores[Contador_containers]);
+        (*Contenedores).push_back(new containers(Pos_x, Pos_y));
+        (*Contenedores)[Contador_containers]->Inclinacion(-Grados);
+        (*Contenedores)[Contador_containers]->setPos(Pos_x, Pos_y);
+        level1->addItem((*Contenedores)[Contador_containers]);
         Contador_containers+=1;
     }break;
 
@@ -77,5 +77,9 @@ void nivel::Crear_objeto(int Tipo, int Pos_x, int Pos_y, int Inclinacion, int Ti
     }break;
 
     }
+}
+
+void nivel::Recibir_vector_containers(QVector<containers *>* Contenedores){
+    this->Contenedores = Contenedores;
 }
 

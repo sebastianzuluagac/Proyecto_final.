@@ -30,12 +30,14 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+public slots:
+    void Juego_activo();
+
 protected:
     void keyPressEvent(QKeyEvent *tecla);
 
 private slots:
-    void animacion_ruedo ();
-
 
     void on_ingresar_clicked();
 
@@ -53,10 +55,12 @@ private slots:
     void on_nivel4_clicked();
 
 private:
+    bool Colision = false;
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     nivel *n1;
     personaje *carro;
+    QVector <containers*> Contenedores;
     QKeyEvent *tecla;
     QTimer *timer;
 };

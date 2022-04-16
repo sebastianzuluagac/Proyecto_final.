@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[10];
-    char stringdata0[155];
+    char stringdata0[152];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,22 +32,21 @@ struct qt_meta_stringdata_MainWindow_t {
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
 QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
-QT_MOC_LITERAL(1, 11, 15), // "animacion_ruedo"
-QT_MOC_LITERAL(2, 27, 0), // ""
-QT_MOC_LITERAL(3, 28, 19), // "on_ingresar_clicked"
-QT_MOC_LITERAL(4, 48, 17), // "on_crearU_clicked"
-QT_MOC_LITERAL(5, 66, 16), // "on_jugar_clicked"
-QT_MOC_LITERAL(6, 83, 17), // "on_nivel1_clicked"
-QT_MOC_LITERAL(7, 101, 17), // "on_nivel2_clicked"
-QT_MOC_LITERAL(8, 119, 17), // "on_nivel3_clicked"
-QT_MOC_LITERAL(9, 137, 17) // "on_nivel4_clicked"
+QT_MOC_LITERAL(1, 11, 12), // "Juego_activo"
+QT_MOC_LITERAL(2, 24, 0), // ""
+QT_MOC_LITERAL(3, 25, 19), // "on_ingresar_clicked"
+QT_MOC_LITERAL(4, 45, 17), // "on_crearU_clicked"
+QT_MOC_LITERAL(5, 63, 16), // "on_jugar_clicked"
+QT_MOC_LITERAL(6, 80, 17), // "on_nivel1_clicked"
+QT_MOC_LITERAL(7, 98, 17), // "on_nivel2_clicked"
+QT_MOC_LITERAL(8, 116, 17), // "on_nivel3_clicked"
+QT_MOC_LITERAL(9, 134, 17) // "on_nivel4_clicked"
 
     },
-    "MainWindow\0animacion_ruedo\0\0"
-    "on_ingresar_clicked\0on_crearU_clicked\0"
-    "on_jugar_clicked\0on_nivel1_clicked\0"
-    "on_nivel2_clicked\0on_nivel3_clicked\0"
-    "on_nivel4_clicked"
+    "MainWindow\0Juego_activo\0\0on_ingresar_clicked\0"
+    "on_crearU_clicked\0on_jugar_clicked\0"
+    "on_nivel1_clicked\0on_nivel2_clicked\0"
+    "on_nivel3_clicked\0on_nivel4_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -65,7 +64,7 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   54,    2, 0x08 /* Private */,
+       1,    0,   54,    2, 0x0a /* Public */,
        3,    0,   55,    2, 0x08 /* Private */,
        4,    0,   56,    2, 0x08 /* Private */,
        5,    0,   57,    2, 0x08 /* Private */,
@@ -93,7 +92,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->animacion_ruedo(); break;
+        case 0: _t->Juego_activo(); break;
         case 1: _t->on_ingresar_clicked(); break;
         case 2: _t->on_crearU_clicked(); break;
         case 3: _t->on_jugar_clicked(); break;

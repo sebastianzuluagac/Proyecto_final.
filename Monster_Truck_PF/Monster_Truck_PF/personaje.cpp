@@ -18,8 +18,9 @@ personaje::personaje(QGraphicsScene *scene, float Pos_x, float Pos_y)
 }
 
 personaje::personaje()
-{}
+{
 
+}
 
 void personaje::set_sprite(int posx, int posy)
 {
@@ -61,10 +62,11 @@ void personaje::Mover(float Aplicar_fuerza_x, float Aplicar_fuerza_y)
     Fuerza_y = Aplicar_fuerza_y;
 }
 
-float personaje::Fuerza_actual(char Index)
+float personaje::Datos(char Index)
 {
     if(Index == 0) return Fuerza_x;
     else if(Index == 1) return Fuerza_y;
+    else if(Index == 2) return Grado;
     else return 0;
 }
 
@@ -75,8 +77,19 @@ void personaje::Saltar()
 
 bool personaje::Carro_apoyado()
 {
-    if(Posicion_y == 500) return true;
+    if(Posicion_y == Limite_inferior) return true;
     else return false;
+}
+
+void personaje::Inclinacion(int Grado)
+{
+    setRotation(Grado);
+    this->Grado = Grado;
+}
+
+void personaje::Limite_inf(int Valor_limite)
+{
+    Limite_inferior = Valor_limite;
 }
 
 
@@ -93,9 +106,10 @@ void personaje::Ciclo_automatico()
     Aceleracion_y = Fuerza_y/masa;
     Velocidad_y = Velocidad_y + Aceleracion_y*T;
     Posicion_y = Posicion_y + Velocidad_y;
-    if(Posicion_y>500) Posicion_y = 500, Velocidad_y = 0, Fuerza_y = 0;
+    if(Posicion_y>Limite_inferior) Posicion_y = Limite_inferior, Velocidad_y = 0, Fuerza_y = 0;
     this->Saltar();
-    if(Posicion_y!=500)Fuerza_y += Gravedad;
+    if(Posicion_y!=Limite_inferior)Fuerza_y += Gravedad;
+
 }
 
 

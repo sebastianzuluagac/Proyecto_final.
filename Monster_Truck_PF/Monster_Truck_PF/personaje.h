@@ -13,6 +13,7 @@
 #include <QTimer>
 #include <QDebug>
 #include "Macros.h"
+#include "containers.h"
 #define bloqueX 240
 #define bloqueY 153
 
@@ -27,9 +28,11 @@ public:
     void MOVER_ADELANTE();
     void MOVER_ATRAS();
     void Mover(float Aplicar_fuerza_x, float Aplicar_fuerza_y);
-    float Fuerza_actual(char Index);
+    float Datos(char Index);
     void Saltar();
     bool Carro_apoyado();
+    void Inclinacion(int Grado);
+    void Limite_inf(int Valor_limite);
 
     void USERNAME(QString name){username=name;}
     QString GET_NAME(){return username;}
@@ -43,13 +46,13 @@ private slots:
 private:
     float Aceleracion_x=0, Aceleracion_y=0, Velocidad_x=0, Velocidad_y=0, Posicion_x, Posicion_y, masa=200, Fuerza_x=0, Fuerza_y=0, T=100;
     float Fuerza_neta = 0, Friccion_x = 1, Gravedad = 1;
+    int Limite_inferior = 500, Grado = 0;
     QGraphicsScene *scene;
     float v=0;
     QTimer *velocimetro;
     QPixmap imagen;
     QPixmap copia;
     QString username;
-
 
 };
 

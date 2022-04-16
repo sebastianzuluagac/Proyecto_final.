@@ -7,7 +7,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-
     ui->widget_2->setGeometry(0,0,1380,tamnivelY);
     n1=new nivel;
     //n1->CARGAR_MUNDO();
@@ -26,10 +25,15 @@ MainWindow::MainWindow(QWidget *parent)
     ui->niveles->setEnabled(false);
     ui->niveles->setHidden(true);
 
+    timer = new QTimer;
+    connect(timer, SIGNAL(timeout()), this, SLOT(Juego_activo()));
+
     carro=new personaje(scene, 0, 500);
     carro->set_sprite(0,0);
     scene->addItem(carro);
     ui->escena->setScene(scene);
+
+    n1->Recibir_vector_containers(&Contenedores);
 
 }
 
@@ -44,11 +48,11 @@ void MainWindow::keyPressEvent(QKeyEvent *tecla)
 
     //--------------------------------------
     case Qt::Key_A: {
-        if(carro->Carro_apoyado() == true) carro->Mover((carro->Fuerza_actual(0))-2.0, carro->Fuerza_actual(1));
+        if(carro->Carro_apoyado() == true) carro->Mover((carro->Datos(0))-2.0, carro->Datos(1));
       }break;
    //---------------------------------------
     case Qt::Key_D: {
-        if(carro->Carro_apoyado() == true) carro->Mover((carro->Fuerza_actual(0))+2.0, carro->Fuerza_actual(1));
+        if(carro->Carro_apoyado() == true) carro->Mover((carro->Datos(0))+2.0, carro->Datos(1));
     }break;
     //-----------------------------
     //-----------------------------
@@ -67,17 +71,25 @@ void MainWindow::keyPressEvent(QKeyEvent *tecla)
       }break;
     //---------------------------------------
     case Qt::Key_W: {
-        if(carro->Carro_apoyado() == true) carro->Mover(carro->Fuerza_actual(0), Fuerza_salto);
+        if(carro->Carro_apoyado() == true) carro->Mover(carro->Datos(0), Fuerza_salto);
     }
     //-------------------------------------
     }
 }
 
-void MainWindow::animacion_ruedo()
+void MainWindow::Juego_activo()
 {
+    for(int i = 0; i < Contenedores.length(); i++){
+        if(carro->collidesWithItem(Contenedores[i])){
+            carro->Limite_inf(Contenedores[i]->Datos(1)-209+135);
+            carro->Inclinacion(Contenedores[i]->Datos(2));
+            Colision = true;
+        }
+    }
 
+    if(Colision == false) carro->Limite_inf(500), carro->Inclinacion(0);
+    else Colision = false;
 }
-
 
 
 void MainWindow::on_ingresar_clicked()
@@ -135,6 +147,7 @@ void MainWindow::on_nivel1_clicked()
     ui->niveles->setEnabled(false);
     ui->niveles->setHidden(true);
 
+    timer->start(20);
 }
 
 
@@ -151,6 +164,8 @@ void MainWindow::on_nivel2_clicked()
     //niveles
     ui->niveles->setEnabled(false);
     ui->niveles->setHidden(true);
+
+    timer->start(20);
 }
 
 
@@ -167,6 +182,8 @@ void MainWindow::on_nivel3_clicked()
     //niveles
     ui->niveles->setEnabled(false);
     ui->niveles->setHidden(true);
+
+    timer->start(20);
 }
 
 
@@ -183,5 +200,7 @@ void MainWindow::on_nivel4_clicked()
     //niveles
     ui->niveles->setEnabled(false);
     ui->niveles->setHidden(true);
+
+    timer->start(20);
 }
 

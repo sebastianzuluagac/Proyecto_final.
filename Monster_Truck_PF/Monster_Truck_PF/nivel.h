@@ -24,7 +24,8 @@ class nivel: public QObject, public QGraphicsPixmapItem
 public:
     nivel();
     void CARGAR_MUNDO(char Nivel);
-    void Crear_objeto(int Tipo, int Pos_x, int Pos_y, int Inclinacion, int Tipo_especial);
+    void Crear_objeto(int Tipo, int Pos_x, int Pos_y, int Grados, int Tipo_especial);
+    void Recibir_vector_containers(QVector <containers*>* Contenedores);
 
     QGraphicsScene* getlevel(){return level1;}
 
@@ -32,7 +33,7 @@ private:
     QGraphicsScene *level1;
     QPixmap fondo;
     containers *container;
-    QVector <containers*> Contenedores;
+    QVector <containers*>* Contenedores;
 };
 
 #endif // NIVEL_H
