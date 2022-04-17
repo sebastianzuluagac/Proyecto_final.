@@ -13,6 +13,7 @@
 #include <QKeyEvent>
 #include <fstream>
 #include <string>
+#include <math.h>
 using namespace std;
 #include "nivel.h"
 #include "personaje.h"
@@ -56,6 +57,7 @@ private slots:
 
 private:
     bool Colision = false;
+    bool Primer_colision = false;
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     nivel *n1;

@@ -67,12 +67,24 @@ float personaje::Datos(char Index)
     if(Index == 0) return Fuerza_x;
     else if(Index == 1) return Fuerza_y;
     else if(Index == 2) return Grado;
+    else if(Index == 3) return Posicion_x;
+    else if(Index == 4) return Posicion_y;
+    else if(Index == 5) return Fuerza_ang_x;
+    else if(Index == 6) return Fuerza_ang_y;
+    else if(Index == 7) return Punto_inicial_colision;
+
     else return 0;
 }
 
 void personaje::Saltar()
 {
     this->setY(Posicion_y);
+}
+
+void personaje::Girar(float Fuerza_ang_x, float Fuerza_ang_y)
+{
+    this->Fuerza_ang_x = Fuerza_ang_x;
+    this->Fuerza_ang_y = Fuerza_ang_y;
 }
 
 bool personaje::Carro_apoyado()
@@ -84,7 +96,7 @@ bool personaje::Carro_apoyado()
 void personaje::Inclinacion(int Grado)
 {
     setRotation(Grado);
-    this->Grado = Grado;
+    //this->Grado = Grado;
 }
 
 void personaje::Limite_inf(int Valor_limite)
@@ -109,6 +121,15 @@ void personaje::Ciclo_automatico()
     if(Posicion_y>Limite_inferior) Posicion_y = Limite_inferior, Velocidad_y = 0, Fuerza_y = 0;
     this->Saltar();
     if(Posicion_y!=Limite_inferior)Fuerza_y += Gravedad;
+
+    if(this->Carro_apoyado()==true && this->Datos(2)>0 && Fuerza_x == 0)Fuerza_ang_x = Fuerza_ang_x-0.5;
+    if(this->Carro_apoyado()==true && this->Datos(2)<0 && Fuerza_x == 0)Fuerza_ang_x = Fuerza_ang_x+0.5;
+    Aceleracion_ang_x = Fuerza_ang_x/Momento_inercia;
+    Velocidad_ang_x = Aceleracion_ang_x*T;
+    Aceleracion_ang_y = Fuerza_ang_y/Momento_inercia;
+    Velocidad_ang_y = Aceleracion_ang_y*T;
+    Grado = (atan(Velocidad_ang_x/Velocidad_ang_y))*180/3.14159265;
+    this->Inclinacion(Grado);
 
 }
 
