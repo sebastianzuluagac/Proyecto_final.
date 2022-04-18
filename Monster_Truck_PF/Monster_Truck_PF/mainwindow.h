@@ -56,7 +56,7 @@ private slots:
     void on_nivel4_clicked();
 
 private:
-    bool Primer_colision = false;
+    bool Colision = false;
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     nivel *n1;

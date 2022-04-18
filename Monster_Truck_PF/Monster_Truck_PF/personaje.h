@@ -32,6 +32,7 @@ public:
     void Saltar();
     void Girar(float Fuerza_ang_x, float Fuerza_ang_y);
     bool Carro_apoyado();
+    void Carro_colisionando(bool Colision) {this->Colision = Colision;};
     void Inclinacion(int Grado);
     void Limite_inf(int Valor_limite);
     void Punto_colision(int Punto_colision){Punto_inicial_colision = Punto_colision;}
@@ -50,6 +51,7 @@ private:
     float Fuerza_neta = 0, Friccion_x = 1, Gravedad = 1;
     float Aceleracion_ang_x=1, Aceleracion_ang_y=1, Velocidad_ang_x=1, Velocidad_ang_y=1, Grado = 0, Momento_inercia = 10, Fuerza_ang_x = 0, Fuerza_ang_y = 10;
     int Limite_inferior = 500, Punto_inicial_colision = 0;
+    bool Colision = false;
     QGraphicsScene *scene;
     float v=0;
     QTimer *velocimetro;

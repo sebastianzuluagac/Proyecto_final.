@@ -49,12 +49,12 @@ void MainWindow::keyPressEvent(QKeyEvent *tecla)
     //--------------------------------------
     case Qt::Key_A: {
         if(carro->Carro_apoyado() == true) carro->Mover((carro->Datos(0))-2.0, carro->Datos(1));
-        else carro->Girar((carro->Datos(5))+0.5, 10);
+        else carro->Girar((carro->Datos(5))+0.02, 10);
       }break;
    //---------------------------------------
     case Qt::Key_D: {
         if(carro->Carro_apoyado() == true) carro->Mover((carro->Datos(0))+2.0, carro->Datos(1));
-        else carro->Girar((carro->Datos(5))-0.5, 10);
+        else carro->Girar((carro->Datos(5))-0.02, 10);
     }break;
     //-----------------------------
     //-----------------------------
@@ -84,11 +84,17 @@ void MainWindow::Juego_activo()
     for(int i = 0; i < Contenedores.length(); i++){
         if(carro->collidesWithItem(Contenedores[i])){
             if(((Contenedores[i]->Datos(0))-carro->Datos(3))>10){
-                carro->Girar(0.36/((Contenedores[i]->Datos(0))-carro->Datos(3))*Contenedores[i]->Datos(2), 10);
+                carro->Girar(0.0548/((Contenedores[i]->Datos(0))-carro->Datos(3))*Contenedores[i]->Datos(2), 10);
             }
-            else if(((Contenedores[i]->Datos(0))-carro->Datos(3))<10)carro->Girar(-0.36*Contenedores[i]->Datos(2), 10);
+            else if(((Contenedores[i]->Datos(0))-carro->Datos(3))<10){
+
+            }
+            Colision = true;
+            //else if(((Contenedores[i]->Datos(0))-carro->Datos(3))<10)carro->Girar(-0.36*Contenedores[i]->Datos(2), 10);
         }
     }
+    carro->Carro_colisionando(Colision);
+    Colision = false;
 }
 
 
