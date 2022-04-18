@@ -85,6 +85,8 @@ void personaje::Girar(float Fuerza_ang_x, float Fuerza_ang_y)
 {
     this->Fuerza_ang_x = Fuerza_ang_x;
     this->Fuerza_ang_y = Fuerza_ang_y;
+    if(this->Fuerza_ang_x > 5.48) this->Fuerza_ang_x = 5.48;
+    if(this->Fuerza_ang_x < -5.48) this->Fuerza_ang_x = -5.48;
 }
 
 bool personaje::Carro_apoyado()
@@ -122,13 +124,13 @@ void personaje::Ciclo_automatico()
     this->Saltar();
     if(Posicion_y!=Limite_inferior)Fuerza_y += Gravedad;
 
-    if(this->Carro_apoyado()==true && this->Datos(2)>0 && Fuerza_x == 0)Fuerza_ang_x = Fuerza_ang_x-0.5;
-    if(this->Carro_apoyado()==true && this->Datos(2)<0 && Fuerza_x == 0)Fuerza_ang_x = Fuerza_ang_x+0.5;
+    if(this->Carro_apoyado()==true && this->Datos(2)<60 && this->Datos(2)>0 && Fuerza_x == 0)Fuerza_ang_x = Fuerza_ang_x-0.5;
+    if(this->Carro_apoyado()==true && this->Datos(2)>-60 && this->Datos(2)<0 && Fuerza_x == 0)Fuerza_ang_x = Fuerza_ang_x+0.5;
     Aceleracion_ang_x = Fuerza_ang_x/Momento_inercia;
     Velocidad_ang_x = Aceleracion_ang_x*T;
     Aceleracion_ang_y = Fuerza_ang_y/Momento_inercia;
     Velocidad_ang_y = Aceleracion_ang_y*T;
-    Grado = (atan(Velocidad_ang_x/Velocidad_ang_y))*180/3.14159265;
+    Grado = ((atan(Velocidad_ang_x/Velocidad_ang_y))*180/3.14159265);
     this->Inclinacion(Grado);
 
 }

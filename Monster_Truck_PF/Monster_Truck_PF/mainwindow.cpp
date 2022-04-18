@@ -83,28 +83,13 @@ void MainWindow::Juego_activo()
 {
     for(int i = 0; i < Contenedores.length(); i++){
         if(carro->collidesWithItem(Contenedores[i])){
-            if(Primer_colision == false) carro->Punto_colision(carro->Datos(3)), Primer_colision = true;
-            if(carro->Datos(2) > Contenedores[i]->Datos(2)){
-                carro->Inclinacion(((Contenedores[i]->Datos(2)*(carro->Datos(3)-carro->Datos(7)))/120));
+            if(((Contenedores[i]->Datos(0))-carro->Datos(3))>10){
+                carro->Girar(0.36/((Contenedores[i]->Datos(0))-carro->Datos(3))*Contenedores[i]->Datos(2), 10);
             }
-            Colision = true;
+            else if(((Contenedores[i]->Datos(0))-carro->Datos(3))<10)carro->Girar(-0.36*Contenedores[i]->Datos(2), 10);
         }
     }
-    if(Colision == false) Primer_colision = false;//carro->Limite_inf(500), carro->Inclinacion(0),
-    else Colision = false;
 }
-
-
-/*//carro->Limite_inf(Contenedores[i]->Datos(1)-209+135);
-            if(Primer_colision == false) carro->Punto_colision(carro->Datos(3)), Primer_colision = true;
-            if(carro->Datos(2) > Contenedores[i]->Datos(2)){
-                carro->Inclinacion(((Contenedores[i]->Datos(2)*(carro->Datos(3)-carro->Datos(5)))/120));
-            }
-            Colision = true;
-        }
-    }
-    if(Colision == false) Primer_colision = false;//carro->Limite_inf(500), carro->Inclinacion(0),
-    else Colision = false;*/
 
 
 void MainWindow::on_ingresar_clicked()
