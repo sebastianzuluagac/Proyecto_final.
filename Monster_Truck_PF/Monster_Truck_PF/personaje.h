@@ -32,10 +32,11 @@ public:
     void Saltar();
     void Girar(float Fuerza_ang_x, float Fuerza_ang_y);
     bool Carro_apoyado();
-    void Carro_colisionando(bool Colision) {this->Colision = Colision;};
+    bool Colsionando(){return Colision;}
+    void Carro_colisionando(bool Colision) {this->Colision = Colision;}
     void Inclinacion(int Grado);
     void Limite_inf(int Valor_limite);
-    void Punto_colision(int Punto_colision){Punto_inicial_colision = Punto_colision;}
+    void Punto_colision(int Punto_colision, int Rango_colision);
 
     void USERNAME(QString name){username=name;}
     QString GET_NAME(){return username;}
@@ -50,7 +51,7 @@ private:
     float Aceleracion_x=0, Aceleracion_y=0, Velocidad_x=0, Velocidad_y=0, Posicion_x, Posicion_y, masa=200, Fuerza_x=0, Fuerza_y=0, T=100;
     float Fuerza_neta = 0, Friccion_x = 1, Gravedad = 1;
     float Aceleracion_ang_x=1, Aceleracion_ang_y=1, Velocidad_ang_x=1, Velocidad_ang_y=1, Grado = 0, Momento_inercia = 10, Fuerza_ang_x = 0, Fuerza_ang_y = 10;
-    int Limite_inferior = 500, Punto_inicial_colision = 0;
+    int Limite_inferior = 500, Punto_inicial_colision = 0, Rango_colision;
     bool Colision = false;
     QGraphicsScene *scene;
     float v=0;

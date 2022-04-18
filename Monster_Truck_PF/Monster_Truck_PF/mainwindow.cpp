@@ -48,13 +48,19 @@ void MainWindow::keyPressEvent(QKeyEvent *tecla)
 
     //--------------------------------------
     case Qt::Key_A: {
-        if(carro->Carro_apoyado() == true) carro->Mover((carro->Datos(0))-2.0, carro->Datos(1));
-        else carro->Girar((carro->Datos(5))+0.02, 10);
+        if(carro->Carro_apoyado()==true && carro->Datos(2)>-70 && carro->Datos(2)<70){
+            carro->Mover((carro->Datos(0))-2.0, carro->Datos(1));
+        }
+        else
+            if(carro->Colsionando() == false) carro->Girar((carro->Datos(5))+0.02, 10);
       }break;
    //---------------------------------------
     case Qt::Key_D: {
-        if(carro->Carro_apoyado() == true) carro->Mover((carro->Datos(0))+2.0, carro->Datos(1));
-        else carro->Girar((carro->Datos(5))-0.02, 10);
+        if(carro->Carro_apoyado()==true && carro->Datos(2)>-70 && carro->Datos(2)<70){
+            carro->Mover((carro->Datos(0))+2.0, carro->Datos(1));
+        }
+        else
+            if(carro->Colsionando() == false) carro->Girar((carro->Datos(5))-0.02, 10);
     }break;
     //-----------------------------
     //-----------------------------
@@ -83,14 +89,24 @@ void MainWindow::Juego_activo()
 {
     for(int i = 0; i < Contenedores.length(); i++){
         if(carro->collidesWithItem(Contenedores[i])){
-            if(((Contenedores[i]->Datos(0))-carro->Datos(3))>10){
-                carro->Girar(0.0548/((Contenedores[i]->Datos(0))-carro->Datos(3))*Contenedores[i]->Datos(2), 10);
+            if(Contenedores[i]->Datos(2) == 0){
+                carro->Limite_inf(Contenedores[i]->Datos(1)-74);
+                carro->Punto_colision(Contenedores[i]->Datos(0), 300);
+                if(carro->Datos(2) > 0) carro->Girar(0, 10);
             }
-            else if(((Contenedores[i]->Datos(0))-carro->Datos(3))<10){
-
+            else{
+                if(((Contenedores[i]->Datos(0))-carro->Datos(3))>10){
+                    carro->Girar(0.0548/((Contenedores[i]->Datos(0))-carro->Datos(3))*Contenedores[i]->Datos(2), 10);
+                    carro->Punto_colision(Contenedores[i]->Datos(0), 300-Contenedores[i]->Datos(2)*3);
+                }
+                else if(((Contenedores[i]->Datos(0))-carro->Datos(3))<10){
+                    float Altura_container;
+                    Altura_container = (Contenedores[i]->Datos(0)-carro->Datos(3))*tan(Contenedores[i]->Datos(2)*3.14159265/180);
+                    carro->Limite_inf(500-Altura_container-15);
+                    carro->Punto_colision(Contenedores[i]->Datos(0), 300-Contenedores[i]->Datos(2)*3);
+                }
             }
             Colision = true;
-            //else if(((Contenedores[i]->Datos(0))-carro->Datos(3))<10)carro->Girar(-0.36*Contenedores[i]->Datos(2), 10);
         }
     }
     carro->Carro_colisionando(Colision);

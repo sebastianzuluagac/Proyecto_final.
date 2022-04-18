@@ -72,6 +72,7 @@ float personaje::Datos(char Index)
     else if(Index == 5) return Fuerza_ang_x;
     else if(Index == 6) return Fuerza_ang_y;
     else if(Index == 7) return Punto_inicial_colision;
+    else if(Index == 8) return Limite_inferior;
 
     else return 0;
 }
@@ -107,9 +108,16 @@ void personaje::Limite_inf(int Valor_limite)
     Limite_inferior = Valor_limite;
 }
 
+void personaje::Punto_colision(int Punto_colision, int Rango_colision)
+{
+    Punto_inicial_colision = Punto_colision;
+    this->Rango_colision = Rango_colision;
+}
+
 
 void personaje::Ciclo_automatico()
 {
+    if((this->Datos(3)-Punto_inicial_colision) > Rango_colision || this->Datos(3)+120 < Punto_inicial_colision) Limite_inferior = 500;
 
     Aceleracion_x = Fuerza_x/masa;
     Velocidad_x = Aceleracion_x*T;
@@ -122,15 +130,15 @@ void personaje::Ciclo_automatico()
     Aceleracion_y = Fuerza_y/masa;
     Velocidad_y = Velocidad_y + Aceleracion_y*T;
     Posicion_y = Posicion_y + Velocidad_y;
-    if(Posicion_y>Limite_inferior) Posicion_y = Limite_inferior, Velocidad_y = 0, Fuerza_y = 0;
+    if(Posicion_y>Limite_inferior) Posicion_y = Limite_inferior, Velocidad_y = 0;
     this->Saltar();
     if(Posicion_y!=Limite_inferior)Fuerza_y += Gravedad;
 
-    if(this->Carro_apoyado()==true && this->Datos(2)<60 && this->Datos(2)>0 && Fuerza_x == 0 && Colision == false){
+    if(this->Carro_apoyado()==true && this->Datos(2)<60 && this->Datos(2)>0 && Velocidad_x < 20 && Colision == false){
         Fuerza_ang_x = Fuerza_ang_x-0.02;
         if(this->Datos(2) < 5)Fuerza_ang_x = 0;
     }
-    if(this->Carro_apoyado()==true && this->Datos(2)>-60 && this->Datos(2)<0 && Fuerza_x == 0 && Colision == false){
+    if(this->Carro_apoyado()==true && this->Datos(2)>-60 && this->Datos(2)<0 && Velocidad_x < 20 && Colision == false){
         Fuerza_ang_x = Fuerza_ang_x+0.02;
         if(this->Datos(2) > -5)Fuerza_ang_x = 0;
     }
