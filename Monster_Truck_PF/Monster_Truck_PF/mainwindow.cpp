@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent)
     scene->addItem(carro);
     ui->escena->setScene(scene);
 
-    n1->Recibir_vector_containers(&Contenedores);
+    n1->Recibir_vectores(&Box, &Pincho, &Money, &Contenedores);
 
 }
 

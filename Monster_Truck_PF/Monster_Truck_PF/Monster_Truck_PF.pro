@@ -14,6 +14,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     nivel.cpp \
+    objetos.cpp \
     personaje.cpp
 
 HEADERS += \
@@ -22,6 +23,7 @@ HEADERS += \
     containers.h \
     mainwindow.h \
     nivel.h \
+    objetos.h \
     personaje.h
 
 FORMS += \

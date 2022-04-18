@@ -19,6 +19,7 @@ using namespace std;
 #include "personaje.h"
 #include "archivos.h"
 #include "Macros.h"
+#include "objetos.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -61,6 +62,9 @@ private:
     QGraphicsScene *scene;
     nivel *n1;
     personaje *carro;
+    QVector <cajas*> Box;
+    QVector <pinchos*> Pincho;
+    QVector <monedas*> Money;
     QVector <containers*> Contenedores;
     QKeyEvent *tecla;
     QTimer *timer;

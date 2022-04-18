@@ -3,9 +3,11 @@ release/containers.o
 release/main.o
 release/mainwindow.o
 release/nivel.o
+release/objetos.o
 release/personaje.o
 release/qrc_MEDIA.o
 release/moc_containers.o
 release/moc_mainwindow.o
 release/moc_nivel.o
+release/moc_objetos.o
 release/moc_personaje.o

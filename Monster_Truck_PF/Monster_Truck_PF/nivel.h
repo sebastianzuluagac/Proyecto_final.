@@ -17,6 +17,7 @@
 #include "containers.h"
 #include "Macros.h"
 #include "archivos.h"
+#include "objetos.h"
 
 class nivel: public QObject, public QGraphicsPixmapItem
 {
@@ -24,8 +25,8 @@ class nivel: public QObject, public QGraphicsPixmapItem
 public:
     nivel();
     void CARGAR_MUNDO(char Nivel);
-    void Crear_objeto(int Tipo, int Pos_x, int Pos_y, int Grados, int Tipo_especial);
-    void Recibir_vector_containers(QVector <containers*>* Contenedores);
+    void Crear_objeto(int Tipo, int Pos_x, int Pos_y, int Grados, char Tipo_especial);
+    void Recibir_vectores(QVector <cajas*>* Box, QVector <pinchos*>* Pincho, QVector <monedas*>* Money, QVector <containers*>* Contenedores);
 
     QGraphicsScene* getlevel(){return level1;}
 
@@ -33,6 +34,9 @@ private:
     QGraphicsScene *level1;
     QPixmap fondo;
     containers *container;
+    QVector <cajas*>* Box;
+    QVector <pinchos*>* Pincho;
+    QVector <monedas*>* Money;
     QVector <containers*>* Contenedores;
 };
 

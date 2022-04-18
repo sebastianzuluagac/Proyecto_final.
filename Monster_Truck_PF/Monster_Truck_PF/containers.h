@@ -19,7 +19,7 @@ class containers: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    containers(int fila, int col);
+    containers(int fila, int col, char Tipo);
     containers();
     void Inclinacion(float grado);
     int Datos(int Indx);
