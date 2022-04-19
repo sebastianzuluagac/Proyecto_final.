@@ -24,7 +24,6 @@ personaje::personaje()
 
 void personaje::set_sprite(int posx, int posy)
 {
-    //int dimensionbloquee=16;
     copia=imagen.copy(bloqueX*posx,bloqueY*posy,bloqueX, bloqueY).scaled(bloqueX*0.5,bloqueY*0.5);
     setPixmap(copia);
 }
@@ -144,6 +143,51 @@ void personaje::Destruirse()
     delete this;
 }
 
+void personaje::UPDATE_DATA(char dat,char signo, int cant)
+{
+    switch (dat) {
+    case 'D':{
+            if (signo=='+')dinero++;
+            else if (signo=='-')dinero-=cant;
+    }break;
+    //-------------------------------------
+
+    case 'C':{
+        if (signo=='E')carroElegido=cant;
+        else if (signo=='D') carrosDes++;
+    }break;
+    //-------------------------------------
+
+    case 'N':{nivelesDes++;}break;
+    //-------------------------------------
+
+    case ' ':{}break;
+    //-------------------------------------
+
+    }
+}
+
+int personaje::GET_DATA(char dat, char signo)
+{
+    switch (dat) {
+    case 'D':{return dinero;}break;
+    //-------------------------------------
+
+    case 'C':{
+        if (signo=='E') return carroElegido;
+        else if (signo=='D') return carrosDes;
+    }break;
+    //-------------------------------------
+
+    case 'N':{return nivelesDes;}break;
+    //-------------------------------------
+
+    case ' ':{}break;
+    //-------------------------------------
+
+    }
+    return -1;
+}
 
 void personaje::Ciclo_automatico()
 {

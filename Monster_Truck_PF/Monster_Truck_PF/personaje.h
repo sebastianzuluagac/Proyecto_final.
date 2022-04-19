@@ -40,8 +40,14 @@ public:
     void Choque_frontal(int Punto_choque, int Rebote);
     void Destruirse();
 
+    //Gestion de los datos del jugador---------------------------------
     void USERNAME(QString name){username=name;}
     QString GET_NAME(){return username;}
+    void UPDATE_DATA(char dat, char signo, int cant);
+    int GET_DATA(char dat, char signo);
+
+
+    //-----------------------------------------------------------------
 
 private slots:
     void Ciclo_automatico();
@@ -52,6 +58,7 @@ private:
     float Fuerza_neta = 0, Friccion_x = 1, Gravedad = 0.8;
     float Aceleracion_ang_x=1, Aceleracion_ang_y=1, Velocidad_ang_x=1, Velocidad_ang_y=1, Grado = 0, Momento_inercia = 10, Fuerza_ang_x = 0, Fuerza_ang_y = 10;
     float Limite_inferior = 500, Punto_inicial_colision = 0, Rango_colision;
+    int dinero=0,carrosDes=0,carroElegido=0,nivelesDes=1;
     bool Colision = false;
     QGraphicsScene *scene;
     QTimer *velocimetro;

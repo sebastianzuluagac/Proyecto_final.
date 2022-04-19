@@ -22,13 +22,33 @@ MainWindow::MainWindow(QWidget *parent)
     //niveles
     ui->niveles->setEnabled(false);
     ui->niveles->setHidden(true);
+    //Boton atras
+    ui->home->setEnabled(false);
+    ui->home->setHidden(true);
+    //Cantidad de monedas
+    ui->icon_money->setEnabled(false);
+    ui->icon_money->setHidden(true);
+    ui->cant_money->setEnabled(false);
+    ui->cant_money->setHidden(true);
+    //vida del jugador
+    ui->vidaP->setEnabled(false);
+    ui->vidaP->setHidden(true);
+    //Botones de escoger y comprar
+    ui->L->setEnabled(false);
+    ui->L->setHidden(true);
+    ui->R->setEnabled(false);
+    ui->R->setHidden(true);
+    ui->buy->setEnabled(false);
+    ui->buy->setHidden(true);
+    ui->seleccionar->setEnabled(false);
+    ui->seleccionar->setHidden(true);
     //Declaracion temporizador de juego activo.
     timer = new QTimer;
     connect(timer, SIGNAL(timeout()), this, SLOT(Juego_activo()));    
     //Escena.
     ui->escena->setScene(scene);
     //Enviar direccion de vectores de objetos que añadiran los niveles.
-    Niveles->Recibir_vectores(&Box, &Pincho, &Money, &Contenedores);
+    Niveles->Recibir_vectores(&Box, &Pincho, &Money, &Contenedores, &Mina, &Dama, &Aves);
 }
 
 MainWindow::~MainWindow()
@@ -79,23 +99,6 @@ void MainWindow::keyPressEvent(QKeyEvent *tecla)
             if(carro->Colsionando() == false) carro->Girar((carro->Datos(5))-0.02, 10);
     }break;
     //-----------------------------
-
-    /*
-    case Qt::Key_L: {
-       ui->escena->setEnabled(true);
-       ui->escena->setHidden(true);
-       //ui->widget->show();
-
-      }break;
-   //---------------------------------------
-    case Qt::Key_K: {
-        ui->escena->setEnabled(false);
-        ui->escena->setHidden(false);
-        //ui->widget->hide();
-
-      }break;
-      */
-
     //---------------------------------------
     //Aplicar fuerza hacia arriba si se esta apoyado.
     case Qt::Key_W: {
@@ -180,7 +183,11 @@ void MainWindow::on_ingresar_clicked()
         ui->jugar->setHidden(false);
         ui->tienda->setEnabled(true);
         ui->tienda->setHidden(false);
-
+        //Cantidad de monedas
+        ui->icon_money->setEnabled(true);
+        ui->icon_money->setHidden(false);
+        ui->cant_money->setEnabled(true);
+        ui->cant_money->setHidden(false);
     }
     else ui->respuesta->setText("Ingreso Fallido");
 }
@@ -206,6 +213,9 @@ void MainWindow::on_jugar_clicked()
     //niveles
     ui->niveles->setEnabled(true);
     ui->niveles->setHidden(false);
+    //Boton atras
+    ui->home->setEnabled(true);
+    ui->home->setHidden(false);
 }
 
 
@@ -222,6 +232,9 @@ void MainWindow::on_nivel1_clicked()
     //niveles
     ui->niveles->setEnabled(false);
     ui->niveles->setHidden(true);
+    //vida del jugador
+    ui->vidaP->setEnabled(true);
+    ui->vidaP->setHidden(false);
     //Anadir personaje a la escena
     carro=new personaje(scene, 0, 500);
     carro->set_sprite(0,0);
@@ -245,6 +258,9 @@ void MainWindow::on_nivel2_clicked()
     //niveles
     ui->niveles->setEnabled(false);
     ui->niveles->setHidden(true);
+    //vida del jugador
+    ui->vidaP->setEnabled(true);
+    ui->vidaP->setHidden(false);
     //Anadir personaje a la escena
     carro=new personaje(scene, 0, 500);
     carro->set_sprite(0,0);
@@ -268,6 +284,9 @@ void MainWindow::on_nivel3_clicked()
     //niveles
     ui->niveles->setEnabled(false);
     ui->niveles->setHidden(true);
+    //vida del jugador
+    ui->vidaP->setEnabled(true);
+    ui->vidaP->setHidden(false);
     //Anadir personaje a la escena
     carro=new personaje(scene, 0, 500);
     carro->set_sprite(0,0);
@@ -291,6 +310,9 @@ void MainWindow::on_nivel4_clicked()
     //niveles
     ui->niveles->setEnabled(false);
     ui->niveles->setHidden(true);
+    //vida del jugador
+    ui->vidaP->setEnabled(true);
+    ui->vidaP->setHidden(false);
     //Anadir personaje a la escena
     carro=new personaje(scene, 0, 500);
     carro->set_sprite(0,0);
@@ -300,3 +322,65 @@ void MainWindow::on_nivel4_clicked()
     timer->start(20);
 }
 
+void MainWindow::on_tienda_clicked()
+{
+    ui->escena->setEnabled(false);
+    ui->escena->setHidden(true);
+    //jugar y tienda
+    ui->jugar->setEnabled(false);
+    ui->jugar->setHidden(true);
+    ui->tienda->setEnabled(false);
+    ui->tienda->setHidden(true);
+    //niveles
+    ui->niveles->setEnabled(false);
+    ui->niveles->setHidden(true);
+    //Botones de escoger y comprar
+    ui->L->setEnabled(true);
+    ui->L->setHidden(false);
+    ui->R->setEnabled(true);
+    ui->R->setHidden(false);
+    ui->buy->setEnabled(true);
+    ui->buy->setHidden(false);
+    ui->seleccionar->setEnabled(true);
+    ui->seleccionar->setHidden(false);
+    //Boton atras
+    ui->home->setEnabled(true);
+    ui->home->setHidden(false);
+
+
+}
+
+
+void MainWindow::on_home_clicked()
+{
+    //camara de juego
+    ui->escena->setEnabled(false);
+    ui->escena->setHidden(true);
+    //Boton atras
+    ui->home->setEnabled(false);
+    ui->home->setHidden(true);
+    //vida del jugador
+    ui->vidaP->setEnabled(false);
+    ui->vidaP->setHidden(true);
+    //Botones de escoger y comprar
+    ui->L->setEnabled(false);
+    ui->L->setHidden(true);
+    ui->R->setEnabled(false);
+    ui->R->setHidden(true);
+    ui->buy->setEnabled(false);
+    ui->buy->setHidden(true);
+    //jugar y tienda
+    ui->jugar->setEnabled(true);
+    ui->jugar->setHidden(false);
+    ui->tienda->setEnabled(true);
+    ui->tienda->setHidden(false);
+    //Cantidad de monedas
+    ui->icon_money->setEnabled(true);
+    ui->icon_money->setHidden(false);
+    ui->cant_money->setEnabled(true);
+    ui->cant_money->setHidden(false);
+    //niveles
+    ui->niveles->setEnabled(false);
+    ui->niveles->setHidden(true);
+
+}

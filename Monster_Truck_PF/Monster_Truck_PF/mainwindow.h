@@ -58,6 +58,10 @@ private slots:
 
     void on_nivel4_clicked();
 
+    void on_tienda_clicked();
+
+    void on_home_clicked();
+
 private:
     bool Colision = false;
     bool Jugando = false;
@@ -69,7 +73,13 @@ private:
     QVector <pinchos*> Pincho;
     QVector <monedas*> Money;
     QVector <containers*> Contenedores;
+    QVector <minas*> Mina;
+    QVector <mujer*> Dama;
+    QVector <pajaro*> Aves;
     QKeyEvent *tecla;
     QTimer *timer;
+
+    //Tienda
+    QGraphicsScene *tienda;
 };
 #endif // MAINWINDOW_H

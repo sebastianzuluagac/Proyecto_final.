@@ -28,7 +28,7 @@ void nivel::CARGAR_MUNDO(char Nivel)
         while (!Archivo.eof()) {
             getline(Archivo, Linea);
             //Composicion de la linea: a bbbbb cccc ddd e; a=Tipo, bbbb=Posicion en x, cccc=Posicion en y, ddd=inclinacion, e=Tipo especifico
-            //Ampliacion tipo: 0=Container, 1=Bomba, 2=Vehiculo, 3=Pinchos, 4=Cajas, 5=Monedas.
+            //Ampliacion tipo: 0=Container, 1=Bomba, 2=Aves, 3=Pinchos, 4=Cajas, 5=Monedas, 6=Mujer.
             for(int i = 2; i < 16; i++){
                 if(i <= 6) Pos_x.push_back(Linea[i]);
                 else if(i > 7 && i <= 11) Pos_y.push_back(Linea[i]);
@@ -56,13 +56,17 @@ void nivel::Crear_objeto(int Tipo, int Pos_x, int Pos_y, int Grados, char Tipo_e
     }break;
 
     case 49:{
-    //Numero 1 correspondiente a tipo Bomba.
-
+    //Numero 1 correspondiente a tipo Minas.
+        (*Mina).push_back(new minas(Pos_x, Pos_y));
+        level1->addItem((*Mina)[Contador_minas]);
+        Contador_minas+=1;
     }break;
 
     case 50:{
-    //Numero 2 correspondiente a tipo Vehiculos.
-
+    //Numero 2 correspondiente a tipo aves.
+        (*Aves).push_back(new pajaro(Pos_x, Pos_y));
+        level1->addItem((*Aves)[Contador_aves]);
+        Contador_aves+=1;
     }break;
 
     case 51:{
@@ -86,14 +90,27 @@ void nivel::Crear_objeto(int Tipo, int Pos_x, int Pos_y, int Grados, char Tipo_e
         Contador_monedas+=1;
     }break;
 
+    case 54:{
+    //Numero 6 correspondiente a tipo Dama.
+        (*Dama).push_back(new mujer(Pos_x, Pos_y));
+        level1->addItem((*Dama)[Contador_damas]);
+        Contador_damas+=1;
+    }break;
+
+
     }
 }
 
-void nivel::Recibir_vectores(QVector <cajas*>* Box, QVector <pinchos*>* Pincho, QVector <monedas*>* Money, QVector <containers*>* Contenedores){
+void nivel::Recibir_vectores(QVector <cajas*>* Box, QVector <pinchos*>* Pincho, QVector <monedas*>* Money,
+                             QVector <containers*>* Contenedores, QVector <minas*>* Mina, QVector <mujer*>* Dama,
+                             QVector <pajaro*>* Aves){
     this->Box = Box;
     this->Pincho = Pincho;
     this->Money = Money;
     this->Contenedores = Contenedores;
+    this->Mina = Mina;
+    this->Dama = Dama;
+    this->Aves = Aves;
 }
 
 void nivel::Eliminar_memoria_vectores()
@@ -114,7 +131,7 @@ void nivel::Eliminar_memoria_vectores()
     (*Pincho).clear();
     Contador_pinchos = 0;
 
-    //Liberar memoria de contenedores y eliminarlos de la escena level1.
+    //Liberar memoria de cajas y eliminarlos de la escena level1.
     for(int i = 0; i < (*Box).size(); i++){
         level1->removeItem((*Box)[i]);
         delete (*Box)[i];
@@ -122,13 +139,37 @@ void nivel::Eliminar_memoria_vectores()
     (*Box).clear();
     Contador_cajas = 0;
 
-    //Liberar memoria de contenedores y eliminarlos de la escena level1.
+    //Liberar memoria de monedas y eliminarlos de la escena level1.
     for(int i = 0; i < (*Money).size(); i++){
         level1->removeItem((*Money)[i]);
         delete (*Money)[i];
     }
     (*Money).clear();
     Contador_monedas = 0;
+
+    //Liberar memoria de aves y eliminarlos de la escena level1.
+    for(int i = 0; i < (*Aves).size(); i++){
+        level1->removeItem((*Aves)[i]);
+        delete (*Aves)[i];
+    }
+    (*Aves).clear();
+    Contador_aves = 0;
+
+    //Liberar memoria de minas y eliminarlos de la escena level1.
+    for(int i = 0; i < (*Mina).size(); i++){
+        level1->removeItem((*Mina)[i]);
+        delete (*Mina)[i];
+    }
+    (*Mina).clear();
+    Contador_minas = 0;
+
+    //Liberar memoria de damas y eliminarlos de la escena level1.
+    for(int i = 0; i < (*Dama).size(); i++){
+        level1->removeItem((*Dama)[i]);
+        delete (*Dama)[i];
+    }
+    (*Dama).clear();
+    Contador_damas = 0;
 }
 
 

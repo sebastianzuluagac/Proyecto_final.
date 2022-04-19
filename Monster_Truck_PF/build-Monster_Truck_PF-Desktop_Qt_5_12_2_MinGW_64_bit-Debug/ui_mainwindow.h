@@ -16,10 +16,12 @@
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
@@ -53,6 +55,18 @@ public:
     QPushButton *nivel3;
     QPushButton *tienda;
     QPushButton *jugar;
+    QPushButton *L;
+    QPushButton *home;
+    QProgressBar *vidaP;
+    QPushButton *icon_money;
+    QLCDNumber *cant_money;
+    QPushButton *R;
+    QGraphicsView *carrotienda;
+    QLabel *precio;
+    QWidget *widget;
+    QHBoxLayout *comprar_seleccionar;
+    QPushButton *seleccionar;
+    QPushButton *buy;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -60,14 +74,14 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(753, 383);
-        MainWindow->setAutoFillBackground(false);
+        MainWindow->resize(787, 415);
+        MainWindow->setAutoFillBackground(true);
         MainWindow->setDockOptions(QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         widget_2 = new QWidget(centralwidget);
         widget_2->setObjectName(QString::fromUtf8("widget_2"));
-        widget_2->setGeometry(QRect(9, 9, 274, 210));
+        widget_2->setGeometry(QRect(740, 20, 274, 210));
         gridLayout_3 = new QGridLayout(widget_2);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         escena = new QGraphicsView(widget_2);
@@ -77,7 +91,7 @@ public:
 
         inicio = new QWidget(centralwidget);
         inicio->setObjectName(QString::fromUtf8("inicio"));
-        inicio->setGeometry(QRect(289, 9, 188, 120));
+        inicio->setGeometry(QRect(390, 0, 188, 120));
         gridLayout = new QGridLayout(inicio);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         respuesta = new QLabel(inicio);
@@ -132,7 +146,7 @@ public:
 
         niveles = new QWidget(centralwidget);
         niveles->setObjectName(QString::fromUtf8("niveles"));
-        niveles->setGeometry(QRect(120, 240, 441, 80));
+        niveles->setGeometry(QRect(150, 320, 441, 80));
         nivel4 = new QPushButton(niveles);
         nivel4->setObjectName(QString::fromUtf8("nivel4"));
         nivel4->setGeometry(QRect(330, 10, 91, 61));
@@ -147,7 +161,7 @@ public:
         nivel3->setGeometry(QRect(231, 10, 91, 61));
         tienda = new QPushButton(centralwidget);
         tienda->setObjectName(QString::fromUtf8("tienda"));
-        tienda->setGeometry(QRect(690, 290, 51, 41));
+        tienda->setGeometry(QRect(720, 330, 51, 41));
         tienda->setCursor(QCursor(Qt::OpenHandCursor));
         tienda->setMouseTracking(false);
         tienda->setAutoFillBackground(false);
@@ -157,15 +171,103 @@ public:
         tienda->setIconSize(QSize(51, 100));
         jugar = new QPushButton(centralwidget);
         jugar->setObjectName(QString::fromUtf8("jugar"));
-        jugar->setGeometry(QRect(540, 120, 80, 61));
+        jugar->setGeometry(QRect(570, 160, 80, 61));
+        L = new QPushButton(centralwidget);
+        L->setObjectName(QString::fromUtf8("L"));
+        L->setGeometry(QRect(79, 160, 51, 51));
+        QFont font;
+        font.setPointSize(25);
+        L->setFont(font);
+        L->setAutoFillBackground(true);
+        home = new QPushButton(centralwidget);
+        home->setObjectName(QString::fromUtf8("home"));
+        home->setGeometry(QRect(20, 10, 41, 41));
+        home->setFont(font);
+        QIcon icon1(QIcon::fromTheme(QString::fromUtf8("\360\237\224\231")));
+        home->setIcon(icon1);
+        home->setIconSize(QSize(16, 16));
+        vidaP = new QProgressBar(centralwidget);
+        vidaP->setObjectName(QString::fromUtf8("vidaP"));
+        vidaP->setGeometry(QRect(200, 10, 181, 31));
+        QPalette palette;
+        QBrush brush(QColor(255, 0, 0, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Highlight, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Highlight, brush);
+        QBrush brush1(QColor(0, 120, 215, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::Highlight, brush1);
+        vidaP->setPalette(palette);
+        vidaP->setValue(24);
+        vidaP->setTextVisible(false);
+        icon_money = new QPushButton(centralwidget);
+        icon_money->setObjectName(QString::fromUtf8("icon_money"));
+        icon_money->setGeometry(QRect(90, 10, 41, 41));
+        icon_money->setCursor(QCursor(Qt::OpenHandCursor));
+        icon_money->setMouseTracking(false);
+        icon_money->setAutoFillBackground(false);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/SPRITES_GAME/monedas/20220329_092624.png"), QSize(), QIcon::Normal, QIcon::On);
+        icon_money->setIcon(icon2);
+        icon_money->setIconSize(QSize(50, 50));
+        cant_money = new QLCDNumber(centralwidget);
+        cant_money->setObjectName(QString::fromUtf8("cant_money"));
+        cant_money->setGeometry(QRect(130, 10, 51, 41));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Myanmar Text"));
+        font1.setPointSize(15);
+        cant_money->setFont(font1);
+        R = new QPushButton(centralwidget);
+        R->setObjectName(QString::fromUtf8("R"));
+        R->setGeometry(QRect(670, 160, 51, 51));
+        R->setFont(font);
+        R->setAutoFillBackground(true);
+        carrotienda = new QGraphicsView(centralwidget);
+        carrotienda->setObjectName(QString::fromUtf8("carrotienda"));
+        carrotienda->setGeometry(QRect(250, 110, 211, 161));
+        precio = new QLabel(centralwidget);
+        precio->setObjectName(QString::fromUtf8("precio"));
+        precio->setGeometry(QRect(270, 280, 170, 13));
+        widget = new QWidget(centralwidget);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(270, 300, 168, 23));
+        comprar_seleccionar = new QHBoxLayout(widget);
+        comprar_seleccionar->setObjectName(QString::fromUtf8("comprar_seleccionar"));
+        comprar_seleccionar->setContentsMargins(0, 0, 0, 0);
+        seleccionar = new QPushButton(widget);
+        seleccionar->setObjectName(QString::fromUtf8("seleccionar"));
+
+        comprar_seleccionar->addWidget(seleccionar);
+
+        buy = new QPushButton(widget);
+        buy->setObjectName(QString::fromUtf8("buy"));
+
+        comprar_seleccionar->addWidget(buy);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 753, 20));
+        menubar->setGeometry(QRect(0, 0, 787, 20));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
+        QWidget::setTabOrder(pw, ingresar);
+        QWidget::setTabOrder(ingresar, crearU);
+        QWidget::setTabOrder(crearU, nivel4);
+        QWidget::setTabOrder(nivel4, nivel1);
+        QWidget::setTabOrder(nivel1, nivel2);
+        QWidget::setTabOrder(nivel2, nivel3);
+        QWidget::setTabOrder(nivel3, tienda);
+        QWidget::setTabOrder(tienda, jugar);
+        QWidget::setTabOrder(jugar, L);
+        QWidget::setTabOrder(L, escena);
+        QWidget::setTabOrder(escena, home);
+        QWidget::setTabOrder(home, icon_money);
+        QWidget::setTabOrder(icon_money, R);
+        QWidget::setTabOrder(R, carrotienda);
+        QWidget::setTabOrder(carrotienda, username);
+        QWidget::setTabOrder(username, buy);
 
         retranslateUi(MainWindow);
 
@@ -181,11 +283,18 @@ public:
         ingresar->setText(QApplication::translate("MainWindow", "Ingresar", nullptr));
         crearU->setText(QApplication::translate("MainWindow", "crear", nullptr));
         nivel4->setText(QApplication::translate("MainWindow", "4", nullptr));
-        nivel1->setText(QApplication::translate("MainWindow", "1", nullptr));
+        nivel1->setText(QApplication::translate("MainWindow", "1\357\270\217\342\203\243", nullptr));
         nivel2->setText(QApplication::translate("MainWindow", "2", nullptr));
         nivel3->setText(QApplication::translate("MainWindow", "3", nullptr));
         tienda->setText(QString());
         jugar->setText(QApplication::translate("MainWindow", "jugar", nullptr));
+        L->setText(QApplication::translate("MainWindow", "\360\237\221\210", nullptr));
+        home->setText(QApplication::translate("MainWindow", "\360\237\224\231", nullptr));
+        icon_money->setText(QString());
+        R->setText(QApplication::translate("MainWindow", "\360\237\221\211", nullptr));
+        precio->setText(QString());
+        seleccionar->setText(QApplication::translate("MainWindow", "seleccionar", nullptr));
+        buy->setText(QApplication::translate("MainWindow", "comprar", nullptr));
     } // retranslateUi
 
 };

@@ -27,12 +27,15 @@ public:
     ~nivel();
     void CARGAR_MUNDO(char Nivel);
     void Crear_objeto(int Tipo, int Pos_x, int Pos_y, int Grados, char Tipo_especial);
-    void Recibir_vectores(QVector <cajas*>* Box, QVector <pinchos*>* Pincho, QVector <monedas*>* Money, QVector <containers*>* Contenedores);
+    void Recibir_vectores(QVector <cajas*>* Box, QVector <pinchos*>* Pincho, QVector <monedas*>* Money,
+                          QVector <containers*>* Contenedores, QVector <minas*>* Mina, QVector <mujer*>* Dama,
+                          QVector <pajaro*>* Aves);
     void Eliminar_memoria_vectores();
     QGraphicsScene* getlevel(){return level1;}
 
 private:
-    short int Contador_containers=0, Contador_pinchos=0, Contador_cajas=0, Contador_monedas=0;
+    short int Contador_containers=0, Contador_pinchos=0, Contador_cajas=0, Contador_monedas=0,
+                Contador_minas=0, Contador_aves=0, Contador_damas=0;
     QGraphicsScene *level1;
     QPixmap fondo;
     containers *container;
@@ -40,6 +43,9 @@ private:
     QVector <pinchos*>* Pincho;
     QVector <monedas*>* Money;
     QVector <containers*>* Contenedores;
+    QVector <minas*>* Mina;
+    QVector <mujer*>* Dama;
+    QVector <pajaro*>* Aves;
 };
 
 #endif // NIVEL_H
