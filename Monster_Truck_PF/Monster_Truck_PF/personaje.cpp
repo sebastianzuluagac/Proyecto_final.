@@ -38,6 +38,7 @@ void personaje::MOVER_ADELANTE()
     if (pos<0){
         pos=8;
     }
+    //Actualizar posicion en x, y actualizar focus.
     this->setX(Posicion_x);
     this->x()>400? scene->setSceneRect(this->x()-400,0,tamnivelX, tamnivelY):scene->setSceneRect(0,0,tamnivelX, tamnivelY);
 }
@@ -51,8 +52,9 @@ void personaje::MOVER_ATRAS()
     if (pos>8){
         pos=0;
     }
+    //Actualizar posicion en x, actualizar focus y establecer limite inicio de pista.
+    if(Posicion_x < 0) Velocidad_x = 0, Fuerza_x = 0, Posicion_x = 0;
     this->setX(Posicion_x);
-    if(Posicion_x < 0) Velocidad_x = 0, Fuerza_x = 0;
     this->x()>400? scene->setSceneRect(this->x()-400,0,tamnivelX, tamnivelY):scene->setSceneRect(0,0,tamnivelX, tamnivelY);
 }
 
@@ -73,17 +75,18 @@ float personaje::Datos(char Index)
     else if(Index == 6) return Fuerza_ang_y;
     else if(Index == 7) return Punto_inicial_colision;
     else if(Index == 8) return Limite_inferior;
-
     else return 0;
 }
 
 void personaje::Saltar()
 {
+    //Actualizar posicion en y.
     this->setY(Posicion_y);
 }
 
 void personaje::Girar(float Fuerza_ang_x, float Fuerza_ang_y)
 {
+    //Recibir fuerza angular en sus componentes, estableciendo sus limites.
     this->Fuerza_ang_x = Fuerza_ang_x;
     this->Fuerza_ang_y = Fuerza_ang_y;
     if(this->Fuerza_ang_x > 0.548) this->Fuerza_ang_x = 0.548;
@@ -92,6 +95,7 @@ void personaje::Girar(float Fuerza_ang_x, float Fuerza_ang_y)
 
 bool personaje::Carro_apoyado()
 {
+    //true si el carro esta sobre el piso o cerca de el a 5 pixeles, de lo contrario false.
     if(Posicion_y >= Limite_inferior-5) return true;
     else return false;
 }
@@ -99,26 +103,37 @@ bool personaje::Carro_apoyado()
 
 void personaje::Inclinacion(int Grado)
 {
+    //Establecer angulo de inclinacion.
     setRotation(Grado);
-    //this->Grado = Grado;
 }
 
 void personaje::Limite_inf(int Valor_limite)
 {
+    //Establecer limite inferior donde apoyarse.
     Limite_inferior = Valor_limite;
 }
 
 void personaje::Punto_colision(int Punto_colision, int Rango_colision)
 {
+    //Establecer punto y rango de colision con containers.
     Punto_inicial_colision = Punto_colision;
     this->Rango_colision = Rango_colision;
+}
+
+void personaje::Destruirse()
+{
+    //Crear animacion de destruccion.
+    delete velocimetro;
+    delete this;
 }
 
 
 void personaje::Ciclo_automatico()
 {
+    //Si no esta en rango de colision establecer el suelo como limite inferior(500).
     if((this->Datos(3)-Punto_inicial_colision) > Rango_colision || this->Datos(3)+120 < Punto_inicial_colision) Limite_inferior = 500;
 
+    //Aplicar formulas de fuerza en x para determinar aceleracion, velocidad y actualizar posicion.
     Aceleracion_x = Fuerza_x/masa;
     Velocidad_x = Aceleracion_x*T;
     Posicion_x = Posicion_x + Velocidad_x;
@@ -127,6 +142,7 @@ void personaje::Ciclo_automatico()
     if(Fuerza_x>0)Fuerza_x -= Friccion_x;
     if(Fuerza_x<0)Fuerza_x += Friccion_x;
 
+    //Aplicar formulas de fuerza en y para determinar aceleracion, velocidad y actualizar posicion.
     Aceleracion_y = Fuerza_y/masa;
     Velocidad_y = Velocidad_y + Aceleracion_y*T;
     Posicion_y = Posicion_y + Velocidad_y;
@@ -134,14 +150,19 @@ void personaje::Ciclo_automatico()
     this->Saltar();
     if(Posicion_y!=Limite_inferior)Fuerza_y += Gravedad;
 
+    //Si el carro esta apoyado, velocidad menor de 20 e inclinacion < 60 enderezar automaticamente con angulo 0.
     if(this->Carro_apoyado()==true && this->Datos(2)<60 && this->Datos(2)>0 && Velocidad_x < 20 && Colision == false){
         Fuerza_ang_x = Fuerza_ang_x-0.02;
         if(this->Datos(2) < 5)Fuerza_ang_x = 0;
     }
+    //Si el carro esta apoyado, velocidad menor de 20 e inclinacion > -60 enderezar automaticamente con angulo 0.
     if(this->Carro_apoyado()==true && this->Datos(2)>-60 && this->Datos(2)<0 && Velocidad_x < 20 && Colision == false){
         Fuerza_ang_x = Fuerza_ang_x+0.02;
         if(this->Datos(2) > -5)Fuerza_ang_x = 0;
     }
+
+    //Aplicar formulas de movimiento rotacional basado en fuerzas para determinar
+    //aceleracion angular, velocidad angular y asi actualizar angulo de inclinacion.
     Aceleracion_ang_x = Fuerza_ang_x/Momento_inercia;
     Velocidad_ang_x = Aceleracion_ang_x*T;
     Aceleracion_ang_y = Fuerza_ang_y/Momento_inercia;
@@ -150,7 +171,6 @@ void personaje::Ciclo_automatico()
     Grado = Grado*180/3.14159265;
     Grado = Grado*180/3.14159265;
     this->Inclinacion(Grado);
-
 
 }
 

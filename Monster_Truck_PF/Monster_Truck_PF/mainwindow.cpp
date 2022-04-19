@@ -8,11 +8,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     ui->widget_2->setGeometry(0,0,1380,tamnivelY);
-    n1=new nivel;
-    //n1->CARGAR_MUNDO();
-    scene=n1->getlevel();
+    Niveles=new nivel;
+    scene=Niveles->getlevel();
     ui->escena->setScene(scene);
-
     //camara de juego
     ui->escena->setEnabled(false);
     ui->escena->setHidden(true);
@@ -24,22 +22,38 @@ MainWindow::MainWindow(QWidget *parent)
     //niveles
     ui->niveles->setEnabled(false);
     ui->niveles->setHidden(true);
-
+    //Declaracion temporizador de juego activo.
     timer = new QTimer;
-    connect(timer, SIGNAL(timeout()), this, SLOT(Juego_activo()));
-
-    carro=new personaje(scene, 0, 500);
-    carro->set_sprite(0,0);
-    scene->addItem(carro);
+    connect(timer, SIGNAL(timeout()), this, SLOT(Juego_activo()));    
+    //Escena.
     ui->escena->setScene(scene);
-
-    n1->Recibir_vectores(&Box, &Pincho, &Money, &Contenedores);
-
+    //Enviar direccion de vectores de objetos que añadiran los niveles.
+    Niveles->Recibir_vectores(&Box, &Pincho, &Money, &Contenedores);
 }
 
 MainWindow::~MainWindow()
 {
+    Niveles->Eliminar_memoria_vectores();
+    carro->Destruirse();
+    delete timer;
+    delete Niveles;
     delete ui;
+}
+
+void MainWindow::Detener_juego()
+{
+    Niveles->Eliminar_memoria_vectores();
+    carro->Destruirse();
+    ui->escena->setEnabled(true);
+    ui->escena->setHidden(true);
+    //jugar y tienda
+    ui->jugar->setEnabled(true);
+    ui->jugar->setHidden(false);
+    ui->tienda->setEnabled(true);
+    ui->tienda->setHidden(false);
+    //niveles
+    ui->niveles->setEnabled(true);
+    ui->niveles->setHidden(false);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *tecla)
@@ -65,7 +79,8 @@ void MainWindow::keyPressEvent(QKeyEvent *tecla)
             if(carro->Colsionando() == false) carro->Girar((carro->Datos(5))-0.02, 10);
     }break;
     //-----------------------------
-    //-----------------------------
+
+    /*
     case Qt::Key_L: {
        ui->escena->setEnabled(true);
        ui->escena->setHidden(true);
@@ -79,6 +94,8 @@ void MainWindow::keyPressEvent(QKeyEvent *tecla)
         //ui->widget->hide();
 
       }break;
+      */
+
     //---------------------------------------
     //Aplicar fuerza hacia arriba si se esta apoyado.
     case Qt::Key_W: {
@@ -121,6 +138,22 @@ void MainWindow::Juego_activo()
     Colision = false;
     //Fin de interaccion colision con contenedores.
     //++++++++//
+
+    //+++++++++//
+    //Inicio de interaccion colision con pinchos.
+    for(int i = 0; i < Pincho.length(); i++){
+        if(carro->collidesWithItem(Pincho[i])){
+            Jugando = false;
+        }
+    }
+    //Fin de interaccion colision con pinchos.
+    //++++++++//
+
+    //Detener ejecucion del juego.
+    if(Jugando == false){
+        timer->stop();
+        Detener_juego();
+    }
 }
 
 
@@ -167,7 +200,7 @@ void MainWindow::on_jugar_clicked()
 
 void MainWindow::on_nivel1_clicked()
 {
-    n1->CARGAR_MUNDO('1');
+    Niveles->CARGAR_MUNDO('1');
     ui->escena->setEnabled(false);
     ui->escena->setHidden(false);
     //jugar y tienda
@@ -178,14 +211,19 @@ void MainWindow::on_nivel1_clicked()
     //niveles
     ui->niveles->setEnabled(false);
     ui->niveles->setHidden(true);
-
+    //Anadir personaje a la escena
+    carro=new personaje(scene, 0, 500);
+    carro->set_sprite(0,0);
+    scene->addItem(carro);
+    //Activar temporizador ciclo automatico.
+    Jugando = true;
     timer->start(20);
 }
 
 
 void MainWindow::on_nivel2_clicked()
 {
-    n1->CARGAR_MUNDO('2');
+    Niveles->CARGAR_MUNDO('2');
     ui->escena->setEnabled(false);
     ui->escena->setHidden(false);
     //jugar y tienda
@@ -196,14 +234,19 @@ void MainWindow::on_nivel2_clicked()
     //niveles
     ui->niveles->setEnabled(false);
     ui->niveles->setHidden(true);
-
+    //Anadir personaje a la escena
+    carro=new personaje(scene, 0, 500);
+    carro->set_sprite(0,0);
+    scene->addItem(carro);
+    //Activar temporizador ciclo automatico.
+    Jugando = true;
     timer->start(20);
 }
 
 
 void MainWindow::on_nivel3_clicked()
 {
-    n1->CARGAR_MUNDO('3');
+    Niveles->CARGAR_MUNDO('3');
     ui->escena->setEnabled(false);
     ui->escena->setHidden(false);
     //jugar y tienda
@@ -214,14 +257,19 @@ void MainWindow::on_nivel3_clicked()
     //niveles
     ui->niveles->setEnabled(false);
     ui->niveles->setHidden(true);
-
+    //Anadir personaje a la escena
+    carro=new personaje(scene, 0, 500);
+    carro->set_sprite(0,0);
+    scene->addItem(carro);
+    //Activar temporizador ciclo automatico.
+    Jugando = true;
     timer->start(20);
 }
 
 
 void MainWindow::on_nivel4_clicked()
 {
-    n1->CARGAR_MUNDO('4');
+    Niveles->CARGAR_MUNDO('4');
     ui->escena->setEnabled(false);
     ui->escena->setHidden(false);
     //jugar y tienda
@@ -232,7 +280,12 @@ void MainWindow::on_nivel4_clicked()
     //niveles
     ui->niveles->setEnabled(false);
     ui->niveles->setHidden(true);
-
+    //Anadir personaje a la escena
+    carro=new personaje(scene, 0, 500);
+    carro->set_sprite(0,0);
+    scene->addItem(carro);
+    //Activar temporizador ciclo automatico.
+    Jugando = true;
     timer->start(20);
 }
 

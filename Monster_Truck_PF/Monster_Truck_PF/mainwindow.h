@@ -33,6 +33,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void Detener_juego();
+
 public slots:
     void Juego_activo();
 
@@ -58,9 +60,10 @@ private slots:
 
 private:
     bool Colision = false;
+    bool Jugando = false;
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
-    nivel *n1;
+    nivel *Niveles;
     personaje *carro;
     QVector <cajas*> Box;
     QVector <pinchos*> Pincho;
