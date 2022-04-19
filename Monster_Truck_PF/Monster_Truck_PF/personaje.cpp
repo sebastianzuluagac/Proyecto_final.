@@ -92,7 +92,7 @@ void personaje::Girar(float Fuerza_ang_x, float Fuerza_ang_y)
 
 bool personaje::Carro_apoyado()
 {
-    if(Posicion_y == Limite_inferior) return true;
+    if(Posicion_y >= Limite_inferior-5) return true;
     else return false;
 }
 
