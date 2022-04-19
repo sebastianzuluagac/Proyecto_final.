@@ -26,7 +26,7 @@ public:
 
 
 private:
-    int Pos_x, Pos_y, Grados;
+    int Pos_x, Pos_y, Grados, tamx;
     QPixmap imagen;
     QPixmap copia;
 };

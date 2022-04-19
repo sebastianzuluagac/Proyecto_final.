@@ -113,11 +113,12 @@ void MainWindow::Juego_activo()
         if(carro->collidesWithItem(Contenedores[i])){            
             if(Contenedores[i]->Datos(2) != 0){
                 if(((Contenedores[i]->Datos(0))-carro->Datos(3))>25){
-                    carro->Girar(0.0548/((Contenedores[i]->Datos(0))-carro->Datos(3))*Contenedores[i]->Datos(2), 10);
+                    //0.548
+                    carro->Girar(0.066/((Contenedores[i]->Datos(0))-carro->Datos(3))*Contenedores[i]->Datos(2), 10);
                     carro->Punto_colision(Contenedores[i]->Datos(0), 300-Contenedores[i]->Datos(2)*3);
                 }
                 else if(((Contenedores[i]->Datos(0))-carro->Datos(3))<25){
-                    carro->Girar(0.0548/25*Contenedores[i]->Datos(2), 10);
+                    carro->Girar(0.066/25*Contenedores[i]->Datos(2), 10);
                     float Altura_container;
                     Altura_container = (Contenedores[i]->Datos(0)-carro->Datos(3))*tan(Contenedores[i]->Datos(2)*3.14159265/180);
                     carro->Limite_inf(500-Altura_container-15);
@@ -127,8 +128,18 @@ void MainWindow::Juego_activo()
                 break;
             }
             else if(Contenedores[i]->Datos(2) == 0){
-                carro->Limite_inf(Contenedores[i]->Datos(1)-74);
-                carro->Punto_colision(Contenedores[i]->Datos(0), 300);
+                if(carro->Datos(4) > Contenedores[i]->Datos(1)){
+                    if(carro->Datos(3) < Contenedores[i]->Datos(0)){
+                        carro->Choque_frontal(Contenedores[i]->Datos(0)-140 , carro->Datos(0));
+                    }
+                    else if(carro->Datos(3) > Contenedores[i]->Datos(0)){
+                        carro->Choque_frontal(Contenedores[i]->Datos(0)+Contenedores[i]->Datos(3)+20, carro->Datos(0));
+                    }
+                }
+                else{
+                    carro->Limite_inf(Contenedores[i]->Datos(1)-74);
+                }
+                carro->Punto_colision(Contenedores[i]->Datos(0), Contenedores[i]->Datos(3));
                 if(carro->Datos(2) > 0) carro->Girar(0, 10);
             }
             Colision = true;

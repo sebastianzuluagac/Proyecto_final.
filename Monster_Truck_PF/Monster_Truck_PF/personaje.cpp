@@ -120,6 +120,23 @@ void personaje::Punto_colision(int Punto_colision, int Rango_colision)
     this->Rango_colision = Rango_colision;
 }
 
+void personaje::Choque_frontal(int Punto_choque, int Rebote)
+{
+    if(Rebote > 0){
+        Posicion_x = Punto_choque;
+        Velocidad_x = 0;
+        Fuerza_x = -Rebote;
+        MOVER_ADELANTE();
+    }
+    else if(Rebote < 0){
+        Posicion_x = Punto_choque;
+        Velocidad_x = 0;
+        Fuerza_x = -Rebote;
+        MOVER_ATRAS();
+    }
+
+}
+
 void personaje::Destruirse()
 {
     //Crear animacion de destruccion.

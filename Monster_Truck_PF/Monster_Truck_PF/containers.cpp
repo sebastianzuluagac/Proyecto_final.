@@ -3,7 +3,7 @@
 containers::containers(int Pos_x, int Pos_y, char Tipo)
 {
     QString direccion="../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/containers/";
-    int tamx=0,tamy=0;
+    int tamy=0;
     switch (Tipo) {
         case 'a':{direccion.append("container_amarillo.png");tamx=602;tamy=209;}break;//a=amarillo
         case 'A':{direccion.append("C_Amarillo_F.png");tamx=200;tamy=216;}break;//A=C_Amarillo_F
@@ -38,5 +38,6 @@ int containers::Datos(int Indx)
     if(Indx == 0) return Pos_x;
     else if(Indx == 1) return Pos_y;
     else if(Indx == 2) return Grados;
+    else if(Indx == 3) return tamx*0.5;
     else return 0;
 }
