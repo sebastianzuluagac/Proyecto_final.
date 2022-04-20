@@ -38,6 +38,7 @@ public:
     void Limite_inf(int Valor_limite);
     void Punto_colision(int Punto_colision, int Rango_colision);
     void Choque_frontal(int Punto_choque, int Rebote);
+    void Danio_vehiculo(short int Danios);
     void Destruirse();
 
     //Gestion de los datos del jugador---------------------------------
@@ -59,6 +60,7 @@ private:
     float Aceleracion_ang_x=1, Aceleracion_ang_y=1, Velocidad_ang_x=1, Velocidad_ang_y=1, Grado = 0, Momento_inercia = 10, Fuerza_ang_x = 0, Fuerza_ang_y = 10;
     float Limite_inferior = 500, Punto_inicial_colision = 0, Rango_colision;
     int dinero=0,carrosDes=0,carroElegido=0,nivelesDes=1;
+    short int Resistencia, Estado_vehiculo;
     bool Colision = false;
     QGraphicsScene *scene;
     QTimer *velocimetro;

@@ -74,6 +74,9 @@ void MainWindow::Detener_juego()
     //niveles
     ui->niveles->setEnabled(true);
     ui->niveles->setHidden(false);
+    //Boton atras
+    ui->home->setEnabled(true);
+    ui->home->setHidden(false);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *tecla)
@@ -134,9 +137,11 @@ void MainWindow::Juego_activo()
                 if(carro->Datos(4) > Contenedores[i]->Datos(1)){
                     if(carro->Datos(3) < Contenedores[i]->Datos(0)){
                         carro->Choque_frontal(Contenedores[i]->Datos(0)-140 , carro->Datos(0));
+                        carro->Danio_vehiculo(carro->Datos(10)*0.005);
                     }
                     else if(carro->Datos(3) > Contenedores[i]->Datos(0)){
                         carro->Choque_frontal(Contenedores[i]->Datos(0)+Contenedores[i]->Datos(3)+20, carro->Datos(0));
+                        carro->Danio_vehiculo(carro->Datos(10)*0.005);
                     }
                 }
                 else{
@@ -157,14 +162,58 @@ void MainWindow::Juego_activo()
     //Inicio de interaccion colision con pinchos.
     for(int i = 0; i < Pincho.length(); i++){
         if(carro->collidesWithItem(Pincho[i])){
-            Jugando = false;
+            carro->Danio_vehiculo(carro->Datos(9));
         }
     }
     //Fin de interaccion colision con pinchos.
     //++++++++//
 
-    //Detener ejecucion del juego.
-    if(Jugando == false){
+    //+++++++++//
+    //Inicio de interaccion colision con bombas.
+    for(int i = 0; i < Mina.length(); i++){
+        if(carro->collidesWithItem(Mina[i])){
+            if(Mina[i]->Mina_activa() == true){
+                carro->Danio_vehiculo(carro->Datos(10)*0.2);
+                Mina[i]->Destruir_mina();
+            }
+        }
+    }
+    //Fin de interaccion colision con bombas.
+    //++++++++//
+
+    //+++++++++//
+    //Inicio de interaccion colision con aves.
+    for(int i = 0; i < Aves.length(); i++){
+        if(carro->collidesWithItem(Aves[i])){
+            if(Aves[i]->Ave_activa() == true){
+                carro->Danio_vehiculo(carro->Datos(10)*0.1);
+                Aves[i]->Destruir_ave();
+            }
+        }
+    }
+    //Fin de interaccion colision con aves.
+    //++++++++//
+
+    //+++++++++//
+    //Inicio de interaccion colision con monedas.
+    for(int i = 0; i < Money.length(); i++){
+        if(carro->collidesWithItem(Money[i])){
+            if(Money[i]->Moneda_activa() == true){
+                carro->UPDATE_DATA('D', '+', 1);
+                Money[i]->Destruir_moneda();
+            }
+        }
+    }
+    //Fin de interaccion colision con monedas.
+    //++++++++//
+
+    //Actualizar barra de estado y cantidad de monedas.
+    ui->cant_money->display(carro->Datos(11));
+    ui->vidaP->setValue(carro->Datos(9));
+
+    //Detener ejecucion del juego si el vehiculo esta dañado completamente.
+    if(carro->Datos(9) <= 0){
+        Jugando = false;
         timer->stop();
         Detener_juego();
     }
@@ -382,5 +431,5 @@ void MainWindow::on_home_clicked()
     //niveles
     ui->niveles->setEnabled(false);
     ui->niveles->setHidden(true);
-
+    Jugando = false;
 }

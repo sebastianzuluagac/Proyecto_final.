@@ -63,7 +63,7 @@ public:
     QPushButton *R;
     QGraphicsView *carrotienda;
     QLabel *precio;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *comprar_seleccionar;
     QPushButton *seleccionar;
     QPushButton *buy;
@@ -183,7 +183,13 @@ public:
         home->setObjectName(QString::fromUtf8("home"));
         home->setGeometry(QRect(20, 10, 41, 41));
         home->setFont(font);
-        QIcon icon1(QIcon::fromTheme(QString::fromUtf8("\360\237\224\231")));
+        QIcon icon1;
+        QString iconThemeName = QString::fromUtf8("\360\237\224\231");
+        if (QIcon::hasThemeIcon(iconThemeName)) {
+            icon1 = QIcon::fromTheme(iconThemeName);
+        } else {
+            icon1.addFile(QString::fromUtf8("."), QSize(), QIcon::Normal, QIcon::Off);
+        }
         home->setIcon(icon1);
         home->setIconSize(QSize(16, 16));
         vidaP = new QProgressBar(centralwidget);
@@ -198,6 +204,7 @@ public:
         brush1.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Disabled, QPalette::Highlight, brush1);
         vidaP->setPalette(palette);
+        vidaP->setMaximum(1000);
         vidaP->setValue(24);
         vidaP->setTextVisible(false);
         icon_money = new QPushButton(centralwidget);
@@ -213,8 +220,24 @@ public:
         cant_money = new QLCDNumber(centralwidget);
         cant_money->setObjectName(QString::fromUtf8("cant_money"));
         cant_money->setGeometry(QRect(130, 10, 51, 41));
+        QPalette palette1;
+        QBrush brush2(QColor(0, 0, 0, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette1.setBrush(QPalette::Active, QPalette::Light, brush2);
+        palette1.setBrush(QPalette::Active, QPalette::BrightText, brush2);
+        palette1.setBrush(QPalette::Active, QPalette::HighlightedText, brush2);
+        palette1.setBrush(QPalette::Active, QPalette::ToolTipBase, brush2);
+        palette1.setBrush(QPalette::Inactive, QPalette::Light, brush2);
+        palette1.setBrush(QPalette::Inactive, QPalette::BrightText, brush2);
+        palette1.setBrush(QPalette::Inactive, QPalette::HighlightedText, brush2);
+        palette1.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush2);
+        palette1.setBrush(QPalette::Disabled, QPalette::Light, brush2);
+        palette1.setBrush(QPalette::Disabled, QPalette::BrightText, brush2);
+        palette1.setBrush(QPalette::Disabled, QPalette::HighlightedText, brush2);
+        palette1.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush2);
+        cant_money->setPalette(palette1);
         QFont font1;
-        font1.setFamily(QString::fromUtf8("Myanmar Text"));
+        font1.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
         font1.setPointSize(15);
         cant_money->setFont(font1);
         R = new QPushButton(centralwidget);
@@ -228,18 +251,18 @@ public:
         precio = new QLabel(centralwidget);
         precio->setObjectName(QString::fromUtf8("precio"));
         precio->setGeometry(QRect(270, 280, 170, 13));
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(270, 300, 168, 23));
-        comprar_seleccionar = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(270, 300, 168, 25));
+        comprar_seleccionar = new QHBoxLayout(layoutWidget);
         comprar_seleccionar->setObjectName(QString::fromUtf8("comprar_seleccionar"));
         comprar_seleccionar->setContentsMargins(0, 0, 0, 0);
-        seleccionar = new QPushButton(widget);
+        seleccionar = new QPushButton(layoutWidget);
         seleccionar->setObjectName(QString::fromUtf8("seleccionar"));
 
         comprar_seleccionar->addWidget(seleccionar);
 
-        buy = new QPushButton(widget);
+        buy = new QPushButton(layoutWidget);
         buy->setObjectName(QString::fromUtf8("buy"));
 
         comprar_seleccionar->addWidget(buy);
@@ -247,7 +270,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 787, 20));
+        menubar->setGeometry(QRect(0, 0, 787, 21));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));

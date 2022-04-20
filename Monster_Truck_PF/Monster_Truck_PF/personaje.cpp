@@ -15,6 +15,8 @@ personaje::personaje(QGraphicsScene *scene, float Pos_x, float Pos_y)
     this->Posicion_x = Pos_x;
     this->Posicion_y = Pos_y;
     this->setPos(Pos_x, Pos_y);
+    Resistencia = 1000;
+    Estado_vehiculo = Resistencia;
 }
 
 personaje::personaje()
@@ -74,6 +76,9 @@ float personaje::Datos(char Index)
     else if(Index == 6) return Fuerza_ang_y;
     else if(Index == 7) return Punto_inicial_colision;
     else if(Index == 8) return Limite_inferior;
+    else if(Index == 9) return Estado_vehiculo;
+    else if(Index == 10) return Resistencia;
+    else if(Index == 11) return dinero;
     else return 0;
 }
 
@@ -134,6 +139,11 @@ void personaje::Choque_frontal(int Punto_choque, int Rebote)
         MOVER_ATRAS();
     }
 
+}
+
+void personaje::Danio_vehiculo(short int Danios)
+{
+    Estado_vehiculo -= Danios;
 }
 
 void personaje::Destruirse()
