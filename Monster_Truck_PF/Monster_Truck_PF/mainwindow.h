@@ -69,6 +69,7 @@ private:
     QGraphicsScene *scene;
     nivel *Niveles;
     personaje *carro;
+    meta *Finish;
     QVector <cajas*> Box;
     QVector <pinchos*> Pincho;
     QVector <monedas*> Money;
@@ -76,10 +77,13 @@ private:
     QVector <minas*> Mina;
     QVector <mujer*> Dama;
     QVector <pajaro*> Aves;
+    QVector <cierra*> Cierras;
+    QVector <resorte*> Resortes;
     QKeyEvent *tecla;
     QTimer *timer;
 
     //Tienda
     QGraphicsScene *tienda;
+    ima *modelo;
 };
 #endif // MAINWINDOW_H

@@ -61,7 +61,6 @@ public:
     QPushButton *icon_money;
     QLCDNumber *cant_money;
     QPushButton *R;
-    QGraphicsView *carrotienda;
     QLabel *precio;
     QWidget *layoutWidget;
     QHBoxLayout *comprar_seleccionar;
@@ -245,9 +244,6 @@ public:
         R->setGeometry(QRect(670, 160, 51, 51));
         R->setFont(font);
         R->setAutoFillBackground(true);
-        carrotienda = new QGraphicsView(centralwidget);
-        carrotienda->setObjectName(QString::fromUtf8("carrotienda"));
-        carrotienda->setGeometry(QRect(250, 110, 211, 161));
         precio = new QLabel(centralwidget);
         precio->setObjectName(QString::fromUtf8("precio"));
         precio->setGeometry(QRect(270, 280, 170, 13));
@@ -288,8 +284,7 @@ public:
         QWidget::setTabOrder(escena, home);
         QWidget::setTabOrder(home, icon_money);
         QWidget::setTabOrder(icon_money, R);
-        QWidget::setTabOrder(R, carrotienda);
-        QWidget::setTabOrder(carrotienda, username);
+        QWidget::setTabOrder(R, username);
         QWidget::setTabOrder(username, buy);
 
         retranslateUi(MainWindow);

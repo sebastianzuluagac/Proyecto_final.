@@ -42,13 +42,18 @@ MainWindow::MainWindow(QWidget *parent)
     ui->buy->setHidden(true);
     ui->seleccionar->setEnabled(false);
     ui->seleccionar->setHidden(true);
+    //Escena de la tienda.
+    tienda= new QGraphicsScene;
+    tienda->setSceneRect(0,0,400,400);
+    //Carros en la tienda
+    QBrush fondo= QPixmap("../Monster_Truck_PF/MEDIA/SPRITES_GAME/niveles/ejemplo mundo.webp");
     //Declaracion temporizador de juego activo.
     timer = new QTimer;
     connect(timer, SIGNAL(timeout()), this, SLOT(Juego_activo()));    
     //Escena.
     ui->escena->setScene(scene);
     //Enviar direccion de vectores de objetos que añadiran los niveles.
-    Niveles->Recibir_vectores(&Box, &Pincho, &Money, &Contenedores, &Mina, &Dama, &Aves);
+    Niveles->Recibir_vectores(&Box, &Pincho, &Money, &Contenedores, &Mina, &Dama, &Aves, &Cierras, &Resortes, Finish);
 }
 
 MainWindow::~MainWindow()
@@ -373,8 +378,10 @@ void MainWindow::on_nivel4_clicked()
 
 void MainWindow::on_tienda_clicked()
 {
-    ui->escena->setEnabled(false);
-    ui->escena->setHidden(true);
+    ui->escena->setEnabled(true);
+    ui->escena->setHidden(false);
+    ui->widget_2->setGeometry(0,0,800,420);
+    ui->escena->setScene(tienda);
     //jugar y tienda
     ui->jugar->setEnabled(false);
     ui->jugar->setHidden(true);
@@ -395,8 +402,10 @@ void MainWindow::on_tienda_clicked()
     //Boton atras
     ui->home->setEnabled(true);
     ui->home->setHidden(false);
-
-
+    //Carros en la tienda
+    modelo=new ima(80, 120,240,153,"../Monster_Truck_PF/MEDIA/SPRITES_GAME/personaje/carro1/carro_mounstro.png");
+    modelo->set_sprite(0,0,240,153);
+    tienda->addItem(modelo);
 }
 
 
@@ -405,6 +414,8 @@ void MainWindow::on_home_clicked()
     //camara de juego
     ui->escena->setEnabled(false);
     ui->escena->setHidden(true);
+    ui->widget_2->setGeometry(0,0,1380,tamnivelY);
+    ui->escena->setScene(scene);
     //Boton atras
     ui->home->setEnabled(false);
     ui->home->setHidden(true);
@@ -431,5 +442,7 @@ void MainWindow::on_home_clicked()
     //niveles
     ui->niveles->setEnabled(false);
     ui->niveles->setHidden(true);
+    ui->seleccionar->setEnabled(false);
+    ui->seleccionar->setHidden(true);
     Jugando = false;
 }

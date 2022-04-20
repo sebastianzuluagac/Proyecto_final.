@@ -97,13 +97,32 @@ void nivel::Crear_objeto(int Tipo, int Pos_x, int Pos_y, int Grados, char Tipo_e
         Contador_damas+=1;
     }break;
 
+    case 55:{
+    //Numero 7 correspondiente a tipo Cierra.
+        (*Cierras).push_back(new cierra(Pos_x, Pos_y, (Tipo_especial-48)*100, Grados));
+        level1->addItem((*Cierras)[Contador_cierras]);
+        Contador_cierras+=1;
+    }break;
+
+    case 56:{
+    //Numero 8 correspondiente a tipo Resorte.
+        (*Resortes).push_back(new resorte(Pos_x, Pos_y));
+        level1->addItem((*Resortes)[Contador_resortes]);
+        Contador_resortes+=1;
+    }break;
+
+    case 57:{
+    //Numero 9 correspondiente a tipo Meta.
+        Finish = new meta(Pos_x, Pos_y);
+        level1->addItem(Finish);
+    }break;
 
     }
 }
 
 void nivel::Recibir_vectores(QVector <cajas*>* Box, QVector <pinchos*>* Pincho, QVector <monedas*>* Money,
                              QVector <containers*>* Contenedores, QVector <minas*>* Mina, QVector <mujer*>* Dama,
-                             QVector <pajaro*>* Aves){
+                             QVector <pajaro*>* Aves, QVector <cierra*>* Cierras, QVector <resorte*>* Resortes, meta *Finish){
     this->Box = Box;
     this->Pincho = Pincho;
     this->Money = Money;
@@ -111,6 +130,9 @@ void nivel::Recibir_vectores(QVector <cajas*>* Box, QVector <pinchos*>* Pincho, 
     this->Mina = Mina;
     this->Dama = Dama;
     this->Aves = Aves;
+    this->Cierras = Cierras;
+    this->Resortes = Resortes;
+    this->Finish = Finish;
 }
 
 void nivel::Eliminar_memoria_vectores()
@@ -170,6 +192,26 @@ void nivel::Eliminar_memoria_vectores()
     }
     (*Dama).clear();
     Contador_damas = 0;
+
+    //Liberar memoria de cierras y eliminarlos de la escena level1.
+    for(int i = 0; i < (*Cierras).size(); i++){
+        level1->removeItem((*Cierras)[i]);
+        delete (*Cierras)[i];
+    }
+    (*Cierras).clear();
+    Contador_cierras = 0;
+
+    //Liberar memoria de damas y eliminarlos de la escena level1.
+    for(int i = 0; i < (*Resortes).size(); i++){
+        level1->removeItem((*Resortes)[i]);
+        delete (*Resortes)[i];
+    }
+    (*Resortes).clear();
+    Contador_resortes = 0;
+
+    //Liberar memorita de meta y eliminarla de la escena level1.
+    level1->removeItem(Finish);
+    delete Finish;
 }
 
 
