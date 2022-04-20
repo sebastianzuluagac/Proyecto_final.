@@ -57,7 +57,7 @@ private slots:
 
 private:
     float Aceleracion_x=0, Aceleracion_y=0, Velocidad_x=0, Velocidad_y=0, Posicion_x, Posicion_y, masa=200, Fuerza_x=0, Fuerza_y=0, T=100;
-    float Fuerza_neta = 0, Friccion_x = 1, Gravedad = 0.8;
+    float Fuerza_neta = 0, Friccion_x = 1, Gravedad = 0.9;
     float Aceleracion_ang_x=1, Aceleracion_ang_y=1, Velocidad_ang_x=1, Velocidad_ang_y=1, Grado = 0, Momento_inercia = 10, Fuerza_ang_x = 0, Fuerza_ang_y = 10;
     float Limite_inferior = 500, Punto_inicial_colision = 0, Rango_colision;
     int dinero=0,carrosDes=0,carroElegido=0,nivelesDes=1;

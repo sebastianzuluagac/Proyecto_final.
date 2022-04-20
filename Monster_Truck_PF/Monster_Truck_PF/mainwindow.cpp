@@ -67,7 +67,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::Detener_juego()
 {
-    delete carro;
+    if(Jugando == true){
+        delete carro;
+        Jugando = false;
+    }
+    else Jugando = false;
     ui->escena->setEnabled(true);
     ui->escena->setHidden(true);
     //jugar y tienda
@@ -190,7 +194,7 @@ void MainWindow::Juego_activo()
     for(int i = 0; i < Aves.length(); i++){
         if(carro->collidesWithItem(Aves[i])){
             if(Aves[i]->Ave_activa() == true){
-                carro->Danio_vehiculo(carro->Datos(10)*0.1);
+                carro->UPDATE_DATA('D', '+', 3);
                 Aves[i]->Destruir_ave();
             }
         }
@@ -269,7 +273,6 @@ void MainWindow::Juego_activo()
     //Detener ejecucion del juego si el vehiculo esta dañado completamente.
     if(carro->Datos(9) <= 0){
         Ganastes = false;
-        Jugando = false;
         timer->stop();
         Niveles->Eliminar_memoria_vectores();
         //Colocar aqui el fondo de finalizacion de juego.
@@ -281,7 +284,6 @@ void MainWindow::Juego_activo()
     //Inicio de interaccion colision con la meta.
     if(carro->Datos(3) >= Finish->Datos()){
         Ganastes = true;
-        Jugando = false;
         timer->stop();
         Niveles->Eliminar_memoria_vectores();
         //Colocar aqui el fondo de finalizacion de juego.
@@ -512,7 +514,6 @@ void MainWindow::on_home_clicked()
     ui->niveles->setHidden(true);
     ui->seleccionar->setEnabled(false);
     ui->seleccionar->setHidden(true);
-    Jugando = false;
     timer->stop();
     Detener_juego();
 }
