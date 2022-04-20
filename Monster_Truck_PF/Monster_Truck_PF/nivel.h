@@ -29,7 +29,7 @@ public:
     void Crear_objeto(int Tipo, int Pos_x, int Pos_y, int Grados, char Tipo_especial);
     void Recibir_vectores(QVector <cajas*>* Box, QVector <pinchos*>* Pincho, QVector <monedas*>* Money,
                           QVector <containers*>* Contenedores, QVector <minas*>* Mina, QVector <mujer*>* Dama,
-                          QVector <pajaro*>* Aves, QVector <cierra*>* Cierras, QVector <resorte*>* Resortes, meta *Finish);
+                          QVector <pajaro*>* Aves, QVector <cierra*>* Cierras, QVector <resorte*>* Resortes, meta *(*Finish));
     void Eliminar_memoria_vectores();
     QGraphicsScene* getlevel(){return level1;}
 
@@ -39,7 +39,7 @@ private:
     QGraphicsScene *level1;
     QPixmap fondo;
     containers *container;
-    meta *Finish;
+    meta *(*Finish);
     QVector <cajas*>* Box;
     QVector <pinchos*>* Pincho;
     QVector <monedas*>* Money;

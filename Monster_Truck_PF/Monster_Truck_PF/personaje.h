@@ -40,6 +40,7 @@ public:
     void Choque_frontal(int Punto_choque, int Rebote);
     void Danio_vehiculo(short int Danios);
     void Destruirse();
+    void Ganar();
 
     //Gestion de los datos del jugador---------------------------------
     void USERNAME(QString name){username=name;}

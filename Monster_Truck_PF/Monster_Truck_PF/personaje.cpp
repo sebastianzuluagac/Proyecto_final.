@@ -149,8 +149,15 @@ void personaje::Danio_vehiculo(short int Danios)
 void personaje::Destruirse()
 {
     //Crear animacion de destruccion.
+    velocimetro->stop();
     delete velocimetro;
-    delete this;
+}
+
+void personaje::Ganar()
+{
+    //Crear animacion de ganar.
+    velocimetro->stop();
+    delete velocimetro;
 }
 
 void personaje::UPDATE_DATA(char dat,char signo, int cant)

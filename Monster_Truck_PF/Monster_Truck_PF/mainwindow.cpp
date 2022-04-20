@@ -53,7 +53,7 @@ MainWindow::MainWindow(QWidget *parent)
     //Escena.
     ui->escena->setScene(scene);
     //Enviar direccion de vectores de objetos que añadiran los niveles.
-    Niveles->Recibir_vectores(&Box, &Pincho, &Money, &Contenedores, &Mina, &Dama, &Aves, &Cierras, &Resortes, Finish);
+    Niveles->Recibir_vectores(&Box, &Pincho, &Money, &Contenedores, &Mina, &Dama, &Aves, &Cierras, &Resortes, &Finish);
 }
 
 MainWindow::~MainWindow()
@@ -67,8 +67,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::Detener_juego()
 {
-    Niveles->Eliminar_memoria_vectores();
-    carro->Destruirse();
+    delete carro;
     ui->escena->setEnabled(true);
     ui->escena->setHidden(true);
     //jugar y tienda
@@ -212,16 +211,85 @@ void MainWindow::Juego_activo()
     //Fin de interaccion colision con monedas.
     //++++++++//
 
+    //+++++++++//
+    //Inicio de interaccion colision con cierras.
+    for(int i = 0; i < Cierras.length(); i++){
+        if(carro->collidesWithItem(Cierras[i])){
+            if(carro->Datos(3) < Cierras[i]->Datos(0)){
+                carro->Choque_frontal(Cierras[i]->Datos(0)-140 , Cierras[i]->Datos(2)*0.5);
+                carro->Danio_vehiculo(carro->Datos(10)*0.05);
+            }
+            else if(carro->Datos(3) > Cierras[i]->Datos(0)){
+                carro->Choque_frontal(Cierras[i]->Datos(0)+Cierras[i]->Datos(1)+20, -Cierras[i]->Datos(2)*0.5);
+                carro->Danio_vehiculo(carro->Datos(10)*0.05);
+            }
+        }
+    }
+    //Fin de interaccion colision con cierras.
+    //++++++++//
+
+
+    //+++++++++//
+    //Inicio de interaccion colision con resortes.
+    for(int i = 0; i < Resortes.length(); i++){
+        if(carro->collidesWithItem(Resortes[i])){
+            if(carro->Datos(4) > Resortes[i]->Datos(1)){
+                if(carro->Datos(3) < Resortes[i]->Datos(0)){
+                    carro->Choque_frontal(Resortes[i]->Datos(0)-140, Resortes[i]->Datos(3)*10);
+                }
+                else if(carro->Datos(3) > Resortes[i]->Datos(0)){
+                    carro->Choque_frontal(Resortes[i]->Datos(0)+Resortes[i]->Datos(2)+20, -Resortes[i]->Datos(3)*10);
+                }
+            }
+            else if(carro->Datos(4) < Resortes[i]->Datos(1)){
+                if(carro->Datos(3) < Resortes[i]->Datos(0)+(Resortes[i]->Datos(2)/2)){
+                    carro->Mover(-Resortes[i]->Datos(3)*20, -Resortes[i]->Datos(3)*2);
+                    carro->Limite_inf(Resortes[i]->Datos(1)-74);
+                }
+                else if(carro->Datos(3) > Resortes[i]->Datos(0)+(Resortes[i]->Datos(2)/2)){
+                    carro->Mover(Resortes[i]->Datos(3)*20, -Resortes[i]->Datos(3));
+                    carro->Limite_inf(Resortes[i]->Datos(1)-74);
+                }
+            }
+        }
+    }
+    //Fin de interaccion colision con resortes.
+    //++++++++//
+
+    //+++++++++//
+    //Inicio de interaccion colision capo con el suelo.
+    if(carro->Carro_apoyado() == true && (carro->Datos(2) > 150 || carro->Datos(2) < -150)) carro->Danio_vehiculo(carro->Datos(10)*0.002);
+    //Fin de interaccion colision con resortes.
+    //++++++++//
+
     //Actualizar barra de estado y cantidad de monedas.
     ui->cant_money->display(carro->Datos(11));
     ui->vidaP->setValue(carro->Datos(9));
 
     //Detener ejecucion del juego si el vehiculo esta dañado completamente.
     if(carro->Datos(9) <= 0){
+        Ganastes = false;
         Jugando = false;
         timer->stop();
-        Detener_juego();
+        Niveles->Eliminar_memoria_vectores();
+        //Colocar aqui el fondo de finalizacion de juego.
+        carro->Destruirse();
+        QTimer::singleShot(2500, this, SLOT(Detener_juego()));
     }
+
+    //+++++++++//
+    //Inicio de interaccion colision con la meta.
+    if(carro->Datos(3) >= Finish->Datos()){
+        Ganastes = true;
+        Jugando = false;
+        timer->stop();
+        Niveles->Eliminar_memoria_vectores();
+        //Colocar aqui el fondo de finalizacion de juego.
+        carro->Ganar();
+        QTimer::singleShot(2500, this, SLOT(Detener_juego()));
+    }
+    //Fin de interaccion colision con la meta.
+    //++++++++//
 }
 
 
@@ -295,7 +363,7 @@ void MainWindow::on_nivel1_clicked()
     scene->addItem(carro);
     //Activar temporizador ciclo automatico.
     Jugando = true;
-    timer->start(20);
+    timer->start(50);
 }
 
 
@@ -445,4 +513,6 @@ void MainWindow::on_home_clicked()
     ui->seleccionar->setEnabled(false);
     ui->seleccionar->setHidden(true);
     Jugando = false;
+    timer->stop();
+    Detener_juego();
 }

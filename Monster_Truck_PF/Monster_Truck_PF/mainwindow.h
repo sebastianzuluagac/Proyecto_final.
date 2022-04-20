@@ -33,10 +33,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void Detener_juego();
-
 public slots:
     void Juego_activo();
+    void Detener_juego();
 
 protected:
     void keyPressEvent(QKeyEvent *tecla);
@@ -65,6 +64,7 @@ private slots:
 private:
     bool Colision = false;
     bool Jugando = false;
+    bool Ganastes = false;
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     nivel *Niveles;

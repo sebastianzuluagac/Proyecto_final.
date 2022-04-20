@@ -99,22 +99,22 @@ void nivel::Crear_objeto(int Tipo, int Pos_x, int Pos_y, int Grados, char Tipo_e
 
     case 55:{
     //Numero 7 correspondiente a tipo Cierra.
-        (*Cierras).push_back(new cierra(Pos_x, Pos_y, (Tipo_especial-48)*100, Grados));
+        (*Cierras).push_back(new cierra(Pos_x, Pos_y, (Tipo_especial-48)*20, Grados));
         level1->addItem((*Cierras)[Contador_cierras]);
         Contador_cierras+=1;
     }break;
 
     case 56:{
     //Numero 8 correspondiente a tipo Resorte.
-        (*Resortes).push_back(new resorte(Pos_x, Pos_y));
+        (*Resortes).push_back(new resorte(Pos_x, Pos_y, (Tipo_especial-48)));
         level1->addItem((*Resortes)[Contador_resortes]);
         Contador_resortes+=1;
     }break;
 
     case 57:{
     //Numero 9 correspondiente a tipo Meta.
-        Finish = new meta(Pos_x, Pos_y);
-        level1->addItem(Finish);
+        (*Finish) = new meta(Pos_x, Pos_y);
+        level1->addItem((*Finish));
     }break;
 
     }
@@ -122,7 +122,7 @@ void nivel::Crear_objeto(int Tipo, int Pos_x, int Pos_y, int Grados, char Tipo_e
 
 void nivel::Recibir_vectores(QVector <cajas*>* Box, QVector <pinchos*>* Pincho, QVector <monedas*>* Money,
                              QVector <containers*>* Contenedores, QVector <minas*>* Mina, QVector <mujer*>* Dama,
-                             QVector <pajaro*>* Aves, QVector <cierra*>* Cierras, QVector <resorte*>* Resortes, meta *Finish){
+                             QVector <pajaro*>* Aves, QVector <cierra*>* Cierras, QVector <resorte*>* Resortes, meta *(*Finish)){
     this->Box = Box;
     this->Pincho = Pincho;
     this->Money = Money;
@@ -210,8 +210,8 @@ void nivel::Eliminar_memoria_vectores()
     Contador_resortes = 0;
 
     //Liberar memorita de meta y eliminarla de la escena level1.
-    level1->removeItem(Finish);
-    delete Finish;
+    level1->removeItem((*Finish));
+    delete (*Finish);
 }
 
 
