@@ -61,6 +61,14 @@ private slots:
 
     void on_home_clicked();
 
+    void on_R_clicked();
+
+    void on_L_clicked();
+
+    void on_seleccionar_clicked();
+
+    void on_buy_clicked();
+
 private:
     bool Colision = false;
     bool Jugando = false;
@@ -70,6 +78,7 @@ private:
     nivel *Niveles;
     personaje *carro;
     meta *Finish;
+    QMap <char, ima*> Imagenes;
     QVector <cajas*> Box;
     QVector <pinchos*> Pincho;
     QVector <monedas*> Money;
@@ -85,5 +94,8 @@ private:
     //Tienda
     QGraphicsScene *tienda;
     ima *modelo;
+
+    QString name;
+    int nLR=0;
 };
 #endif // MAINWINDOW_H

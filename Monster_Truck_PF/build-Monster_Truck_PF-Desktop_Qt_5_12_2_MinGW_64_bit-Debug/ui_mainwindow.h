@@ -90,11 +90,14 @@ public:
 
         inicio = new QWidget(centralwidget);
         inicio->setObjectName(QString::fromUtf8("inicio"));
-        inicio->setGeometry(QRect(390, 0, 188, 120));
+        inicio->setGeometry(QRect(390, 0, 231, 141));
         gridLayout = new QGridLayout(inicio);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         respuesta = new QLabel(inicio);
         respuesta->setObjectName(QString::fromUtf8("respuesta"));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Terminal"));
+        respuesta->setFont(font);
 
         gridLayout->addWidget(respuesta, 1, 0, 1, 1);
 
@@ -145,7 +148,7 @@ public:
 
         niveles = new QWidget(centralwidget);
         niveles->setObjectName(QString::fromUtf8("niveles"));
-        niveles->setGeometry(QRect(150, 320, 441, 80));
+        niveles->setGeometry(QRect(150, 340, 441, 80));
         nivel4 = new QPushButton(niveles);
         nivel4->setObjectName(QString::fromUtf8("nivel4"));
         nivel4->setGeometry(QRect(330, 10, 91, 61));
@@ -174,14 +177,14 @@ public:
         L = new QPushButton(centralwidget);
         L->setObjectName(QString::fromUtf8("L"));
         L->setGeometry(QRect(79, 160, 51, 51));
-        QFont font;
-        font.setPointSize(25);
-        L->setFont(font);
+        QFont font1;
+        font1.setPointSize(25);
+        L->setFont(font1);
         L->setAutoFillBackground(true);
         home = new QPushButton(centralwidget);
         home->setObjectName(QString::fromUtf8("home"));
         home->setGeometry(QRect(20, 10, 41, 41));
-        home->setFont(font);
+        home->setFont(font1);
         QIcon icon1;
         QString iconThemeName = QString::fromUtf8("\360\237\224\231");
         if (QIcon::hasThemeIcon(iconThemeName)) {
@@ -235,21 +238,21 @@ public:
         palette1.setBrush(QPalette::Disabled, QPalette::HighlightedText, brush2);
         palette1.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush2);
         cant_money->setPalette(palette1);
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
-        font1.setPointSize(15);
-        cant_money->setFont(font1);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
+        font2.setPointSize(15);
+        cant_money->setFont(font2);
         R = new QPushButton(centralwidget);
         R->setObjectName(QString::fromUtf8("R"));
         R->setGeometry(QRect(670, 160, 51, 51));
-        R->setFont(font);
+        R->setFont(font1);
         R->setAutoFillBackground(true);
         precio = new QLabel(centralwidget);
         precio->setObjectName(QString::fromUtf8("precio"));
-        precio->setGeometry(QRect(270, 280, 170, 13));
+        precio->setGeometry(QRect(320, 290, 170, 13));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(270, 300, 168, 25));
+        layoutWidget->setGeometry(QRect(320, 310, 168, 25));
         comprar_seleccionar = new QHBoxLayout(layoutWidget);
         comprar_seleccionar->setObjectName(QString::fromUtf8("comprar_seleccionar"));
         comprar_seleccionar->setContentsMargins(0, 0, 0, 0);
@@ -266,17 +269,16 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 787, 21));
+        menubar->setGeometry(QRect(0, 0, 787, 20));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
+        QWidget::setTabOrder(username, pw);
         QWidget::setTabOrder(pw, ingresar);
         QWidget::setTabOrder(ingresar, crearU);
-        QWidget::setTabOrder(crearU, nivel4);
-        QWidget::setTabOrder(nivel4, nivel1);
-        QWidget::setTabOrder(nivel1, nivel2);
-        QWidget::setTabOrder(nivel2, nivel3);
+        QWidget::setTabOrder(crearU, nivel1);
+        QWidget::setTabOrder(nivel1, nivel3);
         QWidget::setTabOrder(nivel3, tienda);
         QWidget::setTabOrder(tienda, jugar);
         QWidget::setTabOrder(jugar, L);
@@ -284,8 +286,10 @@ public:
         QWidget::setTabOrder(escena, home);
         QWidget::setTabOrder(home, icon_money);
         QWidget::setTabOrder(icon_money, R);
-        QWidget::setTabOrder(R, username);
-        QWidget::setTabOrder(username, buy);
+        QWidget::setTabOrder(R, nivel2);
+        QWidget::setTabOrder(nivel2, buy);
+        QWidget::setTabOrder(buy, seleccionar);
+        QWidget::setTabOrder(seleccionar, nivel4);
 
         retranslateUi(MainWindow);
 

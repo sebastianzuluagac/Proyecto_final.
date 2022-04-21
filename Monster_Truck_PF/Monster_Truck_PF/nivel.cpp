@@ -3,7 +3,7 @@
 nivel::nivel()
 {
     QPixmap imagen;
-    imagen.load(":/SPRITES_GAME/niveles/nivel1.png");
+    imagen.load("../Monster_Truck_PF/MEDIA/SPRITES_GAME/niveles/nivel1.png");
 
     fondo=imagen.copy(0,0,6060, 780);//.scaled(100,10);
     setPixmap(fondo);

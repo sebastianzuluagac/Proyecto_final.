@@ -11,6 +11,8 @@ personaje::personaje(QGraphicsScene *scene, float Pos_x, float Pos_y)
     velocimetro = new QTimer(this);
     connect(velocimetro, SIGNAL(timeout()), this, SLOT(Ciclo_automatico()));
     velocimetro->start(50);
+    Animacion = new QTimer(this);
+    connect(Animacion, SIGNAL(timeout()), this, SLOT(Animacion_destruccion()));
     this->scene = scene;
     this->Posicion_x = Pos_x;
     this->Posicion_y = Pos_y;
@@ -24,9 +26,29 @@ personaje::personaje()
 
 }
 
+void personaje::Iniciar_nivel()
+{
+    //setPixmap(QPixmap(nombre));
+    imagen.load(":/SPRITES_GAME/personaje/carro1/carro_mounstro.png");
+    setPixmap(imagen);
+    velocimetro->start(50);
+    this->Posicion_x = 0;
+    this->Posicion_y = 500;
+    this->setPos(0, 500);
+    Resistencia = 1000;
+    Estado_vehiculo = Resistencia;
+}
+
 void personaje::set_sprite(int posx, int posy)
 {
-    copia=imagen.copy(bloqueX*posx,bloqueY*posy,bloqueX, bloqueY).scaled(bloqueX*0.5,bloqueY*0.5);
+    copia=imagen.copy(bloqueX*posx,bloqueY*carroElegido,bloqueX, bloqueY).scaled(bloqueX*0.5,bloqueY*0.5);
+    setPixmap(copia);
+    posy-=0;
+}
+
+void personaje::set_sprite(int posx)
+{
+    copia=imagen.copy(130*posx, 0, 130, 150).scaled(130*1.5, 150*1.5);
     setPixmap(copia);
 }
 
@@ -34,7 +56,7 @@ void personaje::MOVER_ADELANTE()
 {
     //ANIMACION_MOVIMIENTO
     static short int pos=8;
-    set_sprite(pos,0);
+    set_sprite(pos, carroElegido);
     pos--;
     if (pos<0){
         pos=8;
@@ -48,7 +70,7 @@ void personaje::MOVER_ATRAS()
 {
     //ANIMACION_MOVIMIENTO
     static short int pos=0;
-    set_sprite(pos,0);
+    set_sprite(pos, carroElegido);
     pos++;
     if (pos>8){
         pos=0;
@@ -150,28 +172,32 @@ void personaje::Destruirse()
 {
     //Crear animacion de destruccion.
     velocimetro->stop();
-    delete velocimetro;
+    imagen.load("../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/explosion.png");
+    setPixmap(imagen);
+    this->setY(this->y()-180);
+    set_sprite(3);
+    Animacion->start(500);
 }
 
 void personaje::Ganar()
 {
     //Crear animacion de ganar.
     velocimetro->stop();
-    delete velocimetro;
+    setRotation(-70);
 }
 
 void personaje::UPDATE_DATA(char dat,char signo, int cant)
 {
     switch (dat) {
     case 'D':{
-            if (signo=='+')dinero++;
+            if (signo=='+')dinero+=cant;
             else if (signo=='-')dinero-=cant;
     }break;
     //-------------------------------------
 
     case 'C':{
         if (signo=='E')carroElegido=cant;
-        else if (signo=='D') carrosDes++;
+        else if (signo=='D') carrosDes.append(cant);
     }break;
     //-------------------------------------
 
@@ -192,7 +218,7 @@ int personaje::GET_DATA(char dat, char signo)
 
     case 'C':{
         if (signo=='E') return carroElegido;
-        else if (signo=='D') return carrosDes;
+        else if (signo=='D') return carrosDes.toInt();
     }break;
     //-------------------------------------
 
@@ -204,6 +230,13 @@ int personaje::GET_DATA(char dat, char signo)
 
     }
     return -1;
+}
+
+void personaje::SETDATA(int monedas, string carrosD, int nivelesD)
+{
+    dinero=monedas;
+    carrosDes=QString::fromLocal8Bit(carrosD.c_str()) ;
+    nivelesDes=nivelesD;
 }
 
 void personaje::Ciclo_automatico()
@@ -250,6 +283,18 @@ void personaje::Ciclo_automatico()
     Grado = Grado*180/3.14159265;
     this->Inclinacion(Grado);
 
+}
+
+void personaje::Animacion_destruccion()
+{
+    //ANIMACION_DESTRUCCION
+    static short int pos=4;
+    set_sprite(pos);
+    pos++;
+    if (pos>7){
+        pos=0;
+        Animacion->stop();
+    }
 }
 
 

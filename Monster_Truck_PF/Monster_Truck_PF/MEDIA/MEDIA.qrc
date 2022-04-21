@@ -113,5 +113,30 @@
         <file>MEDIA.qrc</file>
         <file>SPRITES_GAME/botones/compras1.webp</file>
         <file>SPRITES_GAME/botones/compras2.jpg</file>
+        <file>SPRITES_GAME/objetos/containers/C_Amarillo_F.png</file>
+        <file>SPRITES_GAME/objetos/containers/C_Azul_F.png</file>
+        <file>SPRITES_GAME/objetos/containers/C_Rojo_F.png</file>
+        <file>SPRITES_GAME/objetos/containers/container_azul.png</file>
+        <file>SPRITES_GAME/objetos/containers/container_rojo.png</file>
+        <file>SPRITES_GAME/objetos/monedas/iconmoney.png</file>
+        <file>SPRITES_GAME/objetos/monedas/moneda.png</file>
+        <file>SPRITES_GAME/objetos/monedas/monedas.png</file>
+        <file>SPRITES_GAME/objetos/cajas.png</file>
+        <file>SPRITES_GAME/objetos/cajasjpg.png</file>
+        <file>SPRITES_GAME/objetos/cierra.png</file>
+        <file>SPRITES_GAME/objetos/cierras.png</file>
+        <file>SPRITES_GAME/objetos/doraemon.png</file>
+        <file>SPRITES_GAME/objetos/explosion.png</file>
+        <file>SPRITES_GAME/objetos/explosion_Mina.png</file>
+        <file>SPRITES_GAME/objetos/meta.png</file>
+        <file>SPRITES_GAME/objetos/minas.png</file>
+        <file>SPRITES_GAME/objetos/mujer.png</file>
+        <file>SPRITES_GAME/objetos/pajaro.png</file>
+        <file>SPRITES_GAME/objetos/winer.png</file>
+        <file>SPRITES_GAME/objetos/gameover.jpg</file>
+        <file>SPRITES_GAME/objetos/N1.jpg</file>
+        <file>SPRITES_GAME/objetos/N2.jpg</file>
+        <file>SPRITES_GAME/objetos/N3.jpg</file>
+        <file>SPRITES_GAME/objetos/N4.jpg</file>
     </qresource>
 </RCC>

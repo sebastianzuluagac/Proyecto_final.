@@ -45,8 +45,14 @@ MainWindow::MainWindow(QWidget *parent)
     //Escena de la tienda.
     tienda= new QGraphicsScene;
     tienda->setSceneRect(0,0,400,400);
+    //Llenar mapa de imagenes decorativas.
+    Imagenes['g'] = new ima(0, 0, tamnivelX, tamnivelY, "../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/gameover.jpg");
+    Imagenes['w'] = new ima(0, 0, 237, 212, "../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/winer.png");
+
+    carro=new personaje(scene, 0, 500);
+
     //Carros en la tienda
-    QBrush fondo= QPixmap("../Monster_Truck_PF/MEDIA/SPRITES_GAME/niveles/ejemplo mundo.webp");
+
     //Declaracion temporizador de juego activo.
     timer = new QTimer;
     connect(timer, SIGNAL(timeout()), this, SLOT(Juego_activo()));    
@@ -68,7 +74,7 @@ MainWindow::~MainWindow()
 void MainWindow::Detener_juego()
 {
     if(Jugando == true){
-        delete carro;
+        //delete carro;
         Jugando = false;
     }
     else Jugando = false;
@@ -85,6 +91,8 @@ void MainWindow::Detener_juego()
     //Boton atras
     ui->home->setEnabled(true);
     ui->home->setHidden(false);
+    scene->removeItem(Imagenes['g']);
+    scene->removeItem(Imagenes['w']);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *tecla)
@@ -274,10 +282,14 @@ void MainWindow::Juego_activo()
     if(carro->Datos(9) <= 0){
         Ganastes = false;
         timer->stop();
+        GUARDAR_ESTADO(carro);
         Niveles->Eliminar_memoria_vectores();
         //Colocar aqui el fondo de finalizacion de juego.
+        Imagenes['g']->setX(carro->x()-400);
+        scene->addItem(Imagenes['g']);
         carro->Destruirse();
-        QTimer::singleShot(2500, this, SLOT(Detener_juego()));
+        ui->vidaP->setHidden(true);
+        QTimer::singleShot(5000, this, SLOT(Detener_juego()));
     }
 
     //+++++++++//
@@ -285,10 +297,15 @@ void MainWindow::Juego_activo()
     if(carro->Datos(3) >= Finish->Datos()){
         Ganastes = true;
         timer->stop();
+        GUARDAR_ESTADO(carro);
         Niveles->Eliminar_memoria_vectores();
         //Colocar aqui el fondo de finalizacion de juego.
+        Imagenes['w']->setX(carro->x());
+        Imagenes['w']->Escalar(237, 212, 2, 2);
+        scene->addItem(Imagenes['w']);
         carro->Ganar();
-        QTimer::singleShot(2500, this, SLOT(Detener_juego()));
+        ui->vidaP->setHidden(true);
+        QTimer::singleShot(5000, this, SLOT(Detener_juego()));
     }
     //Fin de interaccion colision con la meta.
     //++++++++//
@@ -312,9 +329,18 @@ void MainWindow::on_ingresar_clicked()
         ui->icon_money->setHidden(false);
         ui->cant_money->setEnabled(true);
         ui->cant_money->setHidden(false);
+
+
+        name=ui->username->text();
+        carro->USERNAME(name);
+
+        //Cargar los datos del usuario
+        CARGAR_ESTADO(carro );
+        ui->cant_money->display(carro->Datos(11));
+
     }
-    else ui->respuesta->setText("Ingreso Fallido");
-}
+    else ui->respuesta->setText("Contraseña y/o nombre INVALIDOS");
+   }
 
 
 
@@ -345,6 +371,7 @@ void MainWindow::on_jugar_clicked()
 
 void MainWindow::on_nivel1_clicked()
 {
+    carro->Iniciar_nivel();
     Niveles->CARGAR_MUNDO('1');
     ui->escena->setEnabled(false);
     ui->escena->setHidden(false);
@@ -360,7 +387,7 @@ void MainWindow::on_nivel1_clicked()
     ui->vidaP->setEnabled(true);
     ui->vidaP->setHidden(false);
     //Anadir personaje a la escena
-    carro=new personaje(scene, 0, 500);
+    //carro=new personaje(scene, 0, 500);
     carro->set_sprite(0,0);
     scene->addItem(carro);
     //Activar temporizador ciclo automatico.
@@ -371,6 +398,7 @@ void MainWindow::on_nivel1_clicked()
 
 void MainWindow::on_nivel2_clicked()
 {
+    carro->Iniciar_nivel();
     Niveles->CARGAR_MUNDO('2');
     ui->escena->setEnabled(false);
     ui->escena->setHidden(false);
@@ -386,7 +414,7 @@ void MainWindow::on_nivel2_clicked()
     ui->vidaP->setEnabled(true);
     ui->vidaP->setHidden(false);
     //Anadir personaje a la escena
-    carro=new personaje(scene, 0, 500);
+    //carro=new personaje(scene, 0, 500);
     carro->set_sprite(0,0);
     scene->addItem(carro);
     //Activar temporizador ciclo automatico.
@@ -397,6 +425,7 @@ void MainWindow::on_nivel2_clicked()
 
 void MainWindow::on_nivel3_clicked()
 {
+    carro->Iniciar_nivel();
     Niveles->CARGAR_MUNDO('3');
     ui->escena->setEnabled(false);
     ui->escena->setHidden(false);
@@ -412,7 +441,7 @@ void MainWindow::on_nivel3_clicked()
     ui->vidaP->setEnabled(true);
     ui->vidaP->setHidden(false);
     //Anadir personaje a la escena
-    carro=new personaje(scene, 0, 500);
+    //carro=new personaje(scene, 0, 500);
     carro->set_sprite(0,0);
     scene->addItem(carro);
     //Activar temporizador ciclo automatico.
@@ -423,6 +452,7 @@ void MainWindow::on_nivel3_clicked()
 
 void MainWindow::on_nivel4_clicked()
 {
+    carro->Iniciar_nivel();
     Niveles->CARGAR_MUNDO('4');
     ui->escena->setEnabled(false);
     ui->escena->setHidden(false);
@@ -438,7 +468,7 @@ void MainWindow::on_nivel4_clicked()
     ui->vidaP->setEnabled(true);
     ui->vidaP->setHidden(false);
     //Anadir personaje a la escena
-    carro=new personaje(scene, 0, 500);
+    //carro=new personaje(scene, 0, 500);
     carro->set_sprite(0,0);
     scene->addItem(carro);
     //Activar temporizador ciclo automatico.
@@ -474,8 +504,14 @@ void MainWindow::on_tienda_clicked()
     ui->home->setHidden(false);
     //Carros en la tienda
     modelo=new ima(80, 120,240,153,"../Monster_Truck_PF/MEDIA/SPRITES_GAME/personaje/carro1/carro_mounstro.png");
-    modelo->set_sprite(0,0,240,153);
+    modelo->set_sprite(0,nLR,240,153);
     tienda->addItem(modelo);
+
+    if(carro->GET_DATA('C','D') >=nLR){
+        ui->seleccionar->setEnabled(true);
+        ui->buy->setEnabled(false);
+        ui->precio->setText("Desbloqueado");
+    }
 }
 
 
@@ -499,6 +535,9 @@ void MainWindow::on_home_clicked()
     ui->R->setHidden(true);
     ui->buy->setEnabled(false);
     ui->buy->setHidden(true);
+    ui->seleccionar->setEnabled(false);
+    ui->seleccionar->setHidden(true);
+    ui->precio->setHidden(true);
     //jugar y tienda
     ui->jugar->setEnabled(true);
     ui->jugar->setHidden(false);
@@ -512,8 +551,93 @@ void MainWindow::on_home_clicked()
     //niveles
     ui->niveles->setEnabled(false);
     ui->niveles->setHidden(true);
-    ui->seleccionar->setEnabled(false);
-    ui->seleccionar->setHidden(true);
     timer->stop();
     Detener_juego();
+}
+
+void MainWindow::on_R_clicked()
+{   if (nLR<4)nLR++;
+    modelo->set_sprite(0,nLR,240,153);
+
+    string costoint=to_string(nLR*50);
+    QString precio;
+    if(carro->GET_DATA('C','D') >=nLR){
+        ui->seleccionar->setEnabled(true);
+        ui->buy->setEnabled(false);
+        precio.append("Desbloqueado");
+    }
+    else {
+        ui->seleccionar->setEnabled(false);
+        ui->buy->setEnabled(true);
+
+        precio.append("Costo: $");
+        precio.append( QString::fromLocal8Bit(costoint.c_str()) );
+    }
+    ui->precio->setText(precio);
+
+
+}
+
+
+void MainWindow::on_L_clicked()
+{
+    if (nLR>0)nLR--;
+    modelo->set_sprite(0,nLR,240,153);
+
+    string costoint=to_string(nLR*50);
+    int num=carro->GET_DATA('C','D');
+    string carrosDes=to_string(num);
+    QString precio;
+    for(unsigned long i=0;i<carrosDes.size();i++){
+
+        if( carrosDes[i]==nLR){
+            ui->seleccionar->setEnabled(true);
+            ui->buy->setEnabled(false);
+            precio.append("Desbloqueado");
+            GUARDAR_ESTADO(carro);
+        }
+        else {
+            ui->seleccionar->setEnabled(false);
+            ui->buy->setEnabled(true);
+
+            precio.append("Costo: $");
+            precio.append( QString::fromLocal8Bit(costoint.c_str()) );
+        }
+    }
+    ui->precio->setText(precio);
+
+
+
+}
+
+
+void MainWindow::on_seleccionar_clicked()
+{
+    ui->seleccionar->setEnabled(false);
+    carro->UPDATE_DATA('C','E',nLR);
+
+}
+
+void MainWindow::on_buy_clicked()
+{
+    ui->buy->setEnabled(false);
+
+    string n=to_string(nLR*50);
+    QString mensaje;
+    if(carro->GET_DATA('D',' ') >=nLR*50){
+        ui->seleccionar->setEnabled(true);
+        ui->buy->setEnabled(false);
+        carro->UPDATE_DATA('C','E',nLR);//Se escoge el carro automaticamente el comprar
+        carro->UPDATE_DATA('D','-',nLR*50);//Se hace el cobro del carro
+        mensaje.append("Compra Exitosa!!✅");
+    }
+    else {
+        ui->seleccionar->setEnabled(false);
+        ui->buy->setEnabled(true);
+
+        mensaje.append("Saldo Insuficiente!!❌");
+    }
+    ui->precio->setText(mensaje);
+    ui->cant_money->display(carro->Datos(11));
+
 }
