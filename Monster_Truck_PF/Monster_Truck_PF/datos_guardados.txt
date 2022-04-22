@@ -1,10 +1,13 @@
-sebas:	N3n	C0c	D190d
+sebas:	N5n	C2c	D136d
 
 carlos:	N3n	C0c	D43d
 
 juan:	N7n	C24c	D928d
 
 seas:	N4n	C0c	D4d
+
+
+
 
 
 
