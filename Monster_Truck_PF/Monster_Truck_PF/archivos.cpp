@@ -106,7 +106,7 @@ bool CARGAR_ESTADO(personaje *car)
         file.seekg(0);
         linealeida=new char [tam];
         while(!file.eof()){
-             qDebug()<<"eof  "<<file.eof()<<endl;
+             //qDebug()<<"eof  "<<file.eof()<<endl;
             file.getline(linealeida,tam);
             if(in(linealeida, car->GET_NAME().toStdString() )){
 

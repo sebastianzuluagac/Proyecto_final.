@@ -18,7 +18,7 @@
 #include "objetos.h"
 #define bloqueX 240
 #define bloqueY 153
-
+using namespace std;
 class personaje: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT

@@ -17,10 +17,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     inicio = new QGraphicsScene;
     inicio->setSceneRect(0,0,800,400);
-    ui->escena->setScene(inicio);
-    //camara de juego
-    //ui->escena->setEnabled(false);
-    //ui->escena->setHidden(true);
+    ui->escena->setScene(inicio);//escena con la portada del juego
+
     //jugar y tienda
     ui->jugar->setEnabled(false);
     ui->jugar->setHidden(true);
@@ -29,8 +27,14 @@ MainWindow::MainWindow(QWidget *parent)
     ui->tienda->setEnabled(false);
     ui->tienda->setHidden(true);
     //niveles
-    ui->niveles->setEnabled(false);
-    ui->niveles->setHidden(true);
+    ui->nivel1->setEnabled(false);
+    ui->nivel1->setHidden(true);
+    ui->nivel2->setEnabled(false);
+    ui->nivel2->setHidden(true);
+    ui->nivel3->setEnabled(false);
+    ui->nivel3->setHidden(true);
+    ui->nivel4->setEnabled(false);
+    ui->nivel4->setHidden(true);
     //Boton atras
     ui->home->setEnabled(false);
     ui->home->setHidden(true);
@@ -55,32 +59,14 @@ MainWindow::MainWindow(QWidget *parent)
     tienda= new QGraphicsScene;
     tienda->setSceneRect(0,0,805,420);
     //Llenar mapa de imagenes decorativas.
-    Imagenes['g'] = new ima(0, 0, tamnivelX, tamnivelY, "../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/gameover.jpg");
-    Imagenes['w'] = new ima(0, 0, 237, 212, "../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/winer.png");
-    Imagenes['N'] = new ima(0,0,800,400,"../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/fondo_niveles.png");
-    Imagenes['L'] = new ima(0,0,800,400,"../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/portada21.png");
-    Imagenes['I'] = new ima(0,0,800,400,"../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/portada2.png");
-    Imagenes['T'] = new ima(0,0,800,400,"../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/taller.png");
-    Imagenes['F'] = new ima(0,0,1280,516,"../Monster_Truck_PF/MEDIA/SPRITES_GAME/niveles/fondo.png");
-    Imagenes['F']->Escalar(1280,516,1.08,1);
-
-    scene->addItem(Imagenes['F']);
-    inicio->addItem(Imagenes['L']);
-    tienda->addItem(Imagenes['T']);
-    //ui->escena->setScene(inicio);
-
-
+    decorar();
+    //se crea el personaje pero no se agrega todavia a la escena
     carro=new personaje(scene, 0, 500);
 
-    //Carros en la tienda
-
     //Declaracion temporizador de juego activo.
-    Tfondo = new QTimer;
-    connect(Tfondo, SIGNAL(timeout()), this, SLOT(focusfondo()));
     timer = new QTimer;
     connect(timer, SIGNAL(timeout()), this, SLOT(Juego_activo()));    
-    //Escena.
-    //ui->escena->setScene(inicio);
+
     //Enviar direccion de vectores de objetos que añadiran los niveles.
     Niveles->Recibir_vectores(&Box, &Pincho, &Money, &Contenedores, &Mina, &Dama, &Aves, &Cierras, &Resortes, &Finish);
 }
@@ -90,32 +76,32 @@ MainWindow::~MainWindow()
     Niveles->Eliminar_memoria_vectores();
     carro->Destruirse();
     delete timer;
-    delete Tfondo;
     delete Niveles;
     delete ui;
 }
 
-void MainWindow::focusfondo()
+void MainWindow::decorar()
 {
-    //carro->x()>400? Imagenes['F']->setX(carro->x()-400):Imagenes['F']->setX(0);
+    Imagenes['g'] = new ima(0, 0, tamnivelX, tamnivelY, "../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/gameover.jpg");
+    Imagenes['w'] = new ima(0, 0, 237, 212, "../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/winer.png");
+    Imagenes['N'] = new ima(0,0,800,400,"../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/fondo_niveles.png");
+    Imagenes['L'] = new ima(0,0,800,400,"../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/portada21.png");
+    Imagenes['I'] = new ima(0,0,800,400,"../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/portada2.png");
+    Imagenes['T'] = new ima(0,0,800,400,"../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/taller.png");
+    Imagenes['F'] = new ima(0,0,1280,516,"../Monster_Truck_PF/MEDIA/SPRITES_GAME/niveles/fondo.png");
+    Imagenes['F']->Escalar(1280,516,1.08,1);
+//    Imagenes['e'] = new ima(0,0,800,400,"../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/portada21.png");
+
+    scene->addItem(Imagenes['F']);
+    inicio->addItem(Imagenes['L']);
+    tienda->addItem(Imagenes['T']);
+
+
 }
+
 
 void MainWindow::Detener_juego()
 {
-
-//    ui->escena->setEnabled(true);
-//    ui->escena->setHidden(true);
-//    //jugar y tienda
-//    ui->jugar->setEnabled(true);
-//    ui->jugar->setHidden(false);
-//    ui->tienda->setEnabled(true);
-//    ui->tienda->setHidden(false);
-//    //niveles
-//    ui->niveles->setEnabled(true);
-//    ui->niveles->setHidden(false);
-//    //Boton atras
-//    ui->home->setEnabled(true);
-//    ui->home->setHidden(false);
     on_home_clicked();
     on_jugar_clicked();
 
@@ -127,33 +113,30 @@ void MainWindow::keyPressEvent(QKeyEvent *tecla)
 {
     switch (tecla->key()){
 
-    //--------------------------------------
-    //Aplicar fuerza hacia delante si se esta apoyado, en caso contrario aplicar fuerza angular.
-    case Qt::Key_A: {
-        //carro->x()>400? Imagenes['F']->setX(carro->x()-400):Imagenes['F']->setX(0);
-        if(carro->Carro_apoyado()==true && carro->Datos(2)>-70 && carro->Datos(2)<70){
-            carro->Mover((carro->Datos(0))-2.0, carro->Datos(1));
+        //--------------------------------------
+        //Aplicar fuerza hacia delante si se esta apoyado, en caso contrario aplicar fuerza angular.
+        case Qt::Key_A: {
+            if(carro->Carro_apoyado()==true && carro->Datos(2)>-70 && carro->Datos(2)<70){
+                carro->Mover((carro->Datos(0))-2.0, carro->Datos(1));
+            }
+            else
+                if(carro->Colsionando() == false) carro->Girar((carro->Datos(5))+0.02, 10);
+          }break;
+       //---------------------------------------
+       //Aplicar fuerza hacia atras si se esta apoyado, en caso contrario aplicar fuerza angular.
+        case Qt::Key_D: {
+            if(carro->Carro_apoyado()==true && carro->Datos(2)>-70 && carro->Datos(2)<70){
+                carro->Mover((carro->Datos(0))+2.0, carro->Datos(1));
+            }
+            else
+                if(carro->Colsionando() == false) carro->Girar((carro->Datos(5))-0.02, 10);
+        }break;
+        //---------------------------------------
+        //Aplicar fuerza hacia arriba si se esta apoyado.
+        case Qt::Key_W: {
+            if(carro->Carro_apoyado() == true) carro->Mover(carro->Datos(0), Fuerza_salto);
         }
-        else
-            if(carro->Colsionando() == false) carro->Girar((carro->Datos(5))+0.02, 10);
-      }break;
-   //---------------------------------------
-   //Aplicar fuerza hacia atras si se esta apoyado, en caso contrario aplicar fuerza angular.
-    case Qt::Key_D: {
-        //carro->x()>400? Imagenes['F']->setX(carro->x()-400):Imagenes['F']->setX(0);
-        if(carro->Carro_apoyado()==true && carro->Datos(2)>-70 && carro->Datos(2)<70){
-            carro->Mover((carro->Datos(0))+2.0, carro->Datos(1));
-        }
-        else
-            if(carro->Colsionando() == false) carro->Girar((carro->Datos(5))-0.02, 10);
-    }break;
-    //-----------------------------
-    //---------------------------------------
-    //Aplicar fuerza hacia arriba si se esta apoyado.
-    case Qt::Key_W: {
-        if(carro->Carro_apoyado() == true) carro->Mover(carro->Datos(0), Fuerza_salto);
-    }
-    //-------------------------------------
+        //-------------------------------------
     }
 }
 
@@ -317,10 +300,11 @@ void MainWindow::Juego_activo()
         //Colocar aqui el fondo de finalizacion de juego.
         Imagenes['g']->setX(carro->x()-400);
         scene->addItem(Imagenes['g']);
+        Imagenes['g']->Escalar(1280, 720, 1.08, 1.11);
         carro->Destruirse();
         ui->vidaP->setHidden(true);
         QTimer::singleShot(5000, this, SLOT(Detener_juego()));
-        Tfondo->stop();
+        //Tfondo->stop();
     }
 
     //+++++++++//
@@ -328,6 +312,7 @@ void MainWindow::Juego_activo()
     if(carro->Datos(3) >= Finish->Datos()){
         Ganastes = true;
         timer->stop();
+        carro->UPDATE_DATA('N',' ',1);
         GUARDAR_ESTADO(carro);
         Niveles->Eliminar_memoria_vectores();
         //Colocar aqui el fondo de finalizacion de juego.
@@ -338,7 +323,6 @@ void MainWindow::Juego_activo()
         ui->vidaP->setHidden(true);
         QTimer::singleShot(5000, this, SLOT(Detener_juego()));
 
-        Tfondo->stop();
     }
     //Fin de interaccion colision con la meta.
     //++++++++//
@@ -347,7 +331,6 @@ void MainWindow::Juego_activo()
 
 void MainWindow::on_ingresar_clicked()
 {
-    qDebug() <<"click" <<endl;
     if(LOGIN(ui->username->text().toStdString(),ui->pw->text().toStdString())){
         ui->respuesta->setText("Ingreso Exitoso");
         //interfaz de login
@@ -363,18 +346,13 @@ void MainWindow::on_ingresar_clicked()
         ui->cant_money->setEnabled(true);
         ui->cant_money->setHidden(false);
 
-
-        name=ui->username->text();
-        carro->USERNAME(name);
+        carro->USERNAME(ui->username->text());
 
         //Cargar los datos del usuario
         CARGAR_ESTADO(carro );
         ui->cant_money->display(carro->Datos(11));
 
-
-        //
         inicio->addItem(Imagenes['I']);
-
     }
     else ui->respuesta->setText("Contraseña y/o nombre INVALIDOS");
    }
@@ -405,21 +383,24 @@ void MainWindow::on_jugar_clicked()
     ui->tienda->setEnabled(false);
     ui->tienda->setHidden(true);
 
+    //niveles
     ui->nivel1->setEnabled(true);
     ui->nivel1->setHidden(false);
-    ui->nivel2->setEnabled(true);
     ui->nivel2->setHidden(false);
-    ui->nivel3->setEnabled(true);
     ui->nivel3->setHidden(false);
-    ui->nivel4->setEnabled(true);
     ui->nivel4->setHidden(false);
-
-
-
-    //
+    if(carro->GET_DATA('N',' ')>=2){
+        ui->nivel2->setEnabled(true);
+    }
+    if(carro->GET_DATA('N',' ')>=3){
+        ui->nivel3->setEnabled(true);
+    }
+    if(carro->GET_DATA('N',' ')>=4){
+        ui->nivel4->setEnabled(true);
+    }
+    //se cambia de imagen y de escena por la que corresponde a la seleccion de nivel
     inicio->addItem(Imagenes['N']);
     ui->escena->setScene(inicio);
-
 }
 
 
@@ -428,21 +409,20 @@ void MainWindow::on_nivel1_clicked()
     //resetear la escena
     ui->widget_2->setGeometry(0,0,1380,tamnivelY);
     ui->escena->setGeometry(0,0,1380,tamnivelY);
-
     ui->escena->setScene(scene);
 
     carro->Iniciar_nivel(Imagenes['F']);
     Niveles->CARGAR_MUNDO('1');
     ui->escena->setEnabled(false);
     ui->escena->setHidden(false);
+    //Boton atras
+    ui->home->setEnabled(false);
     //jugar y tienda
     ui->jugar->setEnabled(false);
     ui->jugar->setHidden(true);
     ui->tienda->setEnabled(false);
     ui->tienda->setHidden(true);
     //niveles
-    //ui->niveles->setEnabled(false);
-    //ui->niveles->setHidden(true);
     ui->nivel1->setEnabled(false);
     ui->nivel1->setHidden(true);
     ui->nivel2->setEnabled(false);
@@ -451,18 +431,15 @@ void MainWindow::on_nivel1_clicked()
     ui->nivel3->setHidden(true);
     ui->nivel4->setEnabled(false);
     ui->nivel4->setHidden(true);
-
     //vida del jugador
     ui->vidaP->setEnabled(true);
     ui->vidaP->setHidden(false);
     //Anadir personaje a la escena
-    //carro=new personaje(scene, 0, 500);
     carro->set_sprite(0,0);
     scene->addItem(carro);
     //Activar temporizador ciclo automatico.
     Jugando = true;
     timer->start(50);
-    Tfondo->start(1);
 }
 
 
@@ -477,6 +454,8 @@ void MainWindow::on_nivel2_clicked()
     Niveles->CARGAR_MUNDO('2');
     ui->escena->setEnabled(false);
     ui->escena->setHidden(false);
+    //Boton atras
+    ui->home->setEnabled(false);
     //jugar y tienda
     ui->jugar->setEnabled(false);
     ui->jugar->setHidden(true);
@@ -489,7 +468,6 @@ void MainWindow::on_nivel2_clicked()
     ui->vidaP->setEnabled(true);
     ui->vidaP->setHidden(false);
     //Anadir personaje a la escena
-    //carro=new personaje(scene, 0, 500);
     carro->set_sprite(0,0);
     scene->addItem(carro);
     //Activar temporizador ciclo automatico.
@@ -509,6 +487,8 @@ void MainWindow::on_nivel3_clicked()
     Niveles->CARGAR_MUNDO('3');
     ui->escena->setEnabled(false);
     ui->escena->setHidden(false);
+    //Boton atras
+    ui->home->setEnabled(false);
     //jugar y tienda
     ui->jugar->setEnabled(false);
     ui->jugar->setHidden(true);
@@ -521,7 +501,6 @@ void MainWindow::on_nivel3_clicked()
     ui->vidaP->setEnabled(true);
     ui->vidaP->setHidden(false);
     //Anadir personaje a la escena
-    //carro=new personaje(scene, 0, 500);
     carro->set_sprite(0,0);
     scene->addItem(carro);
     //Activar temporizador ciclo automatico.
@@ -541,6 +520,8 @@ void MainWindow::on_nivel4_clicked()
     Niveles->CARGAR_MUNDO('4');
     ui->escena->setEnabled(false);
     ui->escena->setHidden(false);
+    //Boton atras
+    ui->home->setEnabled(false);
     //jugar y tienda
     ui->jugar->setEnabled(false);
     ui->jugar->setHidden(true);
@@ -553,7 +534,6 @@ void MainWindow::on_nivel4_clicked()
     ui->vidaP->setEnabled(true);
     ui->vidaP->setHidden(false);
     //Anadir personaje a la escena
-    //carro=new personaje(scene, 0, 500);
     carro->set_sprite(0,0);
     scene->addItem(carro);
     //Activar temporizador ciclo automatico.
@@ -586,25 +566,29 @@ void MainWindow::on_tienda_clicked()
     ui->buy->setHidden(false);
     ui->seleccionar->setEnabled(true);
     ui->seleccionar->setHidden(false);
+    ui->precio->setHidden(false);
     //Boton atras
     ui->home->setEnabled(true);
     ui->home->setHidden(false);
     //Carros en la tienda
+    nLR=carro->GET_DATA('C','E');
     modelo=new ima(280, 120,240,153,"../Monster_Truck_PF/MEDIA/SPRITES_GAME/personaje/carro1/carro_mounstro.png");
     modelo->set_sprite(0,nLR,240,153);
     tienda->addItem(modelo);
-
-    if(carro->GET_DATA('C','D') >=nLR){
-        ui->seleccionar->setEnabled(true);
-        ui->buy->setEnabled(false);
-        ui->precio->setText("Desbloqueado");
+    if(carro->GET_DATA('C','E')==nLR){
+        ui->seleccionar->setEnabled(false);
+        ui->precio->setText("Seleccionado!✅");
     }
+    else {
+        ui->seleccionar->setEnabled(true);
+        ui->precio->setText("Desbloqueado!!");
+    }
+    ui->buy->setEnabled(false);
 }
 
 
 void MainWindow::on_home_clicked()
 {
-
     //Boton atras
     ui->home->setEnabled(false);
     ui->home->setHidden(true);
@@ -643,10 +627,8 @@ void MainWindow::on_home_clicked()
     ui->nivel4->setEnabled(false);
     ui->nivel4->setHidden(true);
     timer->stop();
-    //Detener_juego();
-    //delete carro;
+    //Detener juego
     if(Jugando == true)Jugando = false;
-
     //camara de juego
     ui->escena->setEnabled(true);
     ui->escena->setHidden(false);
@@ -662,23 +644,38 @@ void MainWindow::on_R_clicked()
 {   if (nLR<4)nLR++;
     modelo->set_sprite(0,nLR,240,153);
 
-    string costoint=to_string(nLR*50);
+    string car,cardes=to_string( carro->GET_DATA('C','D') );
+    cardes.insert(0,"0");
     QString precio;
-    if(carro->GET_DATA('C','D') >=nLR){
-        ui->seleccionar->setEnabled(true);
-        ui->buy->setEnabled(false);
-        precio.append("Desbloqueado");
+    bool des=false;
+    int num;
+    for(unsigned long i=0;i<cardes.size();i++){
+        car=cardes[i];
+        num= stoi(car);
+        if( num==nLR){
+            des=true;
+            break;
+        }
     }
+    if(des){
+        if(carro->GET_DATA('C','E')==nLR){
+            ui->seleccionar->setEnabled(false);
+            precio.append("Seleccionado!✅");
+        }
+        else {
+            ui->seleccionar->setEnabled(true);
+            precio.append("Desbloqueado!!");
+        }
+        ui->buy->setEnabled(false);
+        }
     else {
         ui->seleccionar->setEnabled(false);
         ui->buy->setEnabled(true);
 
         precio.append("Costo: $");
-        precio.append( QString::fromLocal8Bit(costoint.c_str()) );
+        precio.append( QString::fromLocal8Bit( (to_string(nLR*50)).c_str() ) );
     }
     ui->precio->setText(precio);
-
-
 }
 
 
@@ -687,30 +684,38 @@ void MainWindow::on_L_clicked()
     if (nLR>0)nLR--;
     modelo->set_sprite(0,nLR,240,153);
 
-    string costoint=to_string(nLR*50);
-    int num=carro->GET_DATA('C','D');
-    string carrosDes=to_string(num);
+    string car,cardes=to_string( carro->GET_DATA('C','D') );
+    cardes.insert(0,"0");
     QString precio;
-    for(unsigned long i=0;i<carrosDes.size();i++){
-
-        if( carrosDes[i]==nLR){
-            ui->seleccionar->setEnabled(true);
-            ui->buy->setEnabled(false);
-            precio.append("Desbloqueado");
-            GUARDAR_ESTADO(carro);
-        }
-        else {
-            ui->seleccionar->setEnabled(false);
-            ui->buy->setEnabled(true);
-
-            precio.append("Costo: $");
-            precio.append( QString::fromLocal8Bit(costoint.c_str()) );
+    bool des=false;
+    int num;
+    for(unsigned long i=0;i<cardes.size();i++){
+        car=cardes[i];
+        num= stoi(car);
+        if( num==nLR){
+            des=true;
+            break;
         }
     }
+    if(des){
+        if(carro->GET_DATA('C','E')==nLR){
+            ui->seleccionar->setEnabled(false);
+            precio.append("Seleccionado!✅");
+        }
+        else {
+            ui->seleccionar->setEnabled(true);
+            precio.append("Desbloqueado!!");
+        }
+        ui->buy->setEnabled(false);
+        }
+    else {
+        ui->seleccionar->setEnabled(false);
+        ui->buy->setEnabled(true);
+
+        precio.append("Costo: $");
+        precio.append( QString::fromLocal8Bit( (to_string(nLR*50)).c_str() ) );
+    }
     ui->precio->setText(precio);
-
-
-
 }
 
 
@@ -718,21 +723,21 @@ void MainWindow::on_seleccionar_clicked()
 {
     ui->seleccionar->setEnabled(false);
     carro->UPDATE_DATA('C','E',nLR);
-
+    ui->precio->setText("Seleccionado!✅");
 }
 
 void MainWindow::on_buy_clicked()
 {
     ui->buy->setEnabled(false);
-
-    string n=to_string(nLR*50);
     QString mensaje;
     if(carro->GET_DATA('D',' ') >=nLR*50){
-        ui->seleccionar->setEnabled(true);
+        ui->seleccionar->setEnabled(false);
         ui->buy->setEnabled(false);
         carro->UPDATE_DATA('C','E',nLR);//Se escoge el carro automaticamente el comprar
         carro->UPDATE_DATA('D','-',nLR*50);//Se hace el cobro del carro
+        carro->UPDATE_DATA('C','D',nLR);//Se acualiza la informacion corespondiente a los carros desbloqueados
         mensaje.append("Compra Exitosa!!✅");
+        GUARDAR_ESTADO(carro);//Se guardan los datos actuales en la base de datos
     }
     else {
         ui->seleccionar->setEnabled(false);
@@ -742,7 +747,6 @@ void MainWindow::on_buy_clicked()
     }
     ui->precio->setText(mensaje);
     ui->cant_money->display(carro->Datos(11));
-
 }
 
 void MainWindow::on_jugar_2_clicked()

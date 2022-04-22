@@ -28,7 +28,6 @@ personaje::personaje()
 
 void personaje::Iniciar_nivel(ima *fondo)
 {
-    //setPixmap(QPixmap(nombre));
     imagen.load(":/SPRITES_GAME/personaje/carro1/carro_mounstro.png");
     setPixmap(imagen);
     Fuerza_x = 2;
@@ -42,6 +41,7 @@ void personaje::Iniciar_nivel(ima *fondo)
     Estado_vehiculo = Resistencia;
     this->fondo=fondo;
     velocimetro->start(50);
+
 }
 
 void personaje::set_sprite(int posx, int posy)
@@ -206,7 +206,10 @@ void personaje::UPDATE_DATA(char dat,char signo, int cant)
 
     case 'C':{
         if (signo=='E')carroElegido=cant;
-        else if (signo=='D') carrosDes.append(cant);
+        else if (signo=='D'){
+            string aux=to_string(cant);
+            carrosDes.append( QString::fromLocal8Bit(aux.c_str()) );
+        }
     }break;
     //-------------------------------------
 

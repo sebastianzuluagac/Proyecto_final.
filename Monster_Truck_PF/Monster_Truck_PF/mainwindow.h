@@ -12,7 +12,7 @@
 #include <QVector>
 #include <QKeyEvent>
 #include <fstream>
-#include <string>
+#include <string.h>
 #include <math.h>
 using namespace std;
 #include "nivel.h"
@@ -34,7 +34,7 @@ public:
     ~MainWindow();
 
 public slots:
-    void focusfondo();
+    void decorar();
     void Juego_activo();
     void Detener_juego();
 
@@ -44,7 +44,6 @@ protected:
 private slots:
 
     void on_ingresar_clicked();
-
 
     void on_crearU_clicked();
 
@@ -92,17 +91,12 @@ private:
     QVector <cierra*> Cierras;
     QVector <resorte*> Resortes;
     QKeyEvent *tecla;
-    QTimer *timer,*Tfondo;
+    QTimer *timer;
 
     //Tienda
     QGraphicsScene *tienda,*inicio;
     ima *modelo;
-
-    QString name;
     int nLR=0;
-
-    //cosas nuevas
-    bool menu=true;
 
 };
 #endif // MAINWINDOW_H

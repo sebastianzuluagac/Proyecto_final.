@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[19];
-    char stringdata0[294];
+    char stringdata0[291];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,27 +32,27 @@ struct qt_meta_stringdata_MainWindow_t {
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
 QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
-QT_MOC_LITERAL(1, 11, 10), // "focusfondo"
-QT_MOC_LITERAL(2, 22, 0), // ""
-QT_MOC_LITERAL(3, 23, 12), // "Juego_activo"
-QT_MOC_LITERAL(4, 36, 13), // "Detener_juego"
-QT_MOC_LITERAL(5, 50, 19), // "on_ingresar_clicked"
-QT_MOC_LITERAL(6, 70, 17), // "on_crearU_clicked"
-QT_MOC_LITERAL(7, 88, 16), // "on_jugar_clicked"
-QT_MOC_LITERAL(8, 105, 17), // "on_nivel1_clicked"
-QT_MOC_LITERAL(9, 123, 17), // "on_nivel2_clicked"
-QT_MOC_LITERAL(10, 141, 17), // "on_nivel3_clicked"
-QT_MOC_LITERAL(11, 159, 17), // "on_nivel4_clicked"
-QT_MOC_LITERAL(12, 177, 17), // "on_tienda_clicked"
-QT_MOC_LITERAL(13, 195, 15), // "on_home_clicked"
-QT_MOC_LITERAL(14, 211, 12), // "on_R_clicked"
-QT_MOC_LITERAL(15, 224, 12), // "on_L_clicked"
-QT_MOC_LITERAL(16, 237, 22), // "on_seleccionar_clicked"
-QT_MOC_LITERAL(17, 260, 14), // "on_buy_clicked"
-QT_MOC_LITERAL(18, 275, 18) // "on_jugar_2_clicked"
+QT_MOC_LITERAL(1, 11, 7), // "decorar"
+QT_MOC_LITERAL(2, 19, 0), // ""
+QT_MOC_LITERAL(3, 20, 12), // "Juego_activo"
+QT_MOC_LITERAL(4, 33, 13), // "Detener_juego"
+QT_MOC_LITERAL(5, 47, 19), // "on_ingresar_clicked"
+QT_MOC_LITERAL(6, 67, 17), // "on_crearU_clicked"
+QT_MOC_LITERAL(7, 85, 16), // "on_jugar_clicked"
+QT_MOC_LITERAL(8, 102, 17), // "on_nivel1_clicked"
+QT_MOC_LITERAL(9, 120, 17), // "on_nivel2_clicked"
+QT_MOC_LITERAL(10, 138, 17), // "on_nivel3_clicked"
+QT_MOC_LITERAL(11, 156, 17), // "on_nivel4_clicked"
+QT_MOC_LITERAL(12, 174, 17), // "on_tienda_clicked"
+QT_MOC_LITERAL(13, 192, 15), // "on_home_clicked"
+QT_MOC_LITERAL(14, 208, 12), // "on_R_clicked"
+QT_MOC_LITERAL(15, 221, 12), // "on_L_clicked"
+QT_MOC_LITERAL(16, 234, 22), // "on_seleccionar_clicked"
+QT_MOC_LITERAL(17, 257, 14), // "on_buy_clicked"
+QT_MOC_LITERAL(18, 272, 18) // "on_jugar_2_clicked"
 
     },
-    "MainWindow\0focusfondo\0\0Juego_activo\0"
+    "MainWindow\0decorar\0\0Juego_activo\0"
     "Detener_juego\0on_ingresar_clicked\0"
     "on_crearU_clicked\0on_jugar_clicked\0"
     "on_nivel1_clicked\0on_nivel2_clicked\0"
@@ -124,7 +124,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->focusfondo(); break;
+        case 0: _t->decorar(); break;
         case 1: _t->Juego_activo(); break;
         case 2: _t->Detener_juego(); break;
         case 3: _t->on_ingresar_clicked(); break;
