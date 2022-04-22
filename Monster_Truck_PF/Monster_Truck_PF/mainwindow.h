@@ -34,6 +34,7 @@ public:
     ~MainWindow();
 
 public slots:
+    void addeco(char indx, int posx, int posy, int tamx, int tamy, float escx, float escy, QString name);
     void decorar();
     void Juego_activo();
     void Detener_juego();

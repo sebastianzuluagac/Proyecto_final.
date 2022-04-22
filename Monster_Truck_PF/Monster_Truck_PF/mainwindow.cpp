@@ -80,6 +80,16 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::addeco(char indx, int posx, int posy, int tamx, int tamy, float escx, float escy, QString name)
+{
+    QString direccion="../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/";
+    direccion.append(name);
+    Imagenes[indx] = new ima(posx,posy,tamx,tamy,direccion);
+    Imagenes[indx]->Escalar(tamx,tamy,escx,escy);
+    scene->addItem(Imagenes[indx]);
+
+}
+
 void MainWindow::decorar()
 {
     Imagenes['g'] = new ima(0, 0, tamnivelX, tamnivelY, "../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/gameover.jpg");
@@ -90,12 +100,48 @@ void MainWindow::decorar()
     Imagenes['T'] = new ima(0,0,800,400,"../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/taller.png");
     Imagenes['F'] = new ima(0,0,1280,516,"../Monster_Truck_PF/MEDIA/SPRITES_GAME/niveles/fondo.png");
     Imagenes['F']->Escalar(1280,516,1.08,1);
-//    Imagenes['e'] = new ima(0,0,800,400,"../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/portada21.png");
-
     scene->addItem(Imagenes['F']);
     inicio->addItem(Imagenes['L']);
     tienda->addItem(Imagenes['T']);
 
+    //agregar las ecoraciones a la escena
+    addeco('1',300,205,408,183,1.57,1.70,"supermarket.png");
+    addeco('5',3550,-48,377,376,1.5,1.5,"edificio.png");
+    addeco('2',4050,41,386,317,1.5,1.5,"edificio2pisos.png");
+    addeco('3',4550,138,375,315,1.2,1.2,"garaje.png");
+    addeco('4',6039,138,546,315,1.2,1.2,"garaje2.png");
+    addeco('a',2000,179,280,337,0.8,1,"arbol.png");
+    addeco('a',8681,179,280,337,0.8,1,"arbol.png");
+    addeco('a',9032,179,280,337,0.8,1,"arbol.png");
+    addeco('5',10171,-48,377,376,1.5,1.5,"edificio.png");
+    addeco('2',10671,41,386,317,1.5,1.5,"edificio2pisos.png");
+    addeco('3',11171,138,375,315,1.2,1.2,"garaje.png");
+    addeco('1',13551,205,408,183,1.57,1.70,"supermarket.png");
+    addeco('4',15366,138,546,315,1.2,1.2,"garaje2.png");
+    addeco('a',17133,179,280,337,0.8,1,"arbol.png");
+    addeco('a',17333,179,280,337,0.8,1,"arbol.png");
+    addeco('a',17533,179,280,337,0.8,1,"arbol.png");
+    addeco('a',17733,179,280,337,0.8,1,"arbol.png");
+    addeco('a',19133,179,280,337,0.8,1,"arbol.png");
+    addeco('a',19333,179,280,337,0.8,1,"arbol.png");
+    addeco('a',19533,179,280,337,0.8,1,"arbol.png");
+    addeco('a',19733,179,280,337,0.8,1,"arbol.png");
+    addeco('3',20425,138,375,315,1.2,1.2,"garaje.png");
+    addeco('a',21200,179,280,337,0.8,1,"arbol.png");
+    addeco('a',21350,179,280,337,0.8,1,"arbol.png");
+    addeco('a',21500,179,280,337,0.8,1,"arbol.png");
+
+    addeco('a',22550,179,280,337,0.8,1,"arbol.png");
+    addeco('a',22750,179,280,337,0.8,1,"arbol.png");
+    addeco('5',23000,-48,377,376,1.5,1.5,"edificio.png");
+    addeco('2',23500,41,386,317,1.5,1.5,"edificio2pisos.png");
+    addeco('3',24000,138,375,315,1.2,1.2,"garaje.png");
+
+    addeco('5',25000,-48,377,376,1.5,1.5,"edificio.png");
+    addeco('2',25500,41,386,317,1.5,1.5,"edificio2pisos.png");
+    addeco('3',26000,138,375,315,1.2,1.2,"garaje.png");
+    addeco('a',26500,179,280,337,0.8,1,"arbol.png");
+    addeco('a',26700,179,280,337,0.8,1,"arbol.png");
 
 }
 
@@ -116,6 +162,7 @@ void MainWindow::keyPressEvent(QKeyEvent *tecla)
         //--------------------------------------
         //Aplicar fuerza hacia delante si se esta apoyado, en caso contrario aplicar fuerza angular.
         case Qt::Key_A: {
+        qDebug()<<"X: "<<carro->x()<<"\nY: "<<carro->y()<<endl;
             if(carro->Carro_apoyado()==true && carro->Datos(2)>-70 && carro->Datos(2)<70){
                 carro->Mover((carro->Datos(0))-2.0, carro->Datos(1));
             }
@@ -125,6 +172,7 @@ void MainWindow::keyPressEvent(QKeyEvent *tecla)
        //---------------------------------------
        //Aplicar fuerza hacia atras si se esta apoyado, en caso contrario aplicar fuerza angular.
         case Qt::Key_D: {
+        qDebug()<<"X: "<<carro->x()<<"\nY: "<<carro->y()<<endl;
             if(carro->Carro_apoyado()==true && carro->Datos(2)>-70 && carro->Datos(2)<70){
                 carro->Mover((carro->Datos(0))+2.0, carro->Datos(1));
             }
