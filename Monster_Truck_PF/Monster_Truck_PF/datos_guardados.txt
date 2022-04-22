@@ -1,7 +1,32 @@
-sebas:	N1n	C0c	D114d
+sebas:	N1n	C0c	D211d
 
 carlos:	N1n	C0c	D32d 
 
-juan:	N1n	C0c	D4d
+juan:	N1n	C0c	D234d
 
 seas:	N1n	C0c	D4d
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

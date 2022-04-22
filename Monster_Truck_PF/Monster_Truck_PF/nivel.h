@@ -49,6 +49,7 @@ private:
     QVector <pajaro*>* Aves;
     QVector <cierra*>* Cierras;
     QVector <resorte*>* Resortes;
+    ima *paisaje;
 };
 
 #endif // NIVEL_H

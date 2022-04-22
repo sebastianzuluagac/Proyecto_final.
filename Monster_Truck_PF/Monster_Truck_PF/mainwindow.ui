@@ -6,15 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>787</width>
-    <height>415</height>
+    <width>777</width>
+    <height>426</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <kerning>false</kerning>
+   </font>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="autoFillBackground">
-   <bool>true</bool>
+   <bool>false</bool>
   </property>
   <property name="dockOptions">
    <set>QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>
@@ -38,20 +43,13 @@
    <widget class="QWidget" name="inicio" native="true">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>0</y>
-      <width>188</width>
-      <height>120</height>
+      <x>530</x>
+      <y>250</y>
+      <width>241</width>
+      <height>151</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="0">
-      <widget class="QLabel" name="respuesta">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="0">
       <layout class="QVBoxLayout" name="caja_ingreso_creacion">
        <item>
@@ -98,84 +96,186 @@
        </item>
       </layout>
      </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="respuesta">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
    <widget class="QWidget" name="niveles" native="true">
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>320</y>
-      <width>441</width>
-      <height>80</height>
+      <y>140</y>
+      <width>461</width>
+      <height>101</height>
      </rect>
     </property>
     <widget class="QPushButton" name="nivel4">
      <property name="geometry">
       <rect>
-       <x>330</x>
-       <y>10</y>
-       <width>91</width>
-       <height>61</height>
+       <x>350</x>
+       <y>0</y>
+       <width>101</width>
+       <height>101</height>
       </rect>
      </property>
      <property name="text">
-      <string>4</string>
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normalon>:/SPRITES_GAME/objetos/N4.jpg</normalon>
+      </iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>100</width>
+       <height>100</height>
+      </size>
      </property>
     </widget>
     <widget class="QPushButton" name="nivel1">
      <property name="geometry">
       <rect>
-       <x>21</x>
-       <y>10</y>
+       <x>20</x>
+       <y>0</y>
        <width>101</width>
-       <height>61</height>
+       <height>101</height>
       </rect>
      </property>
      <property name="text">
-      <string>1️⃣</string>
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normalon>:/SPRITES_GAME/objetos/N1.jpg</normalon>
+      </iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>100</width>
+       <height>100</height>
+      </size>
      </property>
     </widget>
     <widget class="QPushButton" name="nivel2">
      <property name="geometry">
       <rect>
-       <x>131</x>
-       <y>10</y>
-       <width>91</width>
-       <height>61</height>
+       <x>130</x>
+       <y>0</y>
+       <width>101</width>
+       <height>101</height>
       </rect>
      </property>
      <property name="text">
-      <string>2</string>
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normalon>:/SPRITES_GAME/objetos/N2.jpg</normalon>
+      </iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>100</width>
+       <height>100</height>
+      </size>
      </property>
     </widget>
     <widget class="QPushButton" name="nivel3">
      <property name="geometry">
       <rect>
-       <x>231</x>
-       <y>10</y>
-       <width>91</width>
-       <height>61</height>
+       <x>240</x>
+       <y>0</y>
+       <width>101</width>
+       <height>101</height>
       </rect>
      </property>
      <property name="text">
-      <string>3</string>
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normalon>:/SPRITES_GAME/objetos/N3.jpg</normalon>
+      </iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>100</width>
+       <height>100</height>
+      </size>
      </property>
     </widget>
    </widget>
    <widget class="QPushButton" name="tienda">
     <property name="geometry">
      <rect>
-      <x>720</x>
-      <y>330</y>
-      <width>51</width>
-      <height>41</height>
+      <x>540</x>
+      <y>290</y>
+      <width>81</width>
+      <height>71</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>1</pointsize>
+      <kerning>false</kerning>
+     </font>
     </property>
     <property name="cursor">
      <cursorShape>OpenHandCursor</cursorShape>
     </property>
     <property name="mouseTracking">
      <bool>false</bool>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/SPRITES_GAME/objetos/decoracion/tienda.png</normalon>
+     </iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>120</width>
+      <height>110</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="jugar">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>250</y>
+      <width>121</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="sizeIncrement">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>1</pointsize>
+      <kerning>false</kerning>
+     </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
@@ -185,48 +285,53 @@
     </property>
     <property name="icon">
      <iconset>
-      <normalon>:/SPRITES_GAME/botones/compras1.webp</normalon>
+      <normalon>:/SPRITES_GAME/objetos/decoracion/jugar.png</normalon>
      </iconset>
     </property>
     <property name="iconSize">
      <size>
-      <width>51</width>
+      <width>160</width>
       <height>100</height>
      </size>
     </property>
-   </widget>
-   <widget class="QPushButton" name="jugar">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>160</y>
-      <width>80</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>jugar</string>
+    <property name="checkable">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="L">
     <property name="geometry">
      <rect>
-      <x>79</x>
+      <x>59</x>
       <y>160</y>
-      <width>51</width>
-      <height>51</height>
+      <width>71</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <pointsize>25</pointsize>
+      <kerning>false</kerning>
      </font>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/SPRITES_GAME/objetos/decoracion/izquierda.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="autoFillBackground">
      <bool>true</bool>
     </property>
     <property name="text">
-     <string>👈</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/SPRITES_GAME/objetos/decoracion/izquierda.png</normalon>
+     </iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>70</width>
+      <height>80</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="home">
@@ -241,6 +346,7 @@
     <property name="font">
      <font>
       <pointsize>25</pointsize>
+      <kerning>false</kerning>
      </font>
     </property>
     <property name="text">
@@ -265,6 +371,12 @@
       <width>181</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>16777215</height>
+     </size>
     </property>
     <property name="palette">
      <palette>
@@ -477,68 +589,135 @@
      <font>
       <family>MS Shell Dlg 2</family>
       <pointsize>15</pointsize>
+      <kerning>false</kerning>
      </font>
     </property>
    </widget>
    <widget class="QPushButton" name="R">
     <property name="geometry">
      <rect>
-      <x>670</x>
+      <x>640</x>
       <y>160</y>
-      <width>51</width>
-      <height>51</height>
+      <width>71</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <pointsize>25</pointsize>
+      <kerning>false</kerning>
      </font>
     </property>
     <property name="autoFillBackground">
      <bool>true</bool>
     </property>
     <property name="text">
-     <string>👉</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/SPRITES_GAME/objetos/decoracion/derecha.PNG</normalon>
+     </iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>70</width>
+      <height>70</height>
+     </size>
     </property>
    </widget>
    <widget class="QLabel" name="precio">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>280</y>
+      <x>280</x>
+      <y>310</y>
       <width>170</width>
-      <height>13</height>
+      <height>21</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <kerning>false</kerning>
+     </font>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QPushButton" name="buy">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>300</y>
-      <width>168</width>
-      <height>25</height>
+      <x>370</x>
+      <y>340</y>
+      <width>96</width>
+      <height>41</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="comprar_seleccionar">
-     <item>
-      <widget class="QPushButton" name="seleccionar">
-       <property name="text">
-        <string>seleccionar</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buy">
-       <property name="text">
-        <string>comprar</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="text">
+     <string>comprar</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="seleccionar">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>340</y>
+      <width>97</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>seleccionar</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="jugar_2">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>0</y>
+      <width>71</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="sizeIncrement">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>1</pointsize>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/SPRITES_GAME/objetos/decoracion/jugar.png</normalon>
+     </iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>73</width>
+      <height>80</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -546,17 +725,17 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>787</width>
-     <height>21</height>
+     <width>777</width>
+     <height>20</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <tabstops>
+  <tabstop>username</tabstop>
   <tabstop>pw</tabstop>
   <tabstop>ingresar</tabstop>
-  <tabstop>crearU</tabstop>
   <tabstop>nivel4</tabstop>
   <tabstop>nivel1</tabstop>
   <tabstop>nivel2</tabstop>
@@ -568,8 +747,7 @@
   <tabstop>home</tabstop>
   <tabstop>icon_money</tabstop>
   <tabstop>R</tabstop>
-  <tabstop>username</tabstop>
-  <tabstop>buy</tabstop>
+  <tabstop>crearU</tabstop>
  </tabstops>
  <resources/>
  <connections/>

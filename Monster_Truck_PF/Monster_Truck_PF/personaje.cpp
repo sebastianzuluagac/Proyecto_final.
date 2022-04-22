@@ -26,17 +26,22 @@ personaje::personaje()
 
 }
 
-void personaje::Iniciar_nivel()
+void personaje::Iniciar_nivel(ima *fondo)
 {
     //setPixmap(QPixmap(nombre));
     imagen.load(":/SPRITES_GAME/personaje/carro1/carro_mounstro.png");
     setPixmap(imagen);
-    velocimetro->start(50);
+    Fuerza_x = 2;
+    Fuerza_y = 0;
+    Fuerza_ang_x = 0;
+    Fuerza_ang_y = 10;
     this->Posicion_x = 0;
     this->Posicion_y = 500;
     this->setPos(0, 500);
     Resistencia = 1000;
     Estado_vehiculo = Resistencia;
+    this->fondo=fondo;
+    velocimetro->start(50);
 }
 
 void personaje::set_sprite(int posx, int posy)
@@ -63,6 +68,8 @@ void personaje::MOVER_ADELANTE()
     }
     //Actualizar posicion en x, y actualizar focus.
     this->setX(Posicion_x);
+
+    this->x()>400? fondo->setX(this->x()-400):fondo->setX(0);
     this->x()>400? scene->setSceneRect(this->x()-400,0,tamnivelX, tamnivelY):scene->setSceneRect(0,0,tamnivelX, tamnivelY);
 }
 
@@ -78,6 +85,8 @@ void personaje::MOVER_ATRAS()
     //Actualizar posicion en x, actualizar focus y establecer limite inicio de pista.
     if(Posicion_x < 0) Velocidad_x = 0, Fuerza_x = 0, Posicion_x = 0;
     this->setX(Posicion_x);
+
+    this->x()>400? fondo->setX(this->x()-400):fondo->setX(0);
     this->x()>400? scene->setSceneRect(this->x()-400,0,tamnivelX, tamnivelY):scene->setSceneRect(0,0,tamnivelX, tamnivelY);
 }
 

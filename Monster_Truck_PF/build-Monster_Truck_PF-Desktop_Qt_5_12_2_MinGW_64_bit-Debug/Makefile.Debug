@@ -236,13 +236,52 @@ debug/qrc_MEDIA.cpp: ../Monster_Truck_PF/MEDIA/MEDIA.qrc \
 		../Monster_Truck_PF/MEDIA/SPRITES_GAME/basura/moneda.jpg \
 		../Monster_Truck_PF/MEDIA/SPRITES_GAME/botones/compras1.webp \
 		../Monster_Truck_PF/MEDIA/SPRITES_GAME/botones/compras2.jpg \
-		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/resortes.png \
-		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/llantas.png \
-		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/mina.png \
-		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/1649126370504.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/minas.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/mujer.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/meta.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/winer.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/cajas.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/explosion_Mina.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/cajasjpg.png \
 		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/1649126508310.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/resortes.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/explosion.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/gameover.jpg \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/cierra.png \
 		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/pinchos.png \
-		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/containers/container_amarillo.png
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/llantas.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/1649126370504.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/cierras.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/mina.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/pajaro.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/doraemon.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/N1.jpg \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/N2.jpg \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/N3.jpg \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/N4.jpg \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/monedas/monedas.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/monedas/iconmoney.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/monedas/moneda.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/portada2.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/edificio2pisos.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/garaje.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/garaje2.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/portada.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/tienda.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/arbol.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/derecha.PNG \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/portada21.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/supermarket.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/fondo_niveles.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/izquierda.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/edificio.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/decoracion/jugar.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/containers/C_Amarillo_F.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/containers/container_amarillo.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/containers/C_Azul_F.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/containers/container_azul.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/containers/C_Rojo_F.png \
+		../Monster_Truck_PF/MEDIA/SPRITES_GAME/objetos/containers/container_rojo.png
 	C:\Qt\5.12.2\mingw73_64\bin\rcc.exe -name MEDIA ..\Monster_Truck_PF\MEDIA\MEDIA.qrc -o debug\qrc_MEDIA.cpp
 
 compiler_moc_predefs_make_all: debug/moc_predefs.h
@@ -503,9 +542,9 @@ debug/moc_mainwindow.cpp: ../Monster_Truck_PF/mainwindow.h \
 		../Monster_Truck_PF/Macros.h \
 		../Monster_Truck_PF/containers.h \
 		C:/Qt/5.12.2/mingw73_64/include/QtGui/QMatrix \
-		../Monster_Truck_PF/archivos.h \
 		../Monster_Truck_PF/objetos.h \
 		C:/Qt/5.12.2/mingw73_64/include/QtCore/qmath.h \
+		../Monster_Truck_PF/archivos.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.12.2/mingw73_64/bin/moc.exe
 	C:\Qt\5.12.2\mingw73_64\bin\moc.exe $(DEFINES) --include "C:/Users/Sebastian Zuluaga/Desktop/Informatica 2/Proyecto_final/Monster_Truck_PF/build-Monster_Truck_PF-Desktop_Qt_5_12_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/Qt/5.12.2/mingw73_64/mkspecs/win32-g++ -I"C:/Users/Sebastian Zuluaga/Desktop/Informatica 2/Proyecto_final/Monster_Truck_PF/Monster_Truck_PF" -IC:/Qt/5.12.2/mingw73_64/include -IC:/Qt/5.12.2/mingw73_64/include/QtWidgets -IC:/Qt/5.12.2/mingw73_64/include/QtGui -IC:/Qt/5.12.2/mingw73_64/include/QtANGLE -IC:/Qt/5.12.2/mingw73_64/include/QtCore -I. -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\Monster_Truck_PF\mainwindow.h -o debug\moc_mainwindow.cpp
@@ -634,9 +673,9 @@ debug/moc_nivel.cpp: ../Monster_Truck_PF/nivel.h \
 		../Monster_Truck_PF/Macros.h \
 		../Monster_Truck_PF/containers.h \
 		C:/Qt/5.12.2/mingw73_64/include/QtGui/QMatrix \
-		../Monster_Truck_PF/archivos.h \
 		../Monster_Truck_PF/objetos.h \
 		C:/Qt/5.12.2/mingw73_64/include/QtCore/qmath.h \
+		../Monster_Truck_PF/archivos.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.12.2/mingw73_64/bin/moc.exe
 	C:\Qt\5.12.2\mingw73_64\bin\moc.exe $(DEFINES) --include "C:/Users/Sebastian Zuluaga/Desktop/Informatica 2/Proyecto_final/Monster_Truck_PF/build-Monster_Truck_PF-Desktop_Qt_5_12_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/Qt/5.12.2/mingw73_64/mkspecs/win32-g++ -I"C:/Users/Sebastian Zuluaga/Desktop/Informatica 2/Proyecto_final/Monster_Truck_PF/Monster_Truck_PF" -IC:/Qt/5.12.2/mingw73_64/include -IC:/Qt/5.12.2/mingw73_64/include/QtWidgets -IC:/Qt/5.12.2/mingw73_64/include/QtGui -IC:/Qt/5.12.2/mingw73_64/include/QtANGLE -IC:/Qt/5.12.2/mingw73_64/include/QtCore -I. -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\Monster_Truck_PF\nivel.h -o debug\moc_nivel.cpp
@@ -887,6 +926,8 @@ debug/moc_personaje.cpp: ../Monster_Truck_PF/personaje.h \
 		../Monster_Truck_PF/Macros.h \
 		../Monster_Truck_PF/containers.h \
 		C:/Qt/5.12.2/mingw73_64/include/QtGui/QMatrix \
+		../Monster_Truck_PF/objetos.h \
+		C:/Qt/5.12.2/mingw73_64/include/QtCore/qmath.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.12.2/mingw73_64/bin/moc.exe
 	C:\Qt\5.12.2\mingw73_64\bin\moc.exe $(DEFINES) --include "C:/Users/Sebastian Zuluaga/Desktop/Informatica 2/Proyecto_final/Monster_Truck_PF/build-Monster_Truck_PF-Desktop_Qt_5_12_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/Qt/5.12.2/mingw73_64/mkspecs/win32-g++ -I"C:/Users/Sebastian Zuluaga/Desktop/Informatica 2/Proyecto_final/Monster_Truck_PF/Monster_Truck_PF" -IC:/Qt/5.12.2/mingw73_64/include -IC:/Qt/5.12.2/mingw73_64/include/QtWidgets -IC:/Qt/5.12.2/mingw73_64/include/QtGui -IC:/Qt/5.12.2/mingw73_64/include/QtANGLE -IC:/Qt/5.12.2/mingw73_64/include/QtCore -I. -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\Monster_Truck_PF\personaje.h -o debug\moc_personaje.cpp
@@ -1037,7 +1078,9 @@ debug/archivos.o: ../Monster_Truck_PF/archivos.cpp ../Monster_Truck_PF/archivos.
 		C:/Qt/5.12.2/mingw73_64/include/QtCore/QDebug \
 		../Monster_Truck_PF/Macros.h \
 		../Monster_Truck_PF/containers.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtGui/QMatrix
+		C:/Qt/5.12.2/mingw73_64/include/QtGui/QMatrix \
+		../Monster_Truck_PF/objetos.h \
+		C:/Qt/5.12.2/mingw73_64/include/QtCore/qmath.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\archivos.o ..\Monster_Truck_PF\archivos.cpp
 
 debug/containers.o: ../Monster_Truck_PF/containers.cpp ../Monster_Truck_PF/containers.h \
@@ -1287,9 +1330,9 @@ debug/main.o: ../Monster_Truck_PF/main.cpp ../Monster_Truck_PF/mainwindow.h \
 		../Monster_Truck_PF/Macros.h \
 		../Monster_Truck_PF/containers.h \
 		C:/Qt/5.12.2/mingw73_64/include/QtGui/QMatrix \
-		../Monster_Truck_PF/archivos.h \
 		../Monster_Truck_PF/objetos.h \
 		C:/Qt/5.12.2/mingw73_64/include/QtCore/qmath.h \
+		../Monster_Truck_PF/archivos.h \
 		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/QApplication \
 		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qapplication.h \
 		C:/Qt/5.12.2/mingw73_64/include/QtCore/qcoreapplication.h \
@@ -1426,57 +1469,10 @@ debug/mainwindow.o: ../Monster_Truck_PF/mainwindow.cpp ../Monster_Truck_PF/mainw
 		../Monster_Truck_PF/Macros.h \
 		../Monster_Truck_PF/containers.h \
 		C:/Qt/5.12.2/mingw73_64/include/QtGui/QMatrix \
-		../Monster_Truck_PF/archivos.h \
 		../Monster_Truck_PF/objetos.h \
 		C:/Qt/5.12.2/mingw73_64/include/QtCore/qmath.h \
-		ui_mainwindow.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtCore/QVariant \
-		C:/Qt/5.12.2/mingw73_64/include/QtGui/QIcon \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/QApplication \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtCore/qeventloop.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtGui/qguiapplication.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtGui/qinputmethod.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/QFormLayout \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qformlayout.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/QLayout \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qlayout.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/QGraphicsView \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qgraphicsview.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtGui/qpainter.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtGui/qtextoption.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qscrollarea.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qframe.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/QGridLayout \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/QLCDNumber \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qlcdnumber.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/QLabel \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qlabel.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/QLineEdit \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qlineedit.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtGui/qtextcursor.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtGui/qtextformat.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/QMenuBar \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qmenubar.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qmenu.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qaction.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qactiongroup.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/QProgressBar \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qprogressbar.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/QPushButton \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/QStatusBar \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/qstatusbar.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/5.12.2/mingw73_64/include/QtWidgets/QWidget
+		../Monster_Truck_PF/archivos.h \
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\Monster_Truck_PF\mainwindow.cpp
 
 debug/nivel.o: ../Monster_Truck_PF/nivel.cpp ../Monster_Truck_PF/nivel.h \
@@ -1603,9 +1599,9 @@ debug/nivel.o: ../Monster_Truck_PF/nivel.cpp ../Monster_Truck_PF/nivel.h \
 		../Monster_Truck_PF/Macros.h \
 		../Monster_Truck_PF/containers.h \
 		C:/Qt/5.12.2/mingw73_64/include/QtGui/QMatrix \
-		../Monster_Truck_PF/archivos.h \
 		../Monster_Truck_PF/objetos.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtCore/qmath.h
+		C:/Qt/5.12.2/mingw73_64/include/QtCore/qmath.h \
+		../Monster_Truck_PF/archivos.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\nivel.o ..\Monster_Truck_PF\nivel.cpp
 
 debug/objetos.o: ../Monster_Truck_PF/objetos.cpp ../Monster_Truck_PF/objetos.h \
@@ -1851,7 +1847,9 @@ debug/personaje.o: ../Monster_Truck_PF/personaje.cpp ../Monster_Truck_PF/persona
 		C:/Qt/5.12.2/mingw73_64/include/QtCore/QDebug \
 		../Monster_Truck_PF/Macros.h \
 		../Monster_Truck_PF/containers.h \
-		C:/Qt/5.12.2/mingw73_64/include/QtGui/QMatrix
+		C:/Qt/5.12.2/mingw73_64/include/QtGui/QMatrix \
+		../Monster_Truck_PF/objetos.h \
+		C:/Qt/5.12.2/mingw73_64/include/QtCore/qmath.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\personaje.o ..\Monster_Truck_PF\personaje.cpp
 
 debug/qrc_MEDIA.o: debug/qrc_MEDIA.cpp 

@@ -5,7 +5,7 @@ nivel::nivel()
     QPixmap imagen;
     imagen.load("../Monster_Truck_PF/MEDIA/SPRITES_GAME/niveles/nivel1.png");
 
-    fondo=imagen.copy(0,0,6060, 780);//.scaled(100,10);
+    fondo=imagen.copy(0,0,6056, 780);//.scaled(100,10);
     setPixmap(fondo);
     level1 = new QGraphicsScene;
     level1->setSceneRect(0,0,tamnivelX, tamnivelY);

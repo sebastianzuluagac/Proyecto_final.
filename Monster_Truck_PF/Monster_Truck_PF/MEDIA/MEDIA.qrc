@@ -138,5 +138,19 @@
         <file>SPRITES_GAME/objetos/N2.jpg</file>
         <file>SPRITES_GAME/objetos/N3.jpg</file>
         <file>SPRITES_GAME/objetos/N4.jpg</file>
+        <file>SPRITES_GAME/objetos/decoracion/arbol.png</file>
+        <file>SPRITES_GAME/objetos/decoracion/edificio.png</file>
+        <file>SPRITES_GAME/objetos/decoracion/edificio2pisos.png</file>
+        <file>SPRITES_GAME/objetos/decoracion/garaje.png</file>
+        <file>SPRITES_GAME/objetos/decoracion/garaje2.png</file>
+        <file>SPRITES_GAME/objetos/decoracion/jugar.png</file>
+        <file>SPRITES_GAME/objetos/decoracion/portada.png</file>
+        <file>SPRITES_GAME/objetos/decoracion/portada2.png</file>
+        <file>SPRITES_GAME/objetos/decoracion/portada21.png</file>
+        <file>SPRITES_GAME/objetos/decoracion/supermarket.png</file>
+        <file>SPRITES_GAME/objetos/decoracion/tienda.png</file>
+        <file>SPRITES_GAME/objetos/decoracion/derecha.PNG</file>
+        <file>SPRITES_GAME/objetos/decoracion/fondo_niveles.png</file>
+        <file>SPRITES_GAME/objetos/decoracion/izquierda.png</file>
     </qresource>
 </RCC>

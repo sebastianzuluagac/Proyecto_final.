@@ -15,6 +15,7 @@
 #include <QDebug>
 #include "Macros.h"
 #include "containers.h"
+#include "objetos.h"
 #define bloqueX 240
 #define bloqueY 153
 
@@ -25,7 +26,7 @@ class personaje: public QObject, public QGraphicsPixmapItem
 public:
     personaje(QGraphicsScene *scene, float Pos_x, float Pos_y);
     personaje();
-    void Iniciar_nivel();
+    void Iniciar_nivel(ima *fondo);
     void set_sprite(int posx, int posy);
     void set_sprite(int posx);
     void MOVER_ADELANTE();
@@ -73,6 +74,7 @@ private:
     QPixmap imagen;
     QPixmap copia;
     QString username, carrosDes;
+    ima *fondo;
 
 };
 

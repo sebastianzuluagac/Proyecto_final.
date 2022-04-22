@@ -34,6 +34,7 @@ public:
     ~MainWindow();
 
 public slots:
+    void focusfondo();
     void Juego_activo();
     void Detener_juego();
 
@@ -69,6 +70,8 @@ private slots:
 
     void on_buy_clicked();
 
+    void on_jugar_2_clicked();
+
 private:
     bool Colision = false;
     bool Jugando = false;
@@ -89,13 +92,17 @@ private:
     QVector <cierra*> Cierras;
     QVector <resorte*> Resortes;
     QKeyEvent *tecla;
-    QTimer *timer;
+    QTimer *timer,*Tfondo;
 
     //Tienda
-    QGraphicsScene *tienda;
+    QGraphicsScene *tienda,*inicio;
     ima *modelo;
 
     QString name;
     int nLR=0;
+
+    //cosas nuevas
+    bool menu=true;
+
 };
 #endif // MAINWINDOW_H
